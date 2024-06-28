@@ -1,13 +1,13 @@
 package org.ApeBodima.webApp_backend.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "bodime_details")
@@ -53,4 +53,12 @@ public class Bodime_Detail {
     @Column(name = "bodim_place_name", length = 200)
     private String bodimPlaceName;
 
+    @OneToMany(mappedBy = "bodime_details")
+    private List<Bodime_Contact> bodime_contacts;
+
+    @OneToMany(mappedBy = "bodime_details")
+    private List<Bodime_Review> bodime_reviews;
+
+    @OneToMany(mappedBy = "bodime_details")
+    private List<Bodime_Photos> bodime_photos;
 }
