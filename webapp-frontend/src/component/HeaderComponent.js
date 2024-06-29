@@ -14,12 +14,12 @@ const HeaderComponent=()=>{
                    
                     <nav className="navbar">
                         <ul>
-                            <li><a>Explore</a></li>
-                            <li><a>Add Place</a></li>
-                            <li><a>User Account</a></li>
-                            <li><a>View favorite</a></li>
-                            <li className='logoutClass'><a><img src={logout} alt="logout"/><span>Login in</span></a></li>
-                            <li className='signin'><a>Sign in</a></li> 
+                            <li><a href="#explore">Explore</a></li>
+                            <li><a href="#addPlace">Add Place</a></li>
+                            <li><a href="#userAccount">User Account</a></li>
+                            <li><a href="#viewFavourite">View favorite</a></li>
+                            <li className='logoutClass'><a href="#logoutId"><img src={logout} alt="logout"/><span>Login in</span></a></li>
+                            <li className='signin'><a href="#signInId">Sign in</a></li> 
                         </ul>
                         <img className="menuBar" src="https://www.pinclipart.com/picdir/middle/532-5328945_menu-bar-icon-white-clipart-png-download-menu.png" alt="menubar"
                             onClick={()=>{
@@ -38,12 +38,12 @@ const HeaderComponent=()=>{
                                 }}
                             />
                             <ul>
-                            <li><a>Explore</a></li>
-                            <li><a>Add Place</a></li>
-                            <li><a>User Account</a></li>
-                            <li><a>View favorite</a></li>
-                            <li className='logoutClass'><a><img src={logout} alt="logout"/><span>Login in</span></a></li>
-                            <li className='signin'><a>Sign in</a></li>
+                            <li><a href="#explore">Explore</a></li>
+                            <li><a href="#addPlace">Add Place</a></li>
+                            <li><a href="#userAccount">User Account</a></li>
+                            <li><a href="#viewFavourite">View favorite</a></li>
+                            <li className='logoutClass'><a href="#logoutId"><img src={logout} alt="logout"/><span>Login in</span></a></li>
+                            <li className='signin'><a href="#signInId">Sign in</a></li>
                         </ul>
 
                         </nav>
