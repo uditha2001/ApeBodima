@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
+import org.ApeBodima.webApp_backend.DTO.request.BodimeReviewSaveDTO;
 
 import java.util.List;
 import java.util.Set;
@@ -61,4 +63,25 @@ public class Bodime_Detail {
 
     @OneToMany(mappedBy = "bodime_details")
     private List<Bodime_Photos> bodime_photos;
+
+    public Bodime_Detail(String bodimId, double price, int capacity, double distanceToUni, String type, int numChairs, int numFans, int numTables, int numNets, int kitchen, String locationAddress, String bodimPlaceName) {
+        this.bodimId = bodimId;
+        this.price = price;
+        this.capacity = capacity;
+        this.distanceToUni = distanceToUni;
+        this.type = type;
+        this.numChairs = numChairs;
+        this.numFans = numFans;
+        this.numTables = numTables;
+        this.numNets = numNets;
+        this.kitchen = kitchen;
+        this.locationAddress = locationAddress;
+        this.bodimPlaceName = bodimPlaceName;
+
+
+
+
+    }
+
+
 }
