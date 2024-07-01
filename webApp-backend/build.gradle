@@ -25,12 +25,14 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'//Spring Data JPA
+	implementation 'org.springframework.boot:spring-boot-starter-security' //Spring security
 	implementation 'org.springframework.boot:spring-boot-starter-web'//Spring boot WEB
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'//Spring boot DevTools
 	compileOnly 'org.projectlombok:lombok'//lombok-compile
 	runtimeOnly 'com.mysql:mysql-connector-j'//mysql JDBC connector
 	annotationProcessor 'org.projectlombok:lombok'//lombok-annotation
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class System_User {
+public class System_User{
 
     @Id
     @Column(name="sysUserNIC",length = 12)

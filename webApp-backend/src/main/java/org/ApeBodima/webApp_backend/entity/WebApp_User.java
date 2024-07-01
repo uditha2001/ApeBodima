@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class WebApp_User {
+public class WebApp_User{
 
     @Id
     @Column(name = "webAppUserNIC",length = 12)
