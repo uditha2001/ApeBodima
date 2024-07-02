@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/favourites")
 
 public class FavoriteBoardingController {
-    @Autowired
-    private FavoriteBoardingService favoriteBoardingService;
+//    @Autowired
+//    private FavoriteBoardingService favoriteBoardingService;
 
-    @DeleteMapping("/{userid}/{bodimId}")
-    public ResponseEntity<?> deleteFavoriteBoarding(@PathVariable String userid, @PathVariable String bodimId) {
-        if(!favoriteBoardingService.isFavouriteBoarding(userid, bodimId)){
-            return ResponseEntity.badRequest().body("This boarding place is not in the user's favorite list.");
-
-        }
-        else{
-            favoriteBoardingService.removeFavouriteBoarding(userid, bodimId);
-            return ResponseEntity.ok().body("Boarding place removed from favorites successfully");
-        }
-    }
+//    @DeleteMapping("/{userid}/{bodimId}")
+//    public ResponseEntity<?> deleteFavoriteBoarding(@PathVariable String userid, @PathVariable String bodimId) {
+//        if(!favoriteBoardingService.isFavouriteBoarding(userid, bodimId)){
+//            return ResponseEntity.badRequest().body("This boarding place is not in the user's favorite list.");
+//
+//        }
+//        else{
+//            favoriteBoardingService.removeFavouriteBoarding(userid, bodimId);
+//            return ResponseEntity.ok().body("Boarding place removed from favorites successfully");
+//        }
+//    }
 }

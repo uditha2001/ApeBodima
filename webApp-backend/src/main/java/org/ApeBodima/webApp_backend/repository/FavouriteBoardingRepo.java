@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
-@EnableJpaRepositories
-public interface FavouriteBoardingRepo extends JpaRepository<Favourite_list,Long> {
-    Optional<Favourite_list>findByUserIdAndBodimeDetail_BodimId(String userId,String bodimId);
-    void deleteByUserIdAndBodimeDetail_BodimId(String userid,String bodimId);
+//@Repository
+//@EnableJpaRepositories
+public interface FavouriteBoardingRepo {
+//    extends JpaRepository<Favourite_list,Long>
+//    Optional<Favourite_list>findByUserIdAndBodimeDetail_BodimId(String userId,String bodimId);
+//    void deleteByUserIdAndBodimeDetail_BodimId(String userid,String bodimId);
 }
