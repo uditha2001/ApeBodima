@@ -1,6 +1,7 @@
 package org.ApeBodima.webApp_backend.config.security;
 
 import lombok.AllArgsConstructor;
+import org.ApeBodima.webApp_backend.service.loginService.LoginService;
 import org.ApeBodima.webApp_backend.service.registrationService.RegisterService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,14 +27,14 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig{
 
-    private final RegisterService registerService;
     private final PasswordEncoder passwordEncoder;
+    private final LoginService loginService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/api/v*/registration/**").permitAll()
+                        .requestMatchers("/api/v*/registration/user").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
@@ -46,7 +47,7 @@ public class SecurityConfig{
     public AuthenticationProvider authenticationProvider(){
         final DaoAuthenticationProvider daoAuthenticationProvider=new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder.bCryptPasswordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(registerService);
+        daoAuthenticationProvider.setUserDetailsService(loginService);
         return daoAuthenticationProvider;
     }
 
