@@ -22,4 +22,15 @@ public class RegisterController {
     public ResponseEntity<String> createUser(@RequestBody RegistrationDTO registrationDTO){
         return ResponseEntity.ok(registerService.addPublicUser(registrationDTO));
     }
+
+
+    /*-------------------------------------------------
+    * This end point is hidden by basic login.
+    * You have login before you send this request.
+    * This request change your role to a ADMIN.
+    *--------------------------------------------------*/
+    @PostMapping("/systemUser")
+    public ResponseEntity<String> createSystemUser(){
+        return ResponseEntity.ok(registerService.changeToAdmin());
+    }
 }
