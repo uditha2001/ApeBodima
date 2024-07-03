@@ -6,24 +6,22 @@ import org.ApeBodima.webApp_backend.config.security.PasswordEncoder;
 import org.ApeBodima.webApp_backend.entity.AppUserRoleEnum;
 import org.ApeBodima.webApp_backend.entity.WebApp_User;
 import org.ApeBodima.webApp_backend.repository.WebAppUserRepo;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.ApeBodima.webApp_backend.service.loginService.LoginService;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterService implements UserDetailsService{
-    public final static String USER_NOT_FOUND_MSG= "User with %s not found";
+public class RegisterService{
     private final WebAppUserRepo webAppUserRepo;
     private final PasswordEncoder passwordEncoder;
-
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return webAppUserRepo.findByUsername(username).orElseThrow(()->
-                new UsernameNotFoundException(USER_NOT_FOUND_MSG));
-    }
+    private final LoginService loginService;
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile(
+            "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+    public static final Pattern VALID_NIC_REGEX = Pattern.compile("^\\d{12}$");
 
 
     /*-------------------------------------
@@ -65,32 +63,44 @@ public class RegisterService implements UserDetailsService{
         //TODO : SEND TOKEN USING JWT
 
         webAppUserRepo.saveAndFlush(webApp_user);
-        return "Success!, Create new user: "+webApp_user.toString();
+        return "Success!, Created new user: "+webApp_user.getWebAppUserNIC();
     }
 
-    public boolean emailValidator(String email){
-        //TODO: Regex to validate email;
-        return true;
+    /*-------------------------------------
+     *     WebApp user -> System user
+     *------------------------------------*/
+    public String changeToAdmin(){
+        WebApp_User user=webAppUserRepo.findByUsername(loginService.getCurrentLoggedInUsername())
+                .get();//no need to check isPresent. Because already registered user can send this request
+        user.setAppUserRole(AppUserRoleEnum.ADMIN);
+        webAppUserRepo.save(user);
+        return "You are now admin";
     }
 
-    public boolean userNameValidator(String userName){
+    private boolean emailValidator(String email){
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean userNameValidator(String userName){
         //TODO: check the username valid or not
         return true;
     }
-    public boolean userNameUniqueness(String userName){
+    private boolean userNameUniqueness(String userName){
         return webAppUserRepo.findByUsername(userName).isPresent();
     }
 
-    public boolean nicValidator(String userNic){
-        //TODO: regex for nic check
-        return true;
+    private boolean nicValidator(String userNic){
+        Matcher matcher = VALID_NIC_REGEX.matcher(userNic);
+        return matcher.matches();
     }
 
-    public boolean nicUniqueness(String userNic){
+    private boolean nicUniqueness(String userNic){
         return webAppUserRepo.findByWebAppUserNIC(userNic).isPresent();
     }
 
-    public String encodedPassword(String password){
+    private String encodedPassword(String password){
         return passwordEncoder.bCryptPasswordEncoder().encode(password);
     }
+
 }
