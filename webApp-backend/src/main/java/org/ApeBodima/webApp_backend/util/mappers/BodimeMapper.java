@@ -26,10 +26,10 @@ public interface BodimeMapper {
         List<BodimeDetailsSaveDTO> entityListToDoList3(List<Bodime_Detail> bodime_details);
 
 
+
         @Mapping(target = "contacts", source = "bodime_contacts")
         @Mapping(target = "reviews", source = "bodime_reviews")
         BodimeDetailsSaveDTO bodimeDetailToBodimeDetailsSaveDTO(Bodime_Detail bodime_detail);
-
 
 
 
