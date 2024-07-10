@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.ApeBodima'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-alpha'
 
 java {
 	toolchain {
@@ -34,7 +34,7 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 
 	// https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor
-	implementation 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'//Spring boot DevTools
 	compileOnly 'org.projectlombok:lombok'//lombok-compile
 	runtimeOnly 'com.mysql:mysql-connector-j'//mysql JDBC connector
