@@ -1,4 +1,4 @@
-package org.ApeBodima.webApp_backend.service;
+package org.ApeBodima.webApp_backend.service.serviceInterFaces;
 
 import org.ApeBodima.webApp_backend.DTO.request.BodimeDetailsSaveDTO;
 

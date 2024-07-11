@@ -7,7 +7,7 @@ import org.ApeBodima.webApp_backend.entity.Bodime_Review;
 import org.ApeBodima.webApp_backend.repository.BodimeDetailsContactRepo;
 import org.ApeBodima.webApp_backend.repository.BodimeDetailsRepo;
 import org.ApeBodima.webApp_backend.repository.BodimeReviewRepo;
-import org.ApeBodima.webApp_backend.service.BodimeDetailsService;
+import org.ApeBodima.webApp_backend.service.serviceInterFaces.BodimeDetailsService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;

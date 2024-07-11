@@ -2,7 +2,7 @@ package org.ApeBodima.webApp_backend.controller;
 
 
 import org.ApeBodima.webApp_backend.DTO.request.BodimeDetailsSaveDTO;
-import org.ApeBodima.webApp_backend.service.BodimeDetailsService;
+import org.ApeBodima.webApp_backend.service.serviceInterFaces.BodimeDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
