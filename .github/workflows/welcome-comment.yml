@@ -38,23 +38,13 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Get issue/pull request author
-        id: get_author
-        uses: octokit/request-action@v2.x
+      - uses: actions/github-script@v7
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create comment
-        uses: octokit/request-action@v2.x
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          issue_number: ${{ github.event.issue.number }}  # For issues
-          pull_number: ${{ github.event.pull_request.number }}  # For pull requests
-          comment: |
-            Hi @{{ steps.get_author.outputs.data.login }}! 
-            Thanks for opening/reopening this ${{ github.event.name }}. 
-            Let us know if you have any questions.
-  
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
 
