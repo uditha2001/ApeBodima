@@ -3,12 +3,6 @@ on:
   #Welcome Collaborator
   member:
     type: added
-
-  #Handle issues and pul requests
-  pull_request:
-    types: [opened,synchronize,reoponed]
-  issues:
-    types: [opened,synchronize,reoponed]
     
 jobs:
   welcome:
@@ -35,15 +29,4 @@ jobs:
         run: |
           echo ${{ steps.welocme_msg.outputs.welcome_message }}
 
-  comment:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - uses: mshick/add-pr-comment@v2
-        with:
-          message: |
-            **Hello**
-            🌏
-            !
 
