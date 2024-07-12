@@ -23,6 +23,7 @@ jobs:
             echo "::set-output name=actor_name::$(git config user.name)"
             
       - name: welcome message
+        id: welocme_msg  
         run: |
             echo "::notice name=welcome_message::Hi there, @{{ steps.get_collaborator_name.outputs.actor }}!\n"  # Notice level for multi-line output
             echo "Welcome to the team! We're glad to have you here.\n"
@@ -32,7 +33,7 @@ jobs:
       - name: Greet collaborator (on addition)
         if: github.event.name == 'member'  # Only run this step on collaborator addition
         run: |
-          echo ${{ steps.welcome message.outputs.welcome_message }}
+          echo ${{ steps.welocme_msg.outputs.welcome_message }}
 
   comment:
     runs-on: ubuntu-latest
