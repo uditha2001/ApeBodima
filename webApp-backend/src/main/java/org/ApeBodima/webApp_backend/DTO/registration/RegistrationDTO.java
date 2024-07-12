@@ -17,4 +17,5 @@ public class RegistrationDTO {
     private String scNUm;
     private String currentLocation;
     private String email;
+    private byte[] profileImg;
 }

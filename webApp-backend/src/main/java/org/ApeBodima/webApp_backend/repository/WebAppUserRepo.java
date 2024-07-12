@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.*;
 import java.util.Optional;
 
 @Repository
@@ -13,7 +12,7 @@ import java.util.Optional;
 public interface WebAppUserRepo extends JpaRepository<WebApp_User,String> {
 
     //Return the WebApp_Users according to the username
-    Optional<WebApp_User> findByUsername(String username);
+    WebApp_User findByUsername(String username);
 
     Optional<WebApp_User> findByWebAppUserNIC(String webAppUserNIC);
 
