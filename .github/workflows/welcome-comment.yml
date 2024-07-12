@@ -3,11 +3,9 @@ on:
   #Welcome Collaborator
   member:
     type: added
-
-  #Handle issues and pul requests
+    
+  #Handle pull requests
   pull_request:
-    types: [opened,synchronize,reoponed]
-  issues:
     types: [opened,synchronize,reoponed]
     
 jobs:
