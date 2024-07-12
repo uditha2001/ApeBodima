@@ -1,0 +1,61 @@
+name: "GreetContributor"
+on:
+  #Welcome Collaborator
+  member:
+    type: added
+
+  #Handle issues and pul requests
+  pull_request:
+    types: [opened,synchronize,reoponed]
+  issues:
+    types: [opened,synchronize,reoponed]
+    
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get collaborator name (on addition)
+        id: get_collaborator_name  # Used only for collaborator addition
+        if: github.event.name == 'member'  # Only run this step on collaborator addition
+        uses: google/github-actions/get-github-actor@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Greet collaborator (on addition)
+        if: github.event.name == 'member'  # Only run this step on collaborator addition
+        uses: gabrielduran/multi-line-comment@v1
+        with:
+          message: |
+            Hi there, @{{ steps.get_collaborator_name.outputs.actor }}! 
+
+            Welcome to the team! We're glad to have you here. 
+
+            Feel free to introduce yourself in the #introductions channel on our Slack workspace (link here). 
+
+            If you have any questions, don't hesitate to ask!  ❓
+
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get issue/pull request author
+        id: get_author
+        uses: octokit/action-octokit@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create comment
+        uses: octokit/action-octokit@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          issue_number: ${{ github.event.issue.number }}  # For issues
+          pull_number: ${{ github.event.pull_request.number }}  # For pull requests
+          comment: |
+            Hi @{{ steps.get_author.outputs.data.login }}! 
+            Thanks for opening/reopening this ${{ github.event.name }}. 
+            Let us know if you have any questions.
+  
+
