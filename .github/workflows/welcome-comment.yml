@@ -19,22 +19,20 @@ jobs:
       - name: Get collaborator name (on addition)
         id: get_collaborator_name  # Used only for collaborator addition
         if: github.event.name == 'member'  # Only run this step on collaborator addition
-        uses: google/github-actions/get-github-actor@v2
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        run: |
+            echo "::set-output name=actor_name::$(git config user.name)"
+            
+      - name: welcome message
+        run: |
+            echo "::notice name=welcome_message::Hi there, @{{ steps.get_collaborator_name.outputs.actor }}!\n"  # Notice level for multi-line output
+            echo "Welcome to the team! We're glad to have you here.\n"
+            echo "Feel free to introduce yourself in the #introductions channel on our Slack workspace (link here).\n"
+            echo "If you have any questions, don't hesitate to ask!  ❓\n"
+          
       - name: Greet collaborator (on addition)
         if: github.event.name == 'member'  # Only run this step on collaborator addition
-        uses: gabrielduran/multi-line-comment@v1
-        with:
-          message: |
-            Hi there, @{{ steps.get_collaborator_name.outputs.actor }}! 
-
-            Welcome to the team! We're glad to have you here. 
-
-            Feel free to introduce yourself in the #introductions channel on our Slack workspace (link here). 
-
-            If you have any questions, don't hesitate to ask!  ❓
+        run: |
+          echo ${{ steps.welcome message.outputs.welcome_message }}
 
   comment:
     runs-on: ubuntu-latest
@@ -48,7 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create comment
-        uses: octokit/action-octokit@v2
+        uses: octokit/request-action@v2.x
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           issue_number: ${{ github.event.issue.number }}  # For issues
