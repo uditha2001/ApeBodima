@@ -43,7 +43,6 @@ jobs:
       - uses: mshick/add-pr-comment@v2
         with:
           message: |
-            **Hello**
-            🌏
-            !
+            **Thank you for your contribution**
+            This pull request will merge ASAP after finished the testings!
 
