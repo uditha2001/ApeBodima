@@ -3,7 +3,7 @@ package org.ApeBodima.webApp_backend.service.IMPL;
 import org.ApeBodima.webApp_backend.DTO.request.FavouriteSaveDTO;
 import org.ApeBodima.webApp_backend.entity.FavouriteBodimList;
 import org.ApeBodima.webApp_backend.repository.FavouriteBodimListRepo;
-import org.ApeBodima.webApp_backend.service.FavouriteService;
+import org.ApeBodima.webApp_backend.service.serviceInterFaces.FavouriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

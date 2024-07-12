@@ -1,4 +1,0 @@
-### Ignore all docker files ###
-docker-compose.yml
-webapp-frontend/Dockerfile
-webApp-backend/Dockerfile
