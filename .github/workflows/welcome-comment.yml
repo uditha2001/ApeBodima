@@ -42,7 +42,7 @@ jobs:
 
       - name: Get issue/pull request author
         id: get_author
-        uses: octokit/action-octokit@v2
+        uses: octokit/request-action@v2.x
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
