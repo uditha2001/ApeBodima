@@ -1,17 +1,18 @@
-name: Add Label
-
+name: Label issues
 on:
   issues:
-    types: [opened,reopened]
-
+    types:
+      - reopened
+      - opened
 jobs:
-  add_label:
+  label_issues:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-
-      - name: add label
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: bug
+      - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: triage
