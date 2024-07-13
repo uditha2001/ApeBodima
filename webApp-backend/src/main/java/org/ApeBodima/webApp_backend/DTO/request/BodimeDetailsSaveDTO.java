@@ -1,5 +1,6 @@
 package org.ApeBodima.webApp_backend.DTO.request;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,9 @@ public class BodimeDetailsSaveDTO {
     private int numTables;
     private int numNets;
     private int kitchen;
+    private double rating;
     private String locationAddress;
+    private String nearestCity;
     private String bodimPlaceName;
     private List<BodimeContactSaveDTO> contacts;
     private List<BodimeReviewSaveDTO> reviews;
