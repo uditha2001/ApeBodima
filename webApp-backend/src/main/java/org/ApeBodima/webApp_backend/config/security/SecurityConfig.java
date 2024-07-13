@@ -33,6 +33,7 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/api/v*/registration/user").permitAll()
                         .anyRequest().authenticated()
@@ -50,6 +51,7 @@ public class SecurityConfig{
         daoAuthenticationProvider.setUserDetailsService(loginService);
         return daoAuthenticationProvider;
     }
+
 
 
 

@@ -1,4 +1,4 @@
-package org.ApeBodima.webApp_backend.config;
+package org.ApeBodima.webApp_backend.config.modelMaping;
 
 
 import org.modelmapper.ModelMapper;

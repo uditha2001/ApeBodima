@@ -35,6 +35,9 @@ public class WebApp_User implements UserDetails{
     @Column(name="webAppUserRole",nullable = false)
     @Enumerated(EnumType.STRING)
     private AppUserRoleEnum appUserRole;
+    @Lob
+    @Column(name="profileImg",nullable = true,columnDefinition = "LONGBLOB")
+    private byte[] profileImg;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

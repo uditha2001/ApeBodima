@@ -1,6 +1,5 @@
 package org.ApeBodima.webApp_backend.service.IMPL;
 
-import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
 import org.ApeBodima.webApp_backend.DTO.request.BodimeDetailsSaveDTO;
 import org.ApeBodima.webApp_backend.entity.Bodime_Contact;
 import org.ApeBodima.webApp_backend.entity.Bodime_Detail;
@@ -8,8 +7,7 @@ import org.ApeBodima.webApp_backend.entity.Bodime_Review;
 import org.ApeBodima.webApp_backend.repository.BodimeDetailsContactRepo;
 import org.ApeBodima.webApp_backend.repository.BodimeDetailsRepo;
 import org.ApeBodima.webApp_backend.repository.BodimeReviewRepo;
-import org.ApeBodima.webApp_backend.service.BodimeDetailsService;
-import org.ApeBodima.webApp_backend.util.mappers.BodimeMapper;
+import org.ApeBodima.webApp_backend.service.serviceInterFaces.BodimeDetailsService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,44 +33,39 @@ public class BodimeDetailsServiceIMPL implements BodimeDetailsService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private BodimeMapper bodimeMapper;
-
     @Override
     public String save(BodimeDetailsSaveDTO bodimeDetailsSaveDTO) {
-        if (bodimeDetailsRepo.existsById(bodimeDetailsSaveDTO.getBodimId())) {
-            return "Bodime already exists";
-        } else {
-            Bodime_Detail bodime_detail = new Bodime_Detail(
-                    bodimeDetailsSaveDTO.getBodimId(),
-                    bodimeDetailsSaveDTO.getPrice(),
-                    bodimeDetailsSaveDTO.getCapacity(),
-                    bodimeDetailsSaveDTO.getDistanceToUni(),
-                    bodimeDetailsSaveDTO.getType(),
-                    bodimeDetailsSaveDTO.getNumChairs(),
-                    bodimeDetailsSaveDTO.getNumFans(),
-                    bodimeDetailsSaveDTO.getNumTables(),
-                    bodimeDetailsSaveDTO.getNumNets(),
-                    bodimeDetailsSaveDTO.getKitchen(),
-                    bodimeDetailsSaveDTO.getLocationAddress(),
-                    bodimeDetailsSaveDTO.getBodimPlaceName()
+        Bodime_Detail bodime_detail = new Bodime_Detail(
+                bodimeDetailsSaveDTO.getBodimId(),
+                bodimeDetailsSaveDTO.getPrice(),
+                bodimeDetailsSaveDTO.getCapacity(),
+                bodimeDetailsSaveDTO.getDistanceToUni(),
+                bodimeDetailsSaveDTO.getType(),
+                bodimeDetailsSaveDTO.getNumChairs(),
+                bodimeDetailsSaveDTO.getNumFans(),
+                bodimeDetailsSaveDTO.getNumTables(),
+                bodimeDetailsSaveDTO.getNumNets(),
+                bodimeDetailsSaveDTO.getKitchen(),
+                bodimeDetailsSaveDTO.getLocationAddress(),
+                bodimeDetailsSaveDTO.getBodimPlaceName()
 
 
-            );
-            bodimeDetailsRepo.save(bodime_detail);
+        );
+        bodimeDetailsRepo.save(bodime_detail);
 
-            if (bodimeDetailsRepo.existsById(bodime_detail.getBodimId())) {
-                List<Bodime_Contact> bodime_contacts = modelMapper.map(
-                        bodimeDetailsSaveDTO.getContacts(), new TypeToken<List<Bodime_Contact>>() {
+        if(bodimeDetailsRepo.existsById(bodime_detail.getBodimId())){
+            List<Bodime_Contact> bodime_contacts = modelMapper.map(
+                    bodimeDetailsSaveDTO.getContacts(),new TypeToken<List<Bodime_Contact>>(){
 
-                        }.getType());
+                    }.getType());
 
-                List<Bodime_Review> bodime_reviews = modelMapper.map(
-                        bodimeDetailsSaveDTO.getReviews(), new TypeToken<List<Bodime_Review>>() {
+            List<Bodime_Review> bodime_reviews = modelMapper.map(
+                    bodimeDetailsSaveDTO.getReviews(),new TypeToken<List<Bodime_Review>>(){
 
-                        }.getType());
+                    }.getType());
 
 
+<<<<<<< HEAD
                 for (int i = 0; i < bodime_contacts.size(); i++) {
                     bodime_contacts.get(i).setBodime_details(bodime_detail);
                 }
@@ -90,12 +83,29 @@ public class BodimeDetailsServiceIMPL implements BodimeDetailsService {
 
                 return "Bodime added successfully ";
 
+=======
+            for(int i=0;i<bodime_contacts.size();i++){
+                bodime_contacts.get(i).setBodime_details(bodime_detail);
+>>>>>>> 065c962ca4074e5a724530419591c41daf3b69f7
             }
-            return "error occurd";
+            for(int i=0;i<bodime_reviews.size();i++){
+                bodime_reviews.get(i).setBodime_details(bodime_detail);
+            }
+
+            if(bodime_contacts.size()>0){
+                bodimeDetailsContactRepo.saveAll(bodime_contacts);
+            }
+            if(bodime_reviews.size()>0){
+                bodimeReviewRepo.saveAll(bodime_reviews);
+            }
+            return "Bodime added successfully";
 
         }
+        return "error occurd";
+
     }
 
+<<<<<<< HEAD
     @Override
     public BodimeDetailsSaveDTO getBodimeDetailsById(String bodimId) {
         if(bodimeDetailsRepo.existsById(bodimId)){
@@ -137,6 +147,9 @@ public class BodimeDetailsServiceIMPL implements BodimeDetailsService {
 
         return bodimeDetailsSaveDTOS;
     }
+=======
+
+>>>>>>> 065c962ca4074e5a724530419591c41daf3b69f7
 
     @Override
     public List<BodimeDetailsSaveDTO> getAllBodimeDetailsByCapacity(int page, int size, int capacity) {
