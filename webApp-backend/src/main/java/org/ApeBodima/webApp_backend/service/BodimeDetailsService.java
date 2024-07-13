@@ -10,5 +10,9 @@ public interface BodimeDetailsService {
 
     BodimeDetailsSaveDTO getBodimeDetailsById(String bodimId);
 
-    List<BodimeDetailsSaveDTO> getAllBodimeDetails();
+    List<BodimeDetailsSaveDTO> getAllBodimeDetails(int page , int size);
+
+    List<BodimeDetailsSaveDTO> getAllBodimeDetailsByCapacity(int page, int size, int capacity);
+
+    List<BodimeDetailsSaveDTO> getAllBodimeDetailsByDistance(int page, int size, double distance);
 }

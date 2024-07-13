@@ -29,9 +29,29 @@ public class BodimeDetailsController {
         return bodimeDetailsSaveDTO;
     }
 
-    @GetMapping("/get-all")
-    public List<BodimeDetailsSaveDTO> getAllBodimeDetails(){
-        List<BodimeDetailsSaveDTO> bodimeSaveDTOList = bodimeDetailsService.getAllBodimeDetails();
+    @GetMapping(path="/get-all",
+                params={"page","size"})
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetails(@RequestParam(value="page") int page,
+                                                          @RequestParam(value="size") int size){
+        List<BodimeDetailsSaveDTO> bodimeSaveDTOList = bodimeDetailsService.getAllBodimeDetails(page,size);
+        return bodimeSaveDTOList;
+    }
+
+    @GetMapping(path="/get-all",
+            params={"page","size","capacity"})
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetails(@RequestParam(value="page") int page,
+                                                          @RequestParam(value="size") int size,
+                                                          @RequestParam(value="capacity") int capacity){
+        List<BodimeDetailsSaveDTO> bodimeSaveDTOList = bodimeDetailsService.getAllBodimeDetailsByCapacity(page,size,capacity);
+        return bodimeSaveDTOList;
+    }
+
+    @GetMapping(path="/get-all",
+            params={"page","size","distance"})
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetails(@RequestParam(value="page") int page,
+                                                          @RequestParam(value="size") int size,
+                                                          @RequestParam(value="distance") double distance){
+        List<BodimeDetailsSaveDTO> bodimeSaveDTOList = bodimeDetailsService.getAllBodimeDetailsByDistance(page,size,distance);
         return bodimeSaveDTOList;
     }
 

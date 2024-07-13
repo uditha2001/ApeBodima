@@ -8,7 +8,9 @@ import org.ApeBodima.webApp_backend.entity.Bodime_Detail;
 import org.ApeBodima.webApp_backend.entity.Bodime_Review;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,18 +20,23 @@ import java.util.List;
 public interface BodimeMapper {
 
 
-   
-        List<BodimeContactSaveDTO> entityListToDTOList(List<Bodime_Contact> bodime_contacts);
 
-        List<BodimeReviewSaveDTO> entityListToDTOList2(List<Bodime_Review> bodime_reviews);
+    List<BodimeContactSaveDTO> entityListToDTOList(List<Bodime_Contact> bodime_contacts);
 
-        List<BodimeDetailsSaveDTO> entityListToDoList3(List<Bodime_Detail> bodime_details);
+    List<BodimeReviewSaveDTO> entityListToDTOList2(List<Bodime_Review> bodime_reviews);
 
 
+    BodimeContactSaveDTO contactEntityToDTO(Bodime_Contact bodime_contact);
 
-        @Mapping(target = "contacts", source = "bodime_contacts")
-        @Mapping(target = "reviews", source = "bodime_reviews")
-        BodimeDetailsSaveDTO bodimeDetailToBodimeDetailsSaveDTO(Bodime_Detail bodime_detail);
+    BodimeReviewSaveDTO reviewEntityToDTO(Bodime_Review bodime_review);
+
+
+
+    BodimeDetailsSaveDTO bodimeDetailToBodimeDetailsSaveDTO(Bodime_Detail bodime_detail);
+
+    List<BodimeDetailsSaveDTO> entityListToDoList3(List<Bodime_Detail> bodime_details);
+    List<BodimeDetailsSaveDTO> pagetoDtoList(Page<Bodime_Detail> bodime_detail);
+
 
 
 

@@ -13,8 +13,12 @@ import org.ApeBodima.webApp_backend.util.mappers.BodimeMapper;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -82,6 +86,8 @@ public class BodimeDetailsServiceIMPL implements BodimeDetailsService {
                 if (bodime_reviews.size() > 0) {
                     bodimeReviewRepo.saveAll(bodime_reviews);
                 }
+
+
                 return "Bodime added successfully ";
 
             }
@@ -105,7 +111,9 @@ public class BodimeDetailsServiceIMPL implements BodimeDetailsService {
                     bodime_detail.getNumTables(),
                     bodime_detail.getNumNets(),
                     bodime_detail.getKitchen(),
+                    bodime_detail.getRating(),
                     bodime_detail.getLocationAddress(),
+                    bodime_detail.getNearestCity(),
                     bodime_detail.getBodimPlaceName(),
                     bodimeMapper.entityListToDTOList(bodime_detail.getBodime_contacts()),
                     bodimeMapper.entityListToDTOList2(bodime_detail.getBodime_reviews())
@@ -119,9 +127,39 @@ public class BodimeDetailsServiceIMPL implements BodimeDetailsService {
     }
 
     @Override
-    public List<BodimeDetailsSaveDTO> getAllBodimeDetails() {
-        List<BodimeDetailsSaveDTO> bodimeDetailsSaveDTOS = bodimeMapper.entityListToDoList3(bodimeDetailsRepo.findAll());
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetails(int page, int size) {
+
+
+
+        Page<Bodime_Detail> bodimeDetailsPage = bodimeDetailsRepo.findAll(PageRequest.of(page, size));
+        List<BodimeDetailsSaveDTO> bodimeDetailsSaveDTOS = bodimeMapper.pagetoDtoList(bodimeDetailsPage);
+
+
         return bodimeDetailsSaveDTOS;
+    }
+
+    @Override
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetailsByCapacity(int page, int size, int capacity) {
+        Page<Bodime_Detail> bodimeDetailsPage = bodimeDetailsRepo.findAllByCapacity(PageRequest.of(page, size),capacity);
+        List<BodimeDetailsSaveDTO> bodimeDetailsSaveDTOS = bodimeMapper.pagetoDtoList(bodimeDetailsPage);
+        return bodimeDetailsSaveDTOS;
+    }
+
+    @Override
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetailsByDistance(int page, int size, double distance) {
+        Page<Bodime_Detail> bodimeDetailsPage = bodimeDetailsRepo.findAllByDistanceToUniLessThanEqual(PageRequest.of(page, size),distance);
+        List<BodimeDetailsSaveDTO> bodimeDetailsSaveDTOS = bodimeMapper.pagetoDtoList(bodimeDetailsPage);
+        return bodimeDetailsSaveDTOS;
+    }
+
+    public List<BodimeDetailsSaveDTO> sortBodimeDetailsByRating(List<BodimeDetailsSaveDTO> bodimeDetailsList) {
+        Collections.sort(bodimeDetailsList, new Comparator<BodimeDetailsSaveDTO>() {
+            @Override
+            public int compare(BodimeDetailsSaveDTO o1, BodimeDetailsSaveDTO o2) {
+                return Double.compare(o2.getRating(), o1.getRating());
+            }
+        });
+        return bodimeDetailsList;
     }
 
 
