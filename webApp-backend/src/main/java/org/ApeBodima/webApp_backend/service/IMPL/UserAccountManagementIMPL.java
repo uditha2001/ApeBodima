@@ -1,5 +1,7 @@
 package org.ApeBodima.webApp_backend.service.IMPL;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.ApeBodima.webApp_backend.DTO.userManagement.UserManagementDTO;
 import org.ApeBodima.webApp_backend.config.security.PasswordEncoder;
@@ -22,7 +24,8 @@ import java.util.regex.Pattern;
 @Service
 @RequiredArgsConstructor
 public class UserAccountManagementIMPL implements UserAccountManagementService {
-
+    @Autowired
+    private HttpServletRequest request;
     @Autowired
     private WebAppUserRepo webAppUserRepo;
     @Autowired
@@ -116,6 +119,29 @@ public class UserAccountManagementIMPL implements UserAccountManagementService {
             return "imageUploaded";
         }
         return "sorry!";
+    }
+
+    @Override
+    @Transactional
+    public String deleteAccount(String userPassword) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                String user = ((UserDetails) principal).getUsername();
+                WebApp_User webAppUser = webAppUserRepo.findByUsername(user);
+                if (passwordEncoder.bCryptPasswordEncoder().matches(userPassword, webAppUser.getPassword())) {
+                        webAppUserRepo.deleteByUsername(user);
+                    HttpSession session=request.getSession(false);
+                    if(session!=null){
+                        session.invalidate();
+                    }
+                        return "user deleted successful and logout";
+                }
+
+            }
+        }
+        return "your password is incorrect";
     }
 
     //validate the email address

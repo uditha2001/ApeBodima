@@ -13,4 +13,6 @@ public interface UserAccountManagementService {
     String updateUserPassword(String oldPass, String newPass1, String newPass2);
 
     String uploadProfImage(MultipartFile file) throws IOException;
+
+    String deleteAccount(String userPassword);
 }
