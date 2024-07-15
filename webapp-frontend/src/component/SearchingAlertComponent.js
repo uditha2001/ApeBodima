@@ -5,7 +5,7 @@ import SearchingImg from './images/Searching.svg';
 import Button from '@mui/material/Button';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
-const SearchingALertComponent=()=>{
+const SearchingAlertComponent=()=>{
     return(
             <Container maxWidth="xl" sx={{bgcolor: '#F4F4F4', margin:0, padding:'3vh 4vw 0 4vw'}} disableGutters>
                 <Grid container spacing={2}>
@@ -39,4 +39,4 @@ const SearchingALertComponent=()=>{
     )
 }
 
-export default SearchingALertComponent;
+export default SearchingAlertComponent;
