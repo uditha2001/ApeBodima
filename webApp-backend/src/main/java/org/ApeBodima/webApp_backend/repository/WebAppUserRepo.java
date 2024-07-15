@@ -19,4 +19,6 @@ public interface WebAppUserRepo extends JpaRepository<WebApp_User,String> {
     //Return the WebApp_Users according to the email
     Optional<WebApp_User> findByUsernameOrEmail(String username,String email);
 
+    void deleteByUsername(String username);
+
 }

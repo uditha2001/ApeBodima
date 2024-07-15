@@ -49,13 +49,19 @@ public class Bodime_Detail {
     @Column(name = "kitchen")
     private int kitchen;
 
+    @Column(name = "rating")
+    private double rating;
+
     @Column(name = "location_address", length = 250)
     private String locationAddress;
+
+    @Column(name = "nearest city")
+    private String nearestCity;
 
     @Column(name = "bodim_place_name", length = 200)
     private String bodimPlaceName;
 
-    @OneToMany(mappedBy = "bodime_details")
+    @OneToMany(mappedBy = "bodime_details" )
     private List<Bodime_Contact> bodime_contacts;
 
     @OneToMany(mappedBy = "bodime_details")

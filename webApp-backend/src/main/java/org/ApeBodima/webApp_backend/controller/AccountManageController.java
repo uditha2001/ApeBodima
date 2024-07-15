@@ -68,6 +68,19 @@ public class AccountManageController {
                 new StandardResponse(200, "success", message), HttpStatus.OK
         );
     }
+    @DeleteMapping(
+            path="/delete-account",
+            params = "userPassword"
+
+    )
+    public ResponseEntity <StandardResponse> deleteAccount(@RequestParam String userPassword) {
+        String message=userAccountManagementIMPL.deleteAccount(userPassword);
+        return new ResponseEntity<>(
+                new StandardResponse(200, "success", message), HttpStatus.OK
+        );
+    }
+
+
 }
 
 
