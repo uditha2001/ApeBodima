@@ -35,7 +35,7 @@ public class SecurityConfig{
         http
 
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/api/v*/registration/user").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
