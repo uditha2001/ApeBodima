@@ -1,14 +1,15 @@
-import '../componentCss/Header.css'
-import logo from '../images/logo.png'
-import logout from '../images/login.png'
+import './css/Header.css'
+import logo from './images/logo.png'
+import logout from './images/login.png'
 import { useState } from 'react'
+
 const HeaderComponent=()=>{
             const [sideBar,setSideBar]=useState(false);
 
             return(
                 <header className="header">
                     <div className='logodiv'>
-                      <img src={logo} alt="logo image"/>
+                      <img src={logo} alt="logo"/>
                 
                     </div>
                    
@@ -32,7 +33,9 @@ const HeaderComponent=()=>{
                     <nav className="sideNavBar" style={{
                                 right:`${sideBar ? "109px":"-200px"}`
                     }} >
-                            <img className="imageList" src="https://www.pinclipart.com/picdir/middle/35-356107_close-button-icon-png-clipart.png" alt="close image"
+                            <img className="imageList" 
+                                src="https://www.pinclipart.com/picdir/middle/35-356107_close-button-icon-png-clipart.png" 
+                                alt="close"
                                 onClick={()=>{
                                     setSideBar(false);
                                 }}
@@ -49,7 +52,7 @@ const HeaderComponent=()=>{
                         </nav>
                         
 
-                                    </header>
+                </header>
             )
 }
 
