@@ -45,9 +45,8 @@
     height: auto;
     margin-left: 60px;
     opacity: 0px;
-    font-family: Roboto;
     font-size: 16px;
-    font-weight: 500;
+    /*font-weight: 500;*/
     line-height: 18.75px;
     text-align: center;
     color: #000000;
@@ -124,7 +123,6 @@
     transition: all 400ms ease-in; /* Ensures padding is included in the total height */
 }
 
-
 .sideNavBar ul{
     width: 150px;
     list-style-type: none;
@@ -136,9 +134,8 @@
     height: auto;
     gap: 0px;
     opacity: 0px;
-    font-family: Roboto;
     font-size: 16px;
-    font-weight: 500;
+    /*font-weight: 500;*/
     line-height: 18.75px;
     text-align: center;
     color: #000000;
