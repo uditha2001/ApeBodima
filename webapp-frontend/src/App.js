@@ -1,10 +1,10 @@
 import React from 'react';
-import HeaderComponent from "./component/HeaderComponent"
+import Signup from './page/Signup';
 
 const App=()=>{
     return(
         <div>
-        <HeaderComponent/>
+            <Signup/>
         
         </div>
     )

@@ -2,6 +2,7 @@ import '../componentCss/Header.css'
 import logo from '../images/logo.png'
 import logout from '../images/login.png'
 import { useState } from 'react'
+import {Typography} from '@mui/material'
 const HeaderComponent=()=>{
             const [sideBar,setSideBar]=useState(false);
 
@@ -45,7 +46,7 @@ const HeaderComponent=()=>{
                             <li className='logoutClass'><a href="#logoutId"><img src={logout} alt="logout"/><span>Login in</span></a></li>
                             <li className='signin'><a href="#signInId">Sign in</a></li>
                         </ul>
-
+                            
                         </nav>
                         
 
