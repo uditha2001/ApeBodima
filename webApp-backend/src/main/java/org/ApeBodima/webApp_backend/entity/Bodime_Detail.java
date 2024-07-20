@@ -70,6 +70,10 @@ public class Bodime_Detail {
     @OneToMany(mappedBy = "bodime_details")
     private List<Bodime_Photos> bodime_photos;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bodim_ID", referencedColumnName = "bodim_ID")
+    private WebApp_User webApp_user;
+
     public Bodime_Detail(String bodimId, double price, int capacity, double distanceToUni, String type, int numChairs, int numFans, int numTables, int numNets, int kitchen, String locationAddress, String bodimPlaceName) {
         this.bodimId = bodimId;
         this.price = price;
