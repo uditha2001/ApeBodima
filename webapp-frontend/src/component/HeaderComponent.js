@@ -2,11 +2,6 @@ import './css/Header.css'
 import logo from './images/logo.png'
 import logout from './images/login.png'
 import { useState } from 'react'
-<<<<<<< HEAD
-import {Typography} from '@mui/material'
-=======
-
->>>>>>> d67aede155a4677d73f996fe3acc792109e683fb
 const HeaderComponent=()=>{
             const [sideBar,setSideBar]=useState(false);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Signup from './page/Signup';
+import Signup from './pages/Signup';
 
 const App=()=>{
     return(
