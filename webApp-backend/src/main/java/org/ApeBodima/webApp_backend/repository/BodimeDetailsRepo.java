@@ -20,5 +20,7 @@ public interface BodimeDetailsRepo extends JpaRepository<Bodime_Detail, String> 
 
     Page<Bodime_Detail> findAllByDistanceToUniLessThanEqual(Pageable pageable, double distance);
 
+    Page<Bodime_Detail> findAllByNearestCity(Pageable pageable, String nearestCity);
+
 
 }

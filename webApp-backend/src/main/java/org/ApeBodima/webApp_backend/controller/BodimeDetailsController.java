@@ -5,6 +5,7 @@ import org.ApeBodima.webApp_backend.DTO.request.BodimeDetailsSaveDTO;
 import org.ApeBodima.webApp_backend.service.serviceInterFaces.BodimeDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/bodime-details")
@@ -14,13 +15,18 @@ public class BodimeDetailsController {
     private BodimeDetailsService bodimeDetailsService;
 
 
-    @PostMapping("/save")
+    @PostMapping("/save/")
     public String saveCustomer(@RequestBody BodimeDetailsSaveDTO bodimeDetailsSaveDTO){
         String message = bodimeDetailsService.save(bodimeDetailsSaveDTO);
-        return "saved";
+        return message;
     }
 
-<<<<<<< HEAD
+    @PostMapping("/update/{id}")
+    public String updateCustomer(@RequestBody BodimeDetailsSaveDTO bodimeDetailsSaveDTO, @PathVariable(value="id") String bodimId){
+        String message = bodimeDetailsService.update(bodimeDetailsSaveDTO,bodimId);
+        return message;
+    }
+
     @GetMapping("/get-by-id/{id}")
     public BodimeDetailsSaveDTO getBodimeDetailsById(@PathVariable(value="id") String bodimId){
         BodimeDetailsSaveDTO bodimeDetailsSaveDTO = bodimeDetailsService.getBodimeDetailsById(bodimId);
@@ -53,7 +59,13 @@ public class BodimeDetailsController {
         return bodimeSaveDTOList;
     }
 
+    @GetMapping(path="/get-all",
+            params={"page","size","nearestCity"})
+    public List<BodimeDetailsSaveDTO> getAllBodimeDetails(@RequestParam(value="page") int page,
+                                                          @RequestParam(value="size") int size,
+                                                          @RequestParam(value="nearestCity") String nearestCity){
+        List<BodimeDetailsSaveDTO> bodimeSaveDTOList = bodimeDetailsService.getAllBodimeDetailsByNearestCity(page,size,nearestCity);
+        return bodimeSaveDTOList;
+    }
 
-=======
->>>>>>> 065c962ca4074e5a724530419591c41daf3b69f7
 }
