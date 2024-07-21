@@ -8,6 +8,8 @@ const App = () => {
   return (
     <div>
       <HeaderComponent />
+      <SearchingAlertComponent/>
+      <FooterComponent/>
     </div>
   );
 };

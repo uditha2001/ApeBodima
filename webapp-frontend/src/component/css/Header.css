@@ -1,110 +1,109 @@
-.header{
-    background-color:#F0EFEB;
+.header {
+    background-color: #F0EFEB;
     position: fixed;
     display: flex;
     flex-direction: row;
-    width:100%;
+    width: 100%;
     height: auto;
-    padding: 4px 50px 4px 50px;
-    overflow-x: hidden;
-    
-}
-
-.navbar{
-    justify-content: space-between;
-    
-}
-
-.navbar div
-{
-    margin-right: 200px;
+    padding: 4px 50px;
+    overflow: hidden;
+    justify-content: space-between; /* Ensure items are spread out */
+    align-items: center; /* Vertically center items */
+  }
   
-}
-
-.navbar button{
-    width:auto;
-    height: auto;
+  
+ .header div {
+    margin-right: 200px;
+  }
+  
+   .header button {
     border-radius: 100px;
-
-}
-
-.navbar button a {
-    text-decoration: none;
-}
-
-.navbar button a:hover {
-    color: white;
-}
-.navbar button:hover{
+    height: max-content;
+    width: max-content;
+  }
+  
+  .header button:hover {
     background-color: black;
     transition: all 400ms ease-in;
-    
-}
-.navbar .logout{
+    color: aliceblue;
+  }
+  
+  .header .logout {
     border-radius: 0px;
-}
-
-.navbar .signin{
+  }
+  
+  .header .signin {
     border-radius: 0px;
-}
-.navbar .logout:hover{
+  }
+  
+  .header .logout:hover {
     background-color: #F0EFEB;
-}
-
-.navbar .signin:hover{
+    color: blueviolet;
+  }
+  
+  .header .signin:hover {
     background-color: #F0EFEB;
-}
-
-.navbar .signin a:hover{
+    color: blueviolet;
+  }
+  
+  .header .signin a:hover {
     color: black;
-}
-
-.navbar .logout a:hover{
-    color:black;
-}
-.header .menubar{
+  }
+  
+  .header .logout a:hover {
+    color: black;
+  }
+  
+  .header .menubar {
     display: none;
-    margin-top:10px;
+    margin-top: 10px;
     cursor: pointer;
-}
-.container2{
-    background-color:#F0EFEB ;
+  }
+  
+  .container2 {
+    background-color: #F0EFEB;
     position: fixed;
-    right:-200px;
-    top:0px;
-    height:100vh;
-    width:150px;
-    padding:5px 5px 0px 10px;    
-    transition: all 800ms ease-in;
+    right: -200px;
+    top: 0px;
+    height: 100vh;
+    width: 150px;
+    padding: 5px 5px 0px 10px;
+    transition: all 400ms ease-in;
     overflow-x: hidden;
     z-index: 1000;
-}
-
-.container2 .navbar2{
-            top:30px;
-            justify-content: center;
-            align-items: center;
-}
-.container2 .navbar2 button{
-    width: 130px;
-}
-
-.container2 .navbar2 button a{
-    text-decoration: none;
-}
-
-.container2 .navbar2{
-    gap:30px;
-}
-
-@media  screen and (max-width: 1030px) {
-   .header .menubar{
-    display: inline;
-    transition: all 400ms ease-in;
-   }
-   
-   .header .container .navbar button{
-    display: none;
-    transition: all 400ms ease-in;
-   }
   }
+  
+  .container2 .navbar2 {
+    top: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Ensure buttons are stacked vertically */
+  }
+  
+  .container2 .navbar2 button {
+    width: 130px;
+  }
+  
+  .container2 .navbar2 button a {
+    text-decoration: none;
+  }
+  
+  .container2 .navbar2 {
+    gap: 30px;
+  }
+  
+  @media screen and (max-width: 730px) {
+    .header .menubar {
+      display: inline;
+      transition: all 400ms ease-in;
+    }
+  
+    .header button{
+      display: none;
+      transition: all 400ms ease-in;
+    }
+  }
+  
+
+
+  
