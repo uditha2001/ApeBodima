@@ -5,7 +5,7 @@ import SearchingALertComponent from '../component/SearchingAlertComponent';
 const App=()=>{
     return(
         <div>
-            <SearchingALertComponent/>
+             <SearchingALertComponent/>
         </div>
     )
 }
