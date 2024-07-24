@@ -1,11 +1,11 @@
 import React from 'react';
-import '../componentCss/Footer.css'
-import logo from '../images/logo.png'
-import facebook from '../images/facebook-icon.jpeg'
-import linkdin from '../images/linkdin-icon.png'
-import github from '../images/github-icon.png'
+import './css/Footer.css'
+import logo from './images/logo.png'
+import facebook from './images/facebook-icon.jpeg'
+import linkdin from './images/linkdin-icon.png'
+import github from './images/github-icon.png'
 
-const Footer = () => {
+const FooterComponent = () => {
   return (
     <footer className="footer">
       <div className="footer-section">
@@ -46,4 +46,4 @@ const Footer = () => {
   );
 }
 
-export default Footer;
+export default FooterComponent;

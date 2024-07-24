@@ -39,6 +39,11 @@ public class WebApp_User implements UserDetails{
     @Column(name="profileImg",nullable = true,columnDefinition = "LONGBLOB")
     private byte[] profileImg;
 
+    @OneToOne(mappedBy = "webApp_user")
+    private Bodime_Detail bodime_details;
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority=new SimpleGrantedAuthority(appUserRole.name());

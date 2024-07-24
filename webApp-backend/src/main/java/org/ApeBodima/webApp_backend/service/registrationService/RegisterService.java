@@ -59,7 +59,8 @@ public class RegisterService{
                 registrationDTO.getScNUm(),
                 registrationDTO.getCurrentLocation(),
                 AppUserRoleEnum.USER,
-                registrationDTO.getProfileImg()
+                registrationDTO.getProfileImg(),
+                registrationDTO.getBodime_details()
         );
 
         //TODO : SEND TOKEN USING JWT
