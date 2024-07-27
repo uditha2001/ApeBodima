@@ -1,11 +1,7 @@
 import React from "react";
 import HeaderComponent from "./component/HeaderComponent";
-import AddBodim from "./pages/AddBodim";
 
-const App = () => {
-  
-  
-
+const App = () => {  
   return (
     
     <div>

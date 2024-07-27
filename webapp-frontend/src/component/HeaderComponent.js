@@ -1,6 +1,5 @@
 import "./css/Header.css";
 import ApeBODIMA from "./images/APEBODIMA.svg";
-import logout from "./images/login.png";
 import { useEffect, useState, useRef } from "react";
 import { Button, Grid, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -74,7 +73,6 @@ const HeaderComponent = () => {
           className="logout"
           onClick={() => handCllick(linkRef5)}
         >
-          <img src={logout} alt="logout" />
           <span>Login in</span>
         </Button>
         <a ref={linkRef5} href="#logoutId" style={{ display: "none" }} />
@@ -124,7 +122,6 @@ const HeaderComponent = () => {
             <a href="#viewFavourite">View favorite</a>
           </Button>
           <Button variant="outlined" maxWidth="20px" className="logout">
-            <img src={logout} alt="logout" />
             <a href="#logoutId">
               <span>Login in</span>
             </a>
