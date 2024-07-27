@@ -3,7 +3,7 @@ import HeaderComponent from "../component/HeaderComponent";
 import SearchingALertComponent from '../component/SearchingAlertComponent';
 import FooterComponent from '../component/FooterComponent';
 
-const App=()=>{
+const Home=()=>{
     return(
         <div>
 <<<<<<< HEAD
@@ -17,4 +17,4 @@ const App=()=>{
     )
 }
 
-export default App;
+export default Home;
