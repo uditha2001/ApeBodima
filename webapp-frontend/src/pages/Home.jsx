@@ -6,9 +6,13 @@ import FooterComponent from '../component/FooterComponent';
 const Home=()=>{
     return(
         <div>
+<<<<<<< HEAD
+             <SearchingALertComponent/>
+=======
             <HeaderComponent/>
             <SearchingALertComponent/>
             <FooterComponent/>
+>>>>>>> ca880bfa9cdd5022c57d31ef95ec76ac42cb910f
         </div>
     )
 }
