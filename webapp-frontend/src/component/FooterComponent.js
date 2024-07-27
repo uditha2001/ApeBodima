@@ -9,7 +9,7 @@ const FooterComponent = () => {
   return (
     <footer className="footer">
       <div className="footer-section">
-        <img src={logo} alt="logo image"/>
+        <img src={logo} alt="logo"/>
         <div className="logo">Logo</div>
         <p>Stay up to date on our latest features and releases by joining our newsletter</p>
         <form className="subscribe-form">

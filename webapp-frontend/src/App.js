@@ -1,12 +1,9 @@
 import React from "react";
-import Register from "./pages/Register";
-import SearchingAlertComponent from "./component/SearchingAlertComponent"
+import AddBodim from "./pages/AddBodim";
 
 const App = () => {
   return (
-    <div>
-     <Register/>
-    </div>
+     <AddBodim/>
   );
 };
 
