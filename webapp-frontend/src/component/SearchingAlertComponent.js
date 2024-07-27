@@ -1,8 +1,5 @@
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
-import {Typography} from '@mui/material';
+import {Container,Grid,Typography,Button} from '@mui/material';
 import SearchingImg from './images/Searching.svg';
-import Button from '@mui/material/Button';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const SearchingAlertComponent=()=>{
@@ -10,7 +7,7 @@ const SearchingAlertComponent=()=>{
             <Container maxWidth="xl" sx={{bgcolor: '#F4F4F4', margin:0, padding:'3vh 4vw 0 4vw'}} disableGutters>
                 <Grid container spacing={2}>
                     <Grid xs={12} sm={6} md>
-                        <Typography variant="h4" sx={{fontFamily:'Playfair Display',fontSize:'4em'}}>
+                        <Typography variant="h4" className='playfair-display-header home' sx={{fontSize:"4rem"}}>
                             Find Your Perfect Apartment In here
                         </Typography>
                     </Grid>
