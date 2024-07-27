@@ -1,11 +1,14 @@
 import React from "react";
-import Register from "./pages/Register";
-import SearchingAlertComponent from "./component/SearchingAlertComponent"
+import HeaderComponent from "./component/HeaderComponent";
 
 const App = () => {
+  
+  
+
   return (
+    
     <div>
-     <Register/>
+      <HeaderComponent/>
     </div>
   );
 };
