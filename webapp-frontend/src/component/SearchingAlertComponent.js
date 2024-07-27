@@ -1,8 +1,5 @@
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
-import {Typography} from '@mui/material';
+import {Container,Grid,Typography,Button} from '@mui/material';
 import SearchingImg from './images/Searching.svg';
-import Button from '@mui/material/Button';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const SearchingAlertComponent=()=>{
