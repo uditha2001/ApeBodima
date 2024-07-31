@@ -1,9 +1,12 @@
 import React from "react";
 import AddBodim from "./pages/AddBodim";
 
-const App = () => {
+
+const App = () => {  
   return (
-     <AddBodim/>
+    <div>
+      <AddBodim/>
+    </div>
   );
 };
 
