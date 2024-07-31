@@ -3,7 +3,6 @@ import {
     Container,TextField,Box, Grid,Divider,FormControl,FormLabel,
     Radio,RadioGroup,FormControlLabel,Select,MenuItem,
 } from '@mui/material'
-import React from 'react'
 
 //Appartment details component
 const AppartmentDetails=()=>{
