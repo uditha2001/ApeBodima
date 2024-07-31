@@ -128,7 +128,7 @@ const SearchBar = ({ onSearch }) => {
   );
 };
 
-const FilterBar = ({ onFilterChange }) => {
+const FilterBar = ({ onFilterChange, currentFilters }) => {
   const [price, setPrice] = useState('');
   const [distance, setDistance] = useState('');
   const [capacity, setCapacity] = useState('');
@@ -136,6 +136,35 @@ const FilterBar = ({ onFilterChange }) => {
   useEffect(() => {
     onFilterChange({ price, distance, capacity });
   }, [price, distance, capacity, onFilterChange]);
+
+  const renderFilterTag = (value, onRemove) => {
+    if (!value) return null;
+    return (
+      <Box
+        component="span"
+        sx={{
+          display: 'inline-block',
+          bgcolor: 'primary.main',
+          color: 'white',
+          borderRadius: '16px',
+          px: 1,
+          py: 0.5,
+          mr: 1,
+          mt: 1,
+          fontSize: '0.875rem',
+        }}
+      >
+        {value}
+        <Button
+          size="small"
+          onClick={onRemove}
+          sx={{ ml: 1, minWidth: 'auto', p: 0, color: 'white' }}
+        >
+          ×
+        </Button>
+      </Box>
+    );
+  };
 
   return (
     <Grid container spacing={2}>
@@ -153,13 +182,14 @@ const FilterBar = ({ onFilterChange }) => {
             }
           >
             <MenuItem value="">All</MenuItem>
-            <MenuItem value="5000-">Below Rs.5000</MenuItem>
+            <MenuItem value="5000 - ">Below Rs.5000</MenuItem>
             <MenuItem value="5000-10000">Rs.5000 - Rs.10000</MenuItem>
             <MenuItem value="10000-20000">Rs.10000 - Rs.20000</MenuItem>
             <MenuItem value="20000-30000">Rs.20000 - Rs.30000</MenuItem>
-            <MenuItem value="30000+">Above Rs.30000</MenuItem>
+            <MenuItem value="30000 + ">Above Rs.30000</MenuItem>
           </Select>
         </StyledFormControl>
+        {renderFilterTag(currentFilters.price, () => setPrice(''))}
       </Grid>
       <Grid item xs={12} sm={4}>
         <StyledFormControl fullWidth variant="outlined">
@@ -181,6 +211,7 @@ const FilterBar = ({ onFilterChange }) => {
             <MenuItem value="5+">Above 5 km</MenuItem>
           </Select>
         </StyledFormControl>
+        {renderFilterTag(currentFilters.distance, () => setDistance(''))}
       </Grid>
       <Grid item xs={12} sm={4}>
         <StyledFormControl fullWidth variant="outlined">
@@ -195,12 +226,13 @@ const FilterBar = ({ onFilterChange }) => {
               </InputAdornment>
             }
           >
-            <MenuItem value="">All</MenuItem>
+            <MenuItem value="any">All</MenuItem>
             <MenuItem value="1">Single</MenuItem>
             <MenuItem value="2">Double</MenuItem>
             <MenuItem value="3+">3+ People</MenuItem>
           </Select>
         </StyledFormControl>
+        {renderFilterTag(currentFilters.capacity, () => setCapacity(''))}
       </Grid>
     </Grid>
   );
@@ -293,7 +325,7 @@ const BoardingPlacesFinder = () => {
               <SearchBar onSearch={handleSearch} />
             </Grid>
             <Grid item xs={12}>
-              <FilterBar onFilterChange={handleFilterChange} />
+              <FilterBar onFilterChange={handleFilterChange} currentFilters={filters} />
             </Grid>
           </Grid>
         </StyledPaper>

@@ -1,9 +1,10 @@
 import React from "react";
 import AddBodim from "./pages/AddBodim";
+import FilterBar from "./component/FilterBarComponent";
 
 const App = () => {
   return (
-     <AddBodim/>
+     <FilterBar/>
   );
 };
 
