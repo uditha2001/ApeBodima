@@ -1,6 +1,6 @@
 import "./css/Header.css";
 import logo from "./images/logo.png";
-import logout from "./images/login.png";
+import logout from "./images/APEBODIMA.svg";
 import { useEffect, useState, useRef } from "react";
 import { Button, Grid, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
