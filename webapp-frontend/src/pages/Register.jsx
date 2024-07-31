@@ -7,21 +7,27 @@ import {
   Container,
 } from "@mui/material";
 import "./css/Register.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import sideImg from "../component/images/signupImg/Other 07.png";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import CloseIcon from '@mui/icons-material/Close';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+
+const Register = ({closeDialog,registerStatus}) => {
   const [showPass, setShowPass] = useState(false);
   const [firstPassShow, setFirstPassShow] = useState(false);
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [comparison, setComparison] = useState(true);
   const [errors, setError] = useState(false);
-
+  const closeRegisterPage=()=>{
+      closeDialog=false;
+      registerStatus(false);
+  }
   useEffect(() => {
     if (password1 === password2 || password2 === "") {
       setComparison(true);
@@ -42,10 +48,39 @@ const Register = () => {
       justifyContent: 'center',
       alignItems: 'center',
       marginTop:"10px",
-      marginBottom:"10px"
-      
+      marginBottom:"10px",
+      flexDirection:"column",    
     }}
     >
+       <IconButton
+        sx={
+          {
+            position:"fixed",
+            right:{
+              xs:"20px",
+              md:"100px",
+              sm:"0px",
+              lg:"330px"
+            },
+            top:{
+              xs:"10px",
+              md:"10px",
+              sm:"10px",
+              lg:"10px"
+            },
+            '&:hover': {
+          color: 'red',
+        }
+
+          }
+        }
+        onClick={()=>{
+          closeRegisterPage();
+        }}
+      >
+        <CloseIcon/>
+      </IconButton>
+      
       <Grid
         container
         className="container"
@@ -54,10 +89,12 @@ const Register = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           height: "auto",
-          marginTop: "20px",
-          padding: "20px",
+          padding: "10px",
+          height:"100%"
         }}
       >
+       
+      
         <Grid
           item
           xs={12}
@@ -69,6 +106,7 @@ const Register = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            height:"100%"
           }}
         >
           <img
@@ -91,6 +129,7 @@ const Register = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            height:"100%"
           }}
           component="form"
         >
