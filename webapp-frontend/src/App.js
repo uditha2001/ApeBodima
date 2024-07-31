@@ -2,13 +2,15 @@ import React from "react";
 import Register from "./pages/Register";
 import SearchingAlertComponent from "./component/SearchingAlertComponent"
 import  Login  from "./pages/Login";
+import HeaderComponent from "./component/HeaderComponent";
 
 
-const App = () => {
+const App = () => {  
   return (
     <div>
       {/* <Register></Register> */}
-      <Login></Login> 
+      <Login></Login>
+      <HeaderComponent/>
     </div>
   );
 };
