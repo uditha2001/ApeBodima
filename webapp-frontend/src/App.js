@@ -3,7 +3,9 @@ import AddBodim from "./pages/AddBodim";
 
 const App = () => {  
   return (
-     <AddBodim/>
+    <div>
+      <AddBodim/>
+    </div>
   );
 };
 

@@ -29,7 +29,7 @@ const cardData = [
   },
 ];
 
-const App = () => {
+const Home = () => {
   const { ref: headerRef, inView: headerInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -102,4 +102,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
