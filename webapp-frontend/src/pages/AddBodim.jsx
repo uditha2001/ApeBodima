@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
 import {
     Container,TextField,Box, Grid,Divider,FormControl,FormLabel,
-    Radio,RadioGroup,FormControlLabel,Select,MenuItem,
+    Radio,RadioGroup,FormControlLabel,Select,MenuItem,Typography,Button
 } from '@mui/material'
+import React,{ useState } from 'react'
+import ReviewCardComponent from '../component/ReviewCardComponent';
+
+const sectionColorStyle={
+  backgroundColor:'#FFFFFF',
+  marginTop:'20px',
+  paddingTop:'5px', 
+}
+const sectionTopicStyle={
+  fontSize:'1.8em',
+  color:'#4A90E2',
+  margin:'1px',
+  padding:'2px'
+}
 
 //Appartment details component
 const AppartmentDetails=()=>{
-    const DropDown=()=>{
-        // const [age, setAge] = React.useState('');
+  const DropDown=(props)=>{
+      // const [age, setAge] = React.useState('');
 
     // const handleChange = (event: SelectChangeEvent) => {
     //     setAge(event.target.value);
     // };
     return(
-            <>
-            <FormLabel>Select boidm type</FormLabel>
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small" minWidth="48rem">
+            <Box sx={props.boxStyle}>
+            <FormLabel sx={props.labelWidthStyle}>Select boidm type</FormLabel>
+            <FormControl sx={{minWidth: "50%" }} size="small" minwidth="48rem">
                 <Select
                 // value={age}
                 // onChange={handleChange}
@@ -29,88 +42,98 @@ const AppartmentDetails=()=>{
                 <MenuItem value={30}>Type3</MenuItem>
                 </Select>
             </FormControl>
-            </>
+            </Box>
     )
-    }
-    
+  };
 
-    const RadioButtonsGroup =()=> {
-        return (
-            <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group">
-                <FormControlLabel value="female" control={<Radio />} label="Nearest City" />
-                    <Box sx={{alignItems:"center"}}>
-                        <FormLabel>City name</FormLabel>
-                        <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small'/>
-                    </Box>
-                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <Box sx={{alignItems:"center"}}>
-                        <FormLabel>Address</FormLabel>
-                        <TextField
-                            id="outlined-multiline-static"
-                            multiline
-                            rows={4}   
-                            defaultValue="Default Value"
-                        />
-                    </Box>
-              </RadioGroup>
-            </FormControl>
-          );
-    };
+  const boxStyle={
+    display: "flex",
+    alignItems:"center",
+    margin:"10px"
+  }
+  const labelWidthStyle={
+      width:"40%",
+  }
+  const feildWidthStyle={
+      width:"50%",
+  }
 
-    return (
-     <form>
-        <Container sx={{backgroundColor:'#FFFFFF',marginTop:'20px'}}>
-            <Grid container spacing={2} >
-                <Grid item md={6}>
-                    <Box sx={{alignItems:"center"}}>
-                        <FormLabel>Enter appartment name</FormLabel>
-                        <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small'/>
-                    </Box>
-                </Grid>
-                <Grid item md>
-                    <Box>
-                        <DropDown/>
-                    </Box>
-                </Grid>
-            </Grid>
-            <Divider />
-            <Grid container spacing={2} >
-                <Grid item md>
-                    <Box>
-                        <FormLabel>Price</FormLabel>
-                        <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' />
-                    </Box>
-                </Grid>
-                <Grid item md>
-                    <Box>
-                        <FormLabel>Contact details</FormLabel>
-                        <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small'/>
-                    </Box>
-                </Grid>
-            </Grid>
-            <Grid container spacing={2} >
-                <Grid item md>
-                    <Box>
-                        <FormLabel>Distance to Uni</FormLabel>
-                        <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' />
-                    </Box>
-                </Grid>
-                <Grid item md>
-                    <Box>
-                        <RadioButtonsGroup/>
-                    </Box>
-                </Grid>
-            </Grid>
-        </Container>
-        </form>
-    )
+  const RadioButtonsGroup =(props)=> {
+          return (
+            <Box sx={props.boxStyle}>
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">Location Details:</FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="cityName"
+                  name="radio-buttons-group">
+                  <FormControlLabel value="female" control={<Radio />} label="Nearest City" />
+                      <Box sx={props.boxStyle}>
+                          <FormLabel sx={props.labelWidthStyle}>City name</FormLabel>
+                          <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small'/>
+                      </Box>
+                  <FormControlLabel value="male" control={<Radio />} label="address" />
+                      <Box>
+                          <FormLabel sx={props.labelWidthStyle}>Address</FormLabel>
+                          <TextField
+                              id="outlined-multiline-static"
+                              multiline
+                              rows={4}   
+                              defaultValue="Default Value"
+                          />
+                      </Box>
+                </RadioGroup>
+              </FormControl>
+            </Box>
+            );
+  };
 
-}
+  return (
+      <Container sx={sectionColorStyle}>
+          <Grid container spacing={2} >
+              <Grid item md={6}>
+                  <Box sx={boxStyle}>
+                      <FormLabel sx={labelWidthStyle}>Enter appartment name</FormLabel>
+                      <TextField sx={feildWidthStyle} id="outlined-basic" label="Outlined" variant="outlined" size='small'/>
+                  </Box>
+              </Grid>
+              <Grid item md>
+                  <Box>
+                      <DropDown labelWidthStyle={labelWidthStyle} boxStyle={boxStyle}/>
+                  </Box>
+              </Grid>
+          </Grid>
+          <Divider />
+          <Grid container spacing={2} >
+              <Grid item md>
+                  <Box sx={boxStyle}>
+                      <FormLabel sx={labelWidthStyle}>Price</FormLabel>
+                      <TextField sx={feildWidthStyle} id="outlined-basic" label="Outlined" variant="outlined" size='small' />
+                  </Box>
+              </Grid>
+              <Grid item md>
+                  <Box sx={boxStyle}>
+                      <FormLabel sx={labelWidthStyle}>Contact details</FormLabel>
+                      <TextField sx={feildWidthStyle} id="outlined-basic" label="Outlined" variant="outlined" size='small'/>
+                  </Box>
+              </Grid>
+          </Grid>
+          <Grid container spacing={2} >
+              <Grid item md>
+                  <Box sx={boxStyle}>
+                      <FormLabel sx={labelWidthStyle}>Distance to Uni</FormLabel>
+                      <TextField sx={feildWidthStyle} id="outlined-basic" label="Outlined" variant="outlined" size='small' />
+                  </Box>
+              </Grid>
+              <Grid item md>
+                  <Box>
+                      <RadioButtonsGroup labelWidthStyle={labelWidthStyle} boxStyle={boxStyle}/>
+                  </Box>
+              </Grid>
+          </Grid>
+      </Container>
+  )
+};
 //Availabel features component
 const AvailabelFeatures=()=>{
   
@@ -140,11 +163,11 @@ const AvailabelFeatures=()=>{
     };
   
     return (
-      <Container>
+      <Container sx={sectionColorStyle}>
         <Grid container spacing={4} justifyContent="space-between">
           <Grid item xs={12} md={6}>
             <Box>
-              <Typography variant="h4" gutterBottom>Available Features</Typography>
+              <Typography className='roboto-regular' sx={sectionTopicStyle} gutterBottom>Available Features</Typography>
               {availableFeatures.map((feature, index) => (
                 <Box key={index} display="flex" alignItems="center" mb={2}>
                   <Typography variant="body1">{feature.name}</Typography>
@@ -163,7 +186,7 @@ const AvailabelFeatures=()=>{
           </Grid>
           <Grid item xs={12} md={6}>
             <Box>
-              <Typography variant="h4" gutterBottom>All Features</Typography>
+              <Typography className='roboto-regular' sx={sectionTopicStyle} gutterBottom>All Features</Typography>
               {allFeatures.map((feature, index) => (
                 <Box key={index} display="flex" alignItems="center" mb={2}>
                   <Typography variant="body1">{feature.name}</Typography>
@@ -177,26 +200,25 @@ const AvailabelFeatures=()=>{
         </Grid>
       </Container>
     );
-  };
-  
-
-
+};
 //Add photos component
 const AddPhotos=()=>{
     return(
-        <Container sx={{backgroundColor:'#FFFFFF'}}>
-           <p>I am rendered AddPhotos</p>
+        <Container sx={sectionColorStyle}>
+           <Typography className='roboto-regular' sx={sectionTopicStyle}>Upload photos</Typography>
         </Container>
     )
-}    
+};
 //Add reviews component
 const AddReview=()=>{
     return(
-        <Container sx={{backgroundColor:'#FFFFFF'}}>
-           <p>I am rendered AddReview</p>
+        <Container sx={sectionColorStyle}>
+          <Typography className='roboto-regular' sx={sectionTopicStyle}>Give first feedback to this place</Typography>
+          
+          <ReviewCardComponent/>
         </Container>
     )
-}    
+};  
 
 //All the components combine here and export
 const AddBodim=()=>{
