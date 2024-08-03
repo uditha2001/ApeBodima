@@ -1,11 +1,19 @@
 import React from "react";
-import AddBodim from "./pages/AddBodim";
+import { BrowserRouter,Route,Router ,Routes} from "react-router-dom";
+import MainLayout from "./mainLayout/MainLayout";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
 
 const App = () => {  
   return (
-    <div>
-      <AddBodim/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<MainLayout/>}>
+      <Route index element={<Home/>}/>
+      <Route path=""/>
+      </Route>
+    </Routes>
+    </BrowserRouter>
   );
 };
 
