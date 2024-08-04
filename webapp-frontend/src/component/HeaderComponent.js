@@ -5,9 +5,8 @@ import { Button, Grid, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
-import Modal from '@mui/material/Modal';
-import CloseIcon from '@mui/icons-material/Close';
-
+import Modal from "@mui/material/Modal";
+import Login from "../pages/Login";
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -15,10 +14,10 @@ const HeaderComponent = () => {
   const linkRef2 = useRef(null);
   const linkRef3 = useRef(null);
   const linkRef4 = useRef(null);
-  const linkRef5 = useRef(null);
   const [regStatus, setRegStatus] = useState(false);
-  const [closeDialog,setCloseDialog]=useState(true);
-  
+  const [closeDialog, setCloseDialog] = useState(true);
+  const [logStatus, setLogStatus] = useState(false);
+  const [closeLogDialog, setLogCloseDialog] = useState(true);
 
   useEffect(() => {
     let i = 0;
@@ -46,9 +45,14 @@ const HeaderComponent = () => {
     <div>
       <header className="header">
         <div className="logodiv">
-          <img src={ApeBODIMA} alt="logo"  style={{
-            width:"100px",height:"60px"
-          }}/>
+          <img
+            src={ApeBODIMA}
+            alt="logo"
+            style={{
+              width: "100px",
+              height: "60px",
+            }}
+          />
         </div>
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
           Explore
@@ -71,25 +75,40 @@ const HeaderComponent = () => {
           variant="outlined"
           maxWidth="20px"
           className="logout"
-          onClick={() => handCllick(linkRef5)}
+          onClick={() => {
+            setLogCloseDialog(false);
+            setLogStatus(true);
+          }}
         >
           <span>Login in</span>
         </Button>
-        <a ref={linkRef5} href="#logoutId" style={{ display: "none" }} />
+        <Modal
+          open={logStatus}
+          onClose={closeLogDialog}
+          disableScrollLock
+          sx={{ overflowY: "auto", height: "100%" }}
+        >
+          <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+        </Modal>
         <Button
           variant="outlined"
           className="signin"
           onClick={() => {
-              setRegStatus(true);
-              setCloseDialog(false);
+            setRegStatus(true);
+            setCloseDialog(false);
           }}
         >
           Sign in
         </Button>
-          <Modal open={regStatus}  onClose={closeDialog} disableScrollLock sx={{overflowY:"auto",height:"100%"}}>
-            <Register closeDialog={closeDialog} registerStatus={setRegStatus}/>
-          </Modal>
-        
+        <Modal
+          open={regStatus}
+          onClose={closeDialog}
+          disableScrollLock
+          sx={{ overflowY: "auto", height: "100%" }}
+        >
+          <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+        </Modal>
+
         <MenuIcon
           className="menubar"
           onClick={() => {
@@ -121,24 +140,42 @@ const HeaderComponent = () => {
           <Button variant="text">
             <a href="#viewFavourite">View favorite</a>
           </Button>
-          <Button variant="outlined" maxWidth="20px" className="logout">
-            <a href="#logoutId">
-              <span>Login in</span>
-            </a>
+          <Button
+            variant="outlied"
+            maxWidth="20px"
+            className="logout"
+            onClick={() => {
+              setLogCloseDialog(false);
+              setLogStatus(true);
+            }}
+          >
+            <span>Login in</span>
           </Button>
-          <Button variant="outlined" className="signin"
-           onClick={()=>{
-            setRegStatus(true);
-            setCloseDialog(false);
-          }
-        }
+          <Modal
+            open={logStatus}
+            onClose={closeLogDialog}
+            disableScrollLock
+            sx={{ overflowY: "auto", height: "100%" }}
+          >
+            <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+          </Modal>
+          <Button
+            variant="outlined"
+            className="signin"
+            onClick={() => {
+              setRegStatus(true);
+              setCloseDialog(false);
+            }}
           >
             Sign in
-           
-            
           </Button>
-          <Modal open={regStatus}  onClose={closeDialog} disableScrollLock sx={{overflowY:"auto",height:"100%"}}>
-            <Register closeDialog={closeDialog} registerStatus={setRegStatus}/>
+          <Modal
+            open={regStatus}
+            onClose={closeDialog}
+            disableScrollLock
+            sx={{ overflowY: "auto", height: "100%" }}
+          >
+            <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
           </Modal>
         </Grid>
       </div>
