@@ -6,15 +6,19 @@ import sideImg from "../component/images/login_image.png";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import Lock from "@mui/icons-material/Lock";
+import CloseIcon from '@mui/icons-material/Close';
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-const Login = () => {
+const Login = ({closeLogDialog,logStatus}) => {
   const [showPass, setShowPass] = useState(false);
   const [firstPassShow, setfirstPassShow] = useState(false);
   const [password1,setPassword1]=useState(null);
   const [password2,setPassword2]=useState(null);
   const [comaprision,setComparition]=useState(true);
   const [errors,setError]=useState(false);
+  const closeRegisterPage=()=>{
+    closeLogDialog=false;
+    logStatus(false);
+}
   useEffect(
     ()=>{
       
@@ -31,7 +35,7 @@ const Login = () => {
   return (
     <Container
       className="container"
-      maxWidth="lg"
+      maxWidth="md"
       
       sx={{
         bgcolor: "#FFFFFF", 
@@ -45,6 +49,34 @@ const Login = () => {
         overflow: "hidden", 
       }}
     >
+        <IconButton
+        sx={
+          {
+            position:"fixed",
+            right:{
+              xs:"20px",
+              md:"100px",
+              sm:"0px",
+              lg:"330px"
+            },
+            top:{
+              xs:"10px",
+              md:"10px",
+              sm:"10px",
+              lg:"10px"
+            },
+            '&:hover': {
+          color: 'red',
+        }
+
+          }
+        }
+        onClick={()=>{
+          closeRegisterPage();
+        }}
+      >
+        <CloseIcon/>
+      </IconButton>
        <Box
         className="imageSide"
         sx={{ bgcolor: "#EBEFFF" }} 
