@@ -27,10 +27,7 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        
-    - name: Move to backend directory
-      run: cd ./webApp-backend
-      
+              
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
@@ -38,6 +35,7 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+      working-directory: ./webApp-backend
 
   dependency-submission:
 

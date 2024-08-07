@@ -8,13 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Move to backend directory
-        working-directory:  ./webapp-frontend
-
       - name: Install dependencies
         run: npm install
-
+        working-directory:  ./webapp-frontend
+        
       - name: Build
         run: npm run build
-
+        working-directory:  ./webapp-frontend
+        
       
