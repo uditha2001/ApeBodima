@@ -51,9 +51,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GIT_SONAR_TOKEN }}  # Needed to get PR information
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on SonarQube
         with:
+          sonar.java.binaries: target/classes
           args: >
             -Dsonar.organization=spradeepindie 
             -Dsonar.projectKey=ApeBodima 
-            -sonar.java.binaries: target/classes
+            
 
             
