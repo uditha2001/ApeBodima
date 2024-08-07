@@ -54,5 +54,6 @@ jobs:
           args: >
             -Dsonar.organization=spradeepindie 
             -Dsonar.projectKey=ApeBodima 
+            -sonar.java.binaries: target/classes
 
             
