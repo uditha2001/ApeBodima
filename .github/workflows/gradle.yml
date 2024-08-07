@@ -17,6 +17,7 @@ on:
 
 jobs:
   build:
+    name: Build Java spring boot
     runs-on: ubuntu-latest
     permissions:
       contents: read
