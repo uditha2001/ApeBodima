@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
+
 }
 
 group = 'org.ApeBodima'
@@ -12,6 +13,7 @@ java {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
+
 
 configurations {
 	compileOnly {
@@ -51,14 +53,4 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-plugins {
-  id "org.sonarqube" version "4.4.1.3373"
-}
 
-sonar {
-  properties {
-    property "sonar.projectKey", "ApeBodima"
-    property "sonar.organization", "spradeepindie"
-    property "sonar.host.url", "https://sonarcloud.io"
-  }
-}
