@@ -1,17 +1,21 @@
 import React from "react";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import MainLayout from "./mainLayout/MainLayout";
 import Register from "./pages/Register";
-import SearchingAlertComponent from "./component/SearchingAlertComponent"
-import  Login  from "./pages/Login";
-import HeaderComponent from "./component/HeaderComponent";
-
-
-const App = () => {  
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
+import AddBodim from "./pages/AddBodim";
+const App = () => {
   return (
-    <div>
-      {/* <Register></Register> */}
-      <Login></Login>
-      <HeaderComponent/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/addBodim" element={<AddBodim />} />
+          <Route path="/a" element={<AboutUs />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
