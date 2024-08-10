@@ -6,7 +6,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
 import Modal from '@mui/material/Modal';
-import CloseIcon from '@mui/icons-material/Close';
 
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -21,7 +20,7 @@ const HeaderComponent = () => {
   
 
   useEffect(() => {
-    let i = 0;
+    //let i = 0;
     const handleResize = () => {
       let fullWidth = window.screen.availWidth;
       setWidth(window.innerWidth);
@@ -53,19 +52,19 @@ const HeaderComponent = () => {
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
           Explore
         </Button>
-        <a ref={linkRef1} href="#explore" style={{ display: "none" }} />
+        {/* <a ref={linkRef1} href="#explore" style={{ display: "none" }} /> */}
         <Button variant="text" onClick={() => handCllick(linkRef2)}>
           Add Place
         </Button>
-        <a ref={linkRef2} href="#addPlace" style={{ display: "none" }} />
+        {/* <a ref={linkRef2} href="#addPlace" style={{ display: "none" }} /> */}
         <Button variant="text" onClick={() => handCllick(linkRef3)}>
           User Account
         </Button>
-        <a ref={linkRef3} href="#userAccount" style={{ display: "none" }} />
+        {/* <a ref={linkRef3} href="#userAccount" style={{ display: "none" }} /> */}
         <Button variant="text" onClick={() => handCllick(linkRef4)}>
           view favorite
         </Button>
-        <a ref={linkRef2} href="#viewfavorite" style={{ display: "none" }} />
+        {/* <a ref={linkRef2} href="#viewfavorite" style={{ display: "none" }} /> */}
 
         <Button
           variant="outlined"
@@ -75,7 +74,7 @@ const HeaderComponent = () => {
         >
           <span>Login in</span>
         </Button>
-        <a ref={linkRef5} href="#logoutId" style={{ display: "none" }} />
+        {/* <a ref={linkRef5} href="#logoutId" style={{ display: "none" }} /> */}
         <Button
           variant="outlined"
           className="signin"

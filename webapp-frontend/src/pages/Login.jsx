@@ -1,33 +1,32 @@
 
 
 import { Box, TextField, Container, Typography, Button , Link} from "@mui/material";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import sideImg from "../component/images/login_image.png";
-import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+// import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import Lock from "@mui/icons-material/Lock";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+// import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 const Login = () => {
-  const [showPass, setShowPass] = useState(false);
-  const [firstPassShow, setfirstPassShow] = useState(false);
-  const [password1,setPassword1]=useState(null);
-  const [password2,setPassword2]=useState(null);
-  const [comaprision,setComparition]=useState(true);
-  const [errors,setError]=useState(false);
-  useEffect(
-    ()=>{
+  // const [showPass, setShowPass] = useState(false);
+  // const [firstPassShow, setfirstPassShow] = useState(false);
+  // const [password1,setPassword1]=useState(null);
+  // const [password2,setPassword2]=useState(null);
+  // const [comaprision,setComparition]=useState(true);
+  // const [errors,setError]=useState(false);
+  // useEffect(
+  //   ()=>{
       
-      if(password1===password2 || password2==null){
-        setComparition(true); 
-        setError(false);    
-      }
-      else{
-        setComparition(false);
-        setError(true);
-      }
-    }
-  )
+  //     if(password1===password2 || password2==null){
+  //       setComparition(true); 
+  //       setError(false);    
+  //     }
+  //     else{
+  //       setComparition(false);
+  //       setError(true);
+  //     }
+  //   }
+  // )
   return (
     <Container
       className="container"
@@ -105,31 +104,31 @@ const Login = () => {
                   <IconButton
                     sx={{ cursor: "pointer" }}
                     onClick={() => {
-                      if (firstPassShow === true) {
-                        setfirstPassShow(false);
-                      } else {
-                        setfirstPassShow(true);
-                      }
+                      // if (firstPassShow === true) {
+                      //   // setfirstPassShow(false);
+                      // } else {
+                      //   setfirstPassShow(true);
+                      // }
                     }}
                   >
-                    {firstPassShow ? 
+                    {/* {firstPassShow ? 
                       <VisibilityOutlinedIcon />
                      : 
                       <VisibilityOffOutlinedIcon />
-                    }
+                    } */}
                   </IconButton>
                 </InputAdornment>
               ),
             }}
             className="custom-textfield"
-            type={firstPassShow ? "text" : "password"}
+            // type={firstPassShow ? "text" : "password"}
             fullWidth
             variant="outlined"
             sx={{ position: "relative", height: "8px", width: "346px" }}
             size="small"
-            onChange={(e)=>{
-                    setPassword1(e.target.value);
-            }}  
+            // onChange={(e)=>{
+            //         setPassword1(e.target.value);
+            // }}  
           />
 
             <Link

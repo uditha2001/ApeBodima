@@ -1,5 +1,5 @@
 import {
-  Box,
+  // Box,
   TextField,
   Typography,
   Button,
@@ -7,14 +7,14 @@ import {
   Container,
 } from "@mui/material";
 import "./css/Register.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import sideImg from "../component/images/signupImg/Other 07.png";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CloseIcon from '@mui/icons-material/Close';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 const Register = ({closeDialog,registerStatus}) => {
@@ -90,7 +90,7 @@ const Register = ({closeDialog,registerStatus}) => {
           justifyContent: "space-between",
           height: "auto",
           padding: "10px",
-          height:"100%"
+          // height:"100%"
         }}
       >
        
