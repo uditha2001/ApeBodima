@@ -27,7 +27,8 @@ const MainLayout = () => {
           marginTop: "80px",
           alignContent: "center",
           justifyContent: "center",
-          width:"100%",
+          width: "100%",
+          gap: "10px",
         }}
       >
         <Outlet />

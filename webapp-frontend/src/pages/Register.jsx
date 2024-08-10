@@ -8,13 +8,12 @@ import {
 } from "@mui/material";
 import "./css/Register.css";
 import { useEffect, useState } from "react";
-import sideImg from "../component/images/signupImg/Other 07.png";
+import ApeBODIMA from "../component/images/APEBODIMA.svg";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CloseIcon from '@mui/icons-material/Close';
-// import PropTypes from 'prop-types';
 
 
 const Register = ({closeDialog,registerStatus}) => {
@@ -110,9 +109,9 @@ const Register = ({closeDialog,registerStatus}) => {
           }}
         >
           <img
-            src={sideImg}
+            src={ApeBODIMA}
             alt="sideimages"
-            style={{ marginTop: "150px", maxWidth: "100%", height: "auto" }}
+            style={{ marginTop: "100px", maxWidth: "100%", height: "auto" }}
           />
         </Grid>
         <Grid
