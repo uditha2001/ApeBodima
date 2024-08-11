@@ -1,15 +1,23 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import FilterBarComponent from "./component/FilterBarComponent";
 import MainLayout from "./mainLayout/MainLayout";
-import AboutUs from "./pages/AboutUs";
 import Home from "./pages/Home";
-const App = () => {  
+import AboutUs from "./pages/AboutUs";
+import AddBodim from "./pages/AddBodim";
+import FilterBar from "./component/FilterBarComponent";
+const App = () => {
   return (
-    <div>
-
-    </div>
-  );
-};
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/addBodim" element={<AddBodim />} />
+          <Route path="/a" element={<AboutUs />} />
+          <Route path="/filter" element={<FilterBar />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
 export default App;
