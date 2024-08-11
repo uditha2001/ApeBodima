@@ -48,7 +48,8 @@ const Register = ({closeDialog,registerStatus}) => {
       alignItems: 'center',
       marginTop:"10px",
       marginBottom:"10px",
-      flexDirection:"column",    
+      flexDirection:"column", 
+            
     }}
     >
        <IconButton
