@@ -1,5 +1,6 @@
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import FeedbackIcon from '@mui/icons-material/Feedback';
+// import FeedbackIcon from '@mui/icons-material/Feedback';
+import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -12,22 +13,23 @@ import {
   Radio, RadioGroup,
   Select,
   TextField,
-  Typography
+  Typography,
+  Paper
 } from '@mui/material';
 import { React, useState } from 'react';
-import ReviewCardComponent from '../component/ReviewCardComponent';
+// import ReviewCardComponent from '../component/ReviewCardComponent';
 
 const sectionStyle={
   backgroundColor:'#FFFFFF',
   marginTop:'20px',
   paddingTop:'5px', 
 }
-const sectionTopicStyle={
-  fontSize:'1.8em',
-  color:'#4A90E2',
-  margin:'1px',
-  padding:'2px'
-}
+// const sectionTopicStyle={
+//   fontSize:'1.8em',
+//   color:'#4A90E2',
+//   margin:'1px',
+//   padding:'2px'
+// }
 
 //Appartment details component
 const AppartmentDetails=()=>{
@@ -169,18 +171,18 @@ const AppartmentDetails=()=>{
 //Availabel features component
 const AvailabelFeatures=()=>{
   
-    // const [allFeatures, setAllFeatures] = useState([
-    //   { name: 'Beds', count: 0},
-    //   { name: 'Chairs', count: 0 },
-    //   { name: 'Tables', count: 0 },
-    //   { name: 'Nets', count: 0},
-    // ]);
+    const [allFeatures] = useState([
+      { name: 'Beds', count: 0},
+      { name: 'Chairs', count: 0 },
+      { name: 'Tables', count: 0 },
+      { name: 'Nets', count: 0},
+    ]);
   
     const [availableFeatures, setAvailableFeatures] = useState([]);
   
-    // const addFeature = (feature) => {
-    //   setAvailableFeatures([...availableFeatures, feature]);
-    // };
+    const addFeature = (feature) => {
+      setAvailableFeatures([...availableFeatures, feature]);
+    };
   
     const removeFeature = (index) => {
         const newFeatures = [...availableFeatures];
