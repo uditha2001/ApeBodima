@@ -101,7 +101,7 @@ const AppartmentDetails = () => {
 
 //Available features component
 const AvailabelFeatures = () => {
-    const [allFeatures, setAllFeatures] = useState([
+    const [allFeatures] = useState([
         { name: 'Beds', count: 0 },
         { name: 'Chairs', count: 0 },
         { name: 'Tables', count: 0 },
