@@ -169,18 +169,18 @@ const AppartmentDetails=()=>{
 //Availabel features component
 const AvailabelFeatures=()=>{
   
-    const [allFeatures, setAllFeatures] = useState([
-      { name: 'Beds', count: 0},
-      { name: 'Chairs', count: 0 },
-      { name: 'Tables', count: 0 },
-      { name: 'Nets', count: 0},
-    ]);
+    // const [allFeatures, setAllFeatures] = useState([
+    //   { name: 'Beds', count: 0},
+    //   { name: 'Chairs', count: 0 },
+    //   { name: 'Tables', count: 0 },
+    //   { name: 'Nets', count: 0},
+    // ]);
   
     const [availableFeatures, setAvailableFeatures] = useState([]);
   
-    const addFeature = (feature) => {
-      setAvailableFeatures([...availableFeatures, feature]);
-    };
+    // const addFeature = (feature) => {
+    //   setAvailableFeatures([...availableFeatures, feature]);
+    // };
   
     const removeFeature = (index) => {
       const newFeatures = [...availableFeatures];
@@ -219,14 +219,14 @@ const AvailabelFeatures=()=>{
           <Grid item xs={12} md={6}>
             <Box>
               <Typography className='roboto-regular' sx={sectionTopicStyle} gutterBottom>All Features</Typography>
-              {allFeatures.map((feature, index) => (
+              {/* {allFeatures.map((feature, index) => (
                 <Box key={index} display="flex" alignItems="center" mb={2}>
                   <Typography variant="body1">{feature.name}</Typography>
                   <Button variant="contained" color="primary" onClick={() => addFeature(feature)} style={{ marginLeft: 10 }}>
                     Add
                   </Button>
                 </Box>
-              ))}
+              ))} */}
             </Box>
           </Grid>
         </Grid>

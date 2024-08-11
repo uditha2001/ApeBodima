@@ -14,7 +14,7 @@ import {
   Divider,
   ThemeProvider, 
   createTheme,
-  useMediaQuery,
+  //useMediaQuery,
   Link
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -52,7 +52,7 @@ const theme = createTheme({
 
 const AboutUs = () => {
   const [question, setQuestion] = useState('');
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleSubmit = (event) => {
     event.preventDefault();

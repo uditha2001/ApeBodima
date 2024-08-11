@@ -19,7 +19,6 @@ import {
   CssBaseline,
 } from '@mui/material';
 import { styled } from '@mui/system';
-import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import PeopleIcon from '@mui/icons-material/People';

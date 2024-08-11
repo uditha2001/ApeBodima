@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Footer.css';
 import logo from './images/APEBODIMA.svg';
-import { Facebook, LinkedIn, GitHub, Height } from '@mui/icons-material';
+import { Facebook, LinkedIn, GitHub} from '@mui/icons-material';
 
 const FooterComponent = () => {
   return (
