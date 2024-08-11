@@ -1,5 +1,5 @@
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import FeedbackIcon from '@mui/icons-material/Feedback';
+// import FeedbackIcon from '@mui/icons-material/Feedback';
 import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import {
   Box,
@@ -17,7 +17,7 @@ import {
   Paper
 } from '@mui/material';
 import { React, useState } from 'react';
-import ReviewCardComponent from '../component/ReviewCardComponent';
+// import ReviewCardComponent from '../component/ReviewCardComponent';
 
 
 //Appartment details component
