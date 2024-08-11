@@ -46,7 +46,7 @@ const Register = ({ closeDialog, registerStatus }) => {
     }
   }, [password1, password2]);
 
-  const submitForm=(event)=>{{
+  const submitForm=(event)=>{
       event.preventDefault();
       setUser({name:name,email:email,username:username,password:password1});
       console.log(user);
@@ -54,7 +54,7 @@ const Register = ({ closeDialog, registerStatus }) => {
       console.log("submitted ")
 
     
-  }}
+  }
 
   return (
     <Container
@@ -104,7 +104,6 @@ const Register = ({ closeDialog, registerStatus }) => {
           justifyContent: "space-between",
           height: "auto",
           padding: "10px",
-          // height:"100%"
         }}
       >
         <Grid
