@@ -43,7 +43,7 @@ public class SecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable);//TODO enable csrf tokens in request header
         return http.build();
     }
-
+    
     @Bean
     public AuthenticationProvider authenticationProvider(){
         final DaoAuthenticationProvider daoAuthenticationProvider=new DaoAuthenticationProvider();
