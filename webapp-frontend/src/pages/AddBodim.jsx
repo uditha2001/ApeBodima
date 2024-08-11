@@ -1,119 +1,187 @@
-import React, { useState } from 'react';
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 import {
-    Container, TextField, Box, Divider, FormControl, FormLabel,
-    Radio, RadioGroup, FormControlLabel, Select, MenuItem, Grid, Typography, Paper, Button
+  Box,
+  Button,
+  Container,
+  Divider, FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  MenuItem,
+  Radio, RadioGroup,
+  Select,
+  TextField,
+  Typography
 } from '@mui/material';
-import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
+import { React, useState } from 'react';
+import ReviewCardComponent from '../component/ReviewCardComponent';
 
-//Appartment details component
-const AppartmentDetails = () => {
-    const DropDown = () => {
-        return (
-            <>
-                <FormLabel>Select boidm type</FormLabel>
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                    <Select displayEmpty>
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={10}>Type1</MenuItem>
-                        <MenuItem value={20}>Type2</MenuItem>
-                        <MenuItem value={30}>Type3</MenuItem>
-                    </Select>
-                </FormControl>
-            </>
-        )
-    }
-
-    const RadioButtonsGroup = () => {
-        return (
-            <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
-                <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group">
-                    <FormControlLabel value="female" control={<Radio />} label="Nearest City" />
-                    <Box sx={{ mt: 1 }}>
-                        <FormLabel>City name</FormLabel>
-                        <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth />
-                    </Box>
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <Box sx={{ mt: 1 }}>
-                        <FormLabel>Address</FormLabel>
-                        <TextField
-                            id="outlined-multiline-static"
-                            multiline
-                            rows={4}
-                            defaultValue="Default Value"
-                            fullWidth
-                        />
-                    </Box>
-                </RadioGroup>
-            </FormControl>
-        );
-    };
-
-    return (
-        <form>
-            <Container sx={{ backgroundColor: '#FFFFFF', marginTop: '20px', padding: '16px' }}>
-                <Grid container spacing={2} >
-                    <Grid item xs={12} md={6}>
-                        <Box>
-                            <FormLabel>Enter appartment name</FormLabel>
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <DropDown />
-                    </Grid>
-                </Grid>
-                <Divider sx={{ my: 2 }} />
-                <Grid container spacing={2} >
-                    <Grid item xs={12} md={6}>
-                        <Box>
-                            <FormLabel>Price</FormLabel>
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <Box>
-                            <FormLabel>Contact details</FormLabel>
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth />
-                        </Box>
-                    </Grid>
-                </Grid>
-                <Grid container spacing={2} sx={{ mt: 2 }}>
-                    <Grid item xs={12} md={6}>
-                        <Box>
-                            <FormLabel>Distance to Uni</FormLabel>
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <RadioButtonsGroup />
-                    </Grid>
-                </Grid>
-            </Container>
-        </form>
-    )
+const sectionStyle={
+  backgroundColor:'#FFFFFF',
+  marginTop:'20px',
+  paddingTop:'5px', 
+}
+const sectionTopicStyle={
+  fontSize:'1.8em',
+  color:'#4A90E2',
+  margin:'1px',
+  padding:'2px'
 }
 
-//Available features component
-const AvailabelFeatures = () => {
-    const [allFeatures, setAllFeatures] = useState([
-        { name: 'Beds', count: 0 },
-        { name: 'Chairs', count: 0 },
-        { name: 'Tables', count: 0 },
-        { name: 'Nets', count: 0 },
-    ]);
+//Appartment details component
+const AppartmentDetails=()=>{
+  //Form styling
+  const boxStyle={
+    display: "flex",
+    alignItems:"center",
+    margin:"10px"
+  };
+  const labelWidthStyle={
+      width:"40%",
+  };
+  const feildWidthStyle={
+      width:"50%",
+  };
 
+  //Form details object
+  const initialState={
+    bodimName:"",
+    bodimType:"",
+    price:"",
+    contact:[],
+    distanceToUni:""
+  }
+  const [BodimDetails,setBodimDetails]=useState(initialState)
+
+  const handleChange=(e)=>{
+    const {name ,value}=e.target
+    console.log(BodimDetails)
+    setBodimDetails({...BodimDetails,[name]:value})
+  }
+  
+  let[contacNumShow,setcontacNumShow]=useState(false);
+
+  const contactNumbersShow=(e)=>{
+    let result=false;
+    if(BodimDetails.contact.values===""){
+      result=false;
+    }
+    else{
+      result=contacNumShow===false? true : contacNumShow;
+    }
+    setcontacNumShow(result);
+    
+  }
+ 
+  return (
+      <Container sx={sectionStyle}>
+        
+          <Grid container spacing={2} >
+              <Grid item md={6}>
+                <Box sx={boxStyle}>
+                  <FormLabel sx={labelWidthStyle} htmlFor="bodimName">Enter appartment name</FormLabel>
+                  <TextField onChange={handleChange} value={BodimDetails.bodimName} sx={feildWidthStyle} name="bodimName" id="bodimName" label="bodim Name" variant="outlined" size='small'/>
+                </Box>
+
+              </Grid>
+              <Grid item md>
+                 
+                  <Box sx={boxStyle}>
+                    <FormLabel sx={labelWidthStyle}>Select boidm type</FormLabel>
+                    <FormControl sx={{minWidth: "50%" }} size="small" minwidth="48rem">
+                    <Select defaultValue={'none'}  name="bodimType" onChange={handleChange}>
+                      <MenuItem value={'none'}><em>None</em></MenuItem>
+                      <MenuItem value={'type1'}>Type1</MenuItem>
+                      <MenuItem value={'type2'}>Type2</MenuItem>
+                      <MenuItem value={'type3'}>Type3</MenuItem>
+                    </Select>
+                    </FormControl>
+                  </Box>
+                  
+              </Grid>
+          </Grid>
+          <Divider />
+          <Grid container spacing={2} >
+              <Grid item md>
+                <Box sx={boxStyle}>
+                  <FormLabel sx={labelWidthStyle} htmlFor="price">Price</FormLabel>
+                  <TextField onChange={handleChange} value={BodimDetails.price} sx={feildWidthStyle} name="price" id="price" label="Price" variant="outlined" size='small'/>
+                </Box>
+              </Grid>
+              <Grid item md>
+                  <Box sx={boxStyle}>
+                      <FormLabel sx={labelWidthStyle} htmlFor='contact'>Contact details</FormLabel>
+                      <TextField onChange={handleChange} sx={{width:'35%', marginRight:'2%'}} name="contact" id="contact" label="contact" variant="outlined" size='small'/>
+                      <Button onClick={contactNumbersShow} size="small" variant="text" startIcon={<AddIcCallIcon />}>
+                        Add another 
+                      </Button>
+                  </Box>
+                  {
+                    contacNumShow && <Typography variant="caption">{BodimDetails.contact}</Typography>
+                  }
+                 
+              </Grid>
+          </Grid>
+          <Grid container spacing={2} >
+              <Grid item md>
+                  <Box sx={boxStyle}>
+                      <FormLabel sx={labelWidthStyle} htmlFor='distance'>Distance to Uni</FormLabel>
+                      <TextField onChange={handleChange} sx={feildWidthStyle} name="distanceToUni" id="distance" label="Distance" variant="outlined" size='small' />
+                  </Box>
+              </Grid>
+              <Grid item md>
+                  <Box>
+                    <FormControl fullWidth sx={{margin:'10px'}}>
+                    <FormLabel id="location-group">Location Details:</FormLabel>
+                    <RadioGroup defaultValue="city" name="location">
+                      <Box sx={boxStyle}>
+                        <FormControlLabel sx={labelWidthStyle}
+                        value="city" 
+                        control={<Radio />} 
+                        label="Nearest City" 
+                        onChange={handleChange}
+                        />
+                        <TextField name="cityName" id="city" label="City" variant="outlined" size='small'/>
+                      </Box>
+                      <Box sx={{margin:'10px'}} >
+                        <FormControlLabel sx={labelWidthStyle}
+                        value="address" 
+                        control={<Radio />} 
+                        label="Address" 
+                        onChange={handleChange}
+                        />
+                      <TextField name="address" id="address" multiline rows={4} 
+                          defaultValue="No,Street name,City"
+                        />
+                      </Box>
+                    </RadioGroup>
+                    </FormControl>
+                  </Box>
+              </Grid>
+          </Grid>
+          <pre>
+              {JSON.stringify(BodimDetails)}
+          </pre>
+      </Container>
+  )
+};
+//Availabel features component
+const AvailabelFeatures=()=>{
+  
+    // const [allFeatures, setAllFeatures] = useState([
+    //   { name: 'Beds', count: 0},
+    //   { name: 'Chairs', count: 0 },
+    //   { name: 'Tables', count: 0 },
+    //   { name: 'Nets', count: 0},
+    // ]);
+  
     const [availableFeatures, setAvailableFeatures] = useState([]);
-
-    const addFeature = (feature) => {
-        setAvailableFeatures([...availableFeatures, feature]);
-    };
-
+  
+    // const addFeature = (feature) => {
+    //   setAvailableFeatures([...availableFeatures, feature]);
+    // };
+  
     const removeFeature = (index) => {
         const newFeatures = [...availableFeatures];
         newFeatures.splice(index, 1);
@@ -279,12 +347,20 @@ const AddReview = () => {
 //All the components combine here and export
 const AddBodim = () => {
     return (
-        <Box sx={{ backgroundColor: '#F0EFEB', padding: '16px' }}>
-            <AppartmentDetails />
-            <AvailabelFeatures />
-            <AddPhotos />
-            <AddReview />
-        </Box>
+      <form autoComplete='off' onSubmit={()=>alert("submit")}>
+        
+          <Box sx={{backgroundColor:'#F0EFEB'}}>
+              <AppartmentDetails/>
+              <AvailabelFeatures/>
+              <AddPhotos/>
+              <AddReview/>
+          </Box>
+          <Box>
+         
+          </Box>
+          
+      </form>
+
     )
 }
 
