@@ -9,7 +9,7 @@ const App = () => {
     <div>
       {/* <Register></Register> */}
       
-      <HeaderComponent/>
+      {/*<HeaderComponent/>*/}
       {/*removed addbodime component */}
     </div>
   );
