@@ -19,17 +19,6 @@ import {
 import { React, useState } from 'react';
 // import ReviewCardComponent from '../component/ReviewCardComponent';
 
-const sectionStyle={
-  backgroundColor:'#FFFFFF',
-  marginTop:'20px',
-  paddingTop:'5px', 
-}
-// const sectionTopicStyle={
-//   fontSize:'1.8em',
-//   color:'#4A90E2',
-//   margin:'1px',
-//   padding:'2px'
-// }
 
 //Appartment details component
 const AppartmentDetails=()=>{
@@ -77,7 +66,7 @@ const AppartmentDetails=()=>{
   }
  
   return (
-      <Container sx={sectionStyle}>
+      <Container sx={{backgroundColor:'#FFFFFF',paddingTop:'5px', }}>
         
           <Grid container spacing={2} >
               <Grid item md={6}>
