@@ -1,9 +1,9 @@
 import React from "react";
-import AddBodim from "./pages/AddBodim";
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {  
   return (
-     <AddBodim/>
+     <AboutUs/>
   );
 };
 
