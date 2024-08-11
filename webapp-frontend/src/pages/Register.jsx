@@ -1,5 +1,4 @@
 import {
-  Box,
   TextField,
   Typography,
   Button,
@@ -7,7 +6,7 @@ import {
   Container,
 } from "@mui/material";
 import "./css/Register.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ApeBODIMA from "../component/images/APEBODIMA.svg";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -105,7 +104,7 @@ const Register = ({ closeDialog, registerStatus }) => {
           justifyContent: "space-between",
           height: "auto",
           padding: "10px",
-          height: "100%",
+          // height:"100%"
         }}
       >
         <Grid
