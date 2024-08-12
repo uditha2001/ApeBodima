@@ -59,7 +59,7 @@ const AboutUs = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ px: { xs: '60px' }, maxWidth: '100%', overflow: 'hidden' }}>
+      <Box sx={{ px: { xs: '60px' ,lg : '100px' }, maxWidth: '100%', overflow: 'hidden' }}>
         <Box my={4}>
           <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
             <Box display="flex" flexDirection="column" alignItems="center">
