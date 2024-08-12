@@ -7,6 +7,7 @@ import AddBodim from "./pages/AddBodim";
 import FilterBar from "./component/FilterBarComponent";
 const App = () => {
   return (
+   
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
