@@ -1,5 +1,6 @@
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import FeedbackIcon from '@mui/icons-material/Feedback';
+// import FeedbackIcon from '@mui/icons-material/Feedback';
+import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -12,22 +13,12 @@ import {
   Radio, RadioGroup,
   Select,
   TextField,
-  Typography
+  Typography,
+  Paper
 } from '@mui/material';
 import { React, useState } from 'react';
-import ReviewCardComponent from '../component/ReviewCardComponent';
+// import ReviewCardComponent from '../component/ReviewCardComponent';
 
-const sectionStyle={
-  backgroundColor:'#FFFFFF',
-  marginTop:'20px',
-  paddingTop:'5px', 
-}
-const sectionTopicStyle={
-  fontSize:'1.8em',
-  color:'#4A90E2',
-  margin:'1px',
-  padding:'2px'
-}
 
 //Appartment details component
 const AppartmentDetails=()=>{
@@ -75,7 +66,7 @@ const AppartmentDetails=()=>{
   }
  
   return (
-      <Container sx={sectionStyle}>
+      <Container sx={{backgroundColor:'#FFFFFF',paddingTop:'5px', }}>
         
           <Grid container spacing={2} >
               <Grid item md={6}>
@@ -169,106 +160,183 @@ const AppartmentDetails=()=>{
 //Availabel features component
 const AvailabelFeatures=()=>{
   
-    // const [allFeatures, setAllFeatures] = useState([
-    //   { name: 'Beds', count: 0},
-    //   { name: 'Chairs', count: 0 },
-    //   { name: 'Tables', count: 0 },
-    //   { name: 'Nets', count: 0},
-    // ]);
+    const [allFeatures] = useState([
+      { name: 'Beds', count: 0},
+      { name: 'Chairs', count: 0 },
+      { name: 'Tables', count: 0 },
+      { name: 'Nets', count: 0},
+    ]);
   
     const [availableFeatures, setAvailableFeatures] = useState([]);
   
-    // const addFeature = (feature) => {
-    //   setAvailableFeatures([...availableFeatures, feature]);
-    // };
+    const addFeature = (feature) => {
+      setAvailableFeatures([...availableFeatures, feature]);
+    };
   
     const removeFeature = (index) => {
-      const newFeatures = [...availableFeatures];
-      newFeatures.splice(index, 1);
-      setAvailableFeatures(newFeatures);
+        const newFeatures = [...availableFeatures];
+        newFeatures.splice(index, 1);
+        setAvailableFeatures(newFeatures);
     };
-  
+
     const updateFeatureCount = (index, count) => {
-      const newFeatures = [...availableFeatures];
-      newFeatures[index].count = count;
-      setAvailableFeatures(newFeatures);
+        const newFeatures = [...availableFeatures];
+        newFeatures[index].count = count;
+        setAvailableFeatures(newFeatures);
     };
-  
+
     return (
-      <Container sx={sectionStyle}>
-        <Grid container spacing={4} justifyContent="space-between">
-          <Grid item xs={12} md={6}>
-            <Box>
-              <Typography className='roboto-regular' sx={sectionTopicStyle} gutterBottom>Available Features</Typography>
-              {availableFeatures.map((feature, index) => (
-                <Box key={index} display="flex" alignItems="center" mb={2}>
-                  <Typography variant="body1">{feature.name}</Typography>
-                  <TextField
-                    type="number"
-                    value={feature.count}
-                    onChange={(e) => updateFeatureCount(index, parseInt(e.target.value))}
-                    style={{ marginLeft: 10, marginRight: 10 }}
-                  />
-                  <Button variant="contained" color="secondary" onClick={() => removeFeature(index)}>
-                    Remove
-                  </Button>
-                </Box>
-              ))}
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box>
-              <Typography className='roboto-regular' sx={sectionTopicStyle} gutterBottom>All Features</Typography>
-              {/* {allFeatures.map((feature, index) => (
-                <Box key={index} display="flex" alignItems="center" mb={2}>
-                  <Typography variant="body1">{feature.name}</Typography>
-                  <Button variant="contained" color="primary" onClick={() => addFeature(feature)} style={{ marginLeft: 10 }}>
-                    Add
-                  </Button>
-                </Box>
-              ))} */}
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
+        <Container sx={{ mt: 2 }}>
+            <Grid container spacing={4} justifyContent="space-between">
+                <Grid item xs={12} md={6}>
+                    <Box>
+                        <Typography variant="h5" gutterBottom>Available Features</Typography>
+                        {availableFeatures.map((feature, index) => (
+                            <Box key={index} display="flex" alignItems="center" mb={2}>
+                                <Typography variant="body1">{feature.name}</Typography>
+                                <TextField
+                                    type="number"
+                                    value={feature.count}
+                                    onChange={(e) => updateFeatureCount(index, parseInt(e.target.value))}
+                                    sx={{ ml: 1, mr: 1 }}
+                                    size="small"
+                                />
+                                <Button variant="contained" color="secondary" onClick={() => removeFeature(index)}>
+                                    Remove
+                                </Button>
+                            </Box>
+                        ))}
+                    </Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Box>
+                        <Typography variant="h5" gutterBottom>All Features</Typography>
+                        {allFeatures.map((feature, index) => (
+                            <Box key={index} display="flex" alignItems="center" mb={2}>
+                                <Typography variant="body1">{feature.name}</Typography>
+                                <Button variant="contained" color="primary" onClick={() => addFeature(feature)} sx={{ ml: 1 }}>
+                                    Add
+                                </Button>
+                            </Box>
+                        ))}
+                    </Box>
+                </Grid>
+            </Grid>
+        </Container>
     );
 };
-//Add photos component
-const AddPhotos=()=>{
-    return(
-        <Container sx={sectionStyle}>
-           <Typography className='roboto-regular' sx={sectionTopicStyle}>Upload photos</Typography>
-        </Container>
-    )
-};
-//Add reviews component
-const AddReview=()=>{
-    let [reviewAdd,setReviewAdd]=useState(false);
-    const toggleBtn=()=>{
-      let result = reviewAdd===false ? true : false ;
-      setReviewAdd(result);
-    }
 
-    return(
-        <Container sx={sectionStyle} >
-            <Box display={'flex'} alignItems={"center"} sx={{justifyContent: "space-between"}}>
-              <Typography className='roboto-regular' sx={sectionTopicStyle}>Give first feedback to this place</Typography>
-              <Button 
-              sx={{maxHeight: '32px'}}
-              onClick={toggleBtn} variant="outlined" size='small' startIcon={<FeedbackIcon />}>Add review</Button>
-            </Box>
-            <Box>
-              {
-                reviewAdd && <ReviewCardComponent/>
-              }
-            </Box>
-         
+//Add photos component
+const AddPhotos = () => {
+    const [images, setImages] = useState([]);
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const files = Array.from(e.dataTransfer.files);
+        const newImages = files.map((file) => URL.createObjectURL(file));
+        setImages((prevImages) => [...prevImages, ...newImages]);
+    };
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
+    const handleFileSelect = (e) => {
+        const files = Array.from(e.target.files);
+        const newImages = files.map((file) => URL.createObjectURL(file));
+        setImages((prevImages) => [...prevImages, ...newImages]);
+    };
+
+    const handleButtonClick = () => {
+        document.getElementById('fileInput').click();
+    };
+
+    return (
+        <Box sx={{ padding: '16px', mt: 2 }}>
+            <Typography variant="h6" gutterBottom>
+                Upload photos
+            </Typography>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={4}>
+                    <Box
+                        sx={{
+                            border: '2px dashed #ccc',
+                            borderRadius: '8px',
+                            height: '200px',
+                            width: '100%',
+                            maxWidth: '300px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#f9f9f9',
+                            position: 'relative',
+                            mx: 'auto',
+                        }}
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}
+                    >
+                        <input
+                            id="fileInput"
+                            type="file"
+                            multiple
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            onChange={handleFileSelect}
+                        />
+                        <Button
+                            variant="contained"
+                            startIcon={<CloudUploadIcon />}
+                            onClick={handleButtonClick}
+                        >
+                            Upload Image
+                        </Button>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    <Grid container spacing={2}>
+                        {images.length > 0 ? (
+                            images.map((image, index) => (
+                                <Grid item key={index}>
+                                    <Paper elevation={3}>
+                                        <img
+                                            src={image}
+                                            alt={`Uploaded ${index}`}
+                                            style={{
+                                                width: '258px',
+                                                height: '128px',
+                                                objectFit: 'contain',
+                                                borderRadius: '8px',
+                                            }}
+                                        />
+                                    </Paper>
+                                </Grid>
+                            ))
+                        ) : (
+                            <Grid item xs={12}>
+                                <Paper elevation={3} sx={{ padding: '16px', textAlign: 'center' }}>
+                                    {/* Remove the icon and text */}
+                                </Paper>
+                            </Grid>
+                        )}
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Box>
+    );
+};
+
+
+//Add reviews component
+const AddReview = () => {
+    return (
+        <Container sx={{ backgroundColor: '#FFFFFF', mt: 2 }}>
+            <p>I am rendered AddReview</p>
         </Container>
     )
-};  
+}
 
 //All the components combine here and export
-const AddBodim=()=>{
+const AddBodim = () => {
     return (
       <form autoComplete='off' onSubmit={()=>alert("submit")}>
         
@@ -284,10 +352,7 @@ const AddBodim=()=>{
           
       </form>
 
-
     )
-    
 }
 
 export default AddBodim;
-
