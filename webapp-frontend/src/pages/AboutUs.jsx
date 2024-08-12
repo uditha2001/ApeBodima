@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Container, 
   Typography, 
   Box, 
   TextField, 
@@ -60,7 +59,7 @@ const AboutUs = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="md">
+      <Box sx={{ px: { xs: '60px' }, maxWidth: '100%', overflow: 'hidden' }}>
         <Box my={4}>
           <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
             <Box display="flex" flexDirection="column" alignItems="center">
@@ -231,7 +230,7 @@ const AboutUs = () => {
             </Grid>
           </Paper>
         </Box>
-      </Container>
+      </Box>
     </ThemeProvider>
   );
 };
