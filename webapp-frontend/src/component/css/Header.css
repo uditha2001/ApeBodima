@@ -84,13 +84,16 @@
     width: 130px;
   }
   
-  .container2 .navbar2 button a {
-    text-decoration: none;
+  .container2 .navbar2 button:hover {
+    background-color: black;
+    transition: all 400ms ease-in;
+    color: aliceblue;
   }
   
   .container2 .navbar2 {
     gap: 30px;
   }
+  
   
   @media screen and (max-width: 730px) {
     .header .menubar {
