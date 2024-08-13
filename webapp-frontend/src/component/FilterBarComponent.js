@@ -97,8 +97,8 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 const BoardingPlacesFinder = () => {
   const [places, setPlaces] = useState([]);
-  const [filters, setFilters] = useState({ price: '', distance: '', capacity: '' });
-  const [searchQuery, setSearchQuery] = useState('');
+  /*const [filters, setFilters] = useState({ price: '', distance: '', capacity: '' });*/
+ /* const [searchQuery, setSearchQuery] = useState('');*/
 
   useEffect(() => {
     fetchPlaces();
@@ -112,10 +112,10 @@ const BoardingPlacesFinder = () => {
 
 
 
-  const handleFilterChange = (newFilters) => {
-    setFilters(newFilters);
-    fetchPlaces(searchQuery, newFilters);
-  };
+  /*const handleFilterChange = (newFilters) => {
+   /* setFilters(newFilters);*/
+    /*fetchPlaces(searchQuery, newFilters);*/
+ /* };*/
 
 
 
@@ -131,7 +131,8 @@ const BoardingPlacesFinder = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-
+    setpage(0);
+    setSize(10);
     try {
       // Construct the request URL
       const response = await axios.get(
