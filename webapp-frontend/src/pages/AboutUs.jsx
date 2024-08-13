@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Container, 
   Typography, 
   Box, 
   TextField, 
@@ -14,7 +13,6 @@ import {
   Divider,
   ThemeProvider, 
   createTheme,
-  //useMediaQuery,
   Link
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -52,7 +50,6 @@ const theme = createTheme({
 
 const AboutUs = () => {
   const [question, setQuestion] = useState('');
-  // const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +59,7 @@ const AboutUs = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="md">
+      <Box sx={{ px: { xs: '60px' ,lg : '100px' }, maxWidth: '100%', overflow: 'hidden' }}>
         <Box my={4}>
           <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
             <Box display="flex" flexDirection="column" alignItems="center">
@@ -233,7 +230,7 @@ const AboutUs = () => {
             </Grid>
           </Paper>
         </Box>
-      </Container>
+      </Box>
     </ThemeProvider>
   );
 };

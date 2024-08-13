@@ -1,5 +1,4 @@
 import {
-  // Box,
   TextField,
   Typography,
   Button,
@@ -13,20 +12,30 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
-
-const Register = ({closeDialog,registerStatus}) => {
+const Register = ({ closeDialog, registerStatus }) => {
   const [showPass, setShowPass] = useState(false);
   const [firstPassShow, setFirstPassShow] = useState(false);
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [comparison, setComparison] = useState(true);
   const [errors, setError] = useState(false);
-  const closeRegisterPage=()=>{
-      closeDialog=false;
-      registerStatus(false);
-  }
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [username,setUserName]=useState("");
+  const [user,setUser]=useState(
+    {
+      name:"",
+      email:"",
+      username:"",
+      password:""
+    }
+  );
+  const closeRegisterPage = () => {
+    closeDialog = false;
+    registerStatus(false);
+  };
   useEffect(() => {
     if (password1 === password2 || password2 === "") {
       setComparison(true);
@@ -37,49 +46,55 @@ const Register = ({closeDialog,registerStatus}) => {
     }
   }, [password1, password2]);
 
+  const submitForm=(event)=>{
+      event.preventDefault();
+      setUser({name:name,email:email,username:username,password:password1});
+      console.log(user);
+      console.log(name);
+      console.log("submitted ")
+
+    
+  }
+
   return (
     <Container
-    maxWidth={"md"}
-
-    sx={{
-      bgcolor: "#EBEFFF",
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop:"10px",
-      marginBottom:"10px",
-      flexDirection:"column",    
-    }}
+      maxWidth={"md"}
+      sx={{
+        bgcolor: "#EBEFFF",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "10px",
+        marginBottom: "10px",
+        flexDirection: "column",
+      }}
     >
-       <IconButton
-        sx={
-          {
-            position:"fixed",
-            right:{
-              xs:"20px",
-              md:"100px",
-              sm:"0px",
-              lg:"330px"
-            },
-            top:{
-              xs:"10px",
-              md:"10px",
-              sm:"10px",
-              lg:"10px"
-            },
-            '&:hover': {
-          color: 'red',
-        }
-
-          }
-        }
-        onClick={()=>{
+      <IconButton
+        sx={{
+          position: "fixed",
+          right: {
+            xs: "20px",
+            md: "100px",
+            sm: "0px",
+            lg: "330px",
+          },
+          top: {
+            xs: "10px",
+            md: "10px",
+            sm: "10px",
+            lg: "10px",
+          },
+          "&:hover": {
+            color: "red",
+          },
+        }}
+        onClick={() => {
           closeRegisterPage();
         }}
       >
-        <CloseIcon/>
+        <CloseIcon />
       </IconButton>
-      
+
       <Grid
         container
         className="container"
@@ -89,11 +104,8 @@ const Register = ({closeDialog,registerStatus}) => {
           justifyContent: "space-between",
           height: "auto",
           padding: "10px",
-          // height:"100%"
         }}
       >
-       
-      
         <Grid
           item
           xs={12}
@@ -105,7 +117,7 @@ const Register = ({closeDialog,registerStatus}) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height:"100%"
+            height: "100%",
           }}
         >
           <img
@@ -128,9 +140,12 @@ const Register = ({closeDialog,registerStatus}) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            height:"100%"
+            height: "100%",
           }}
           component="form"
+          onSubmit={(event)=>{
+            submitForm(event);
+          }}
         >
           <Typography
             sx={{ color: "#1A1A1A", fontSize: "16px", fontWeight: "600" }}
@@ -140,37 +155,50 @@ const Register = ({closeDialog,registerStatus}) => {
           <div style={{ marginTop: "30px", width: "100%" }}>
             <Typography>Name:</Typography>
             <TextField
+              name="name"
               className="custom-textfield"
               type="input"
               fullWidth
               variant="outlined"
               size="small"
+              onChange={(e)=>{
+                setName(e.target.value);
+              }}
             />
           </div>
           <div style={{ marginTop: "30px", width: "100%" }}>
             <Typography>Email-Address:</Typography>
             <TextField
+              name="email"
               className="custom-textfield"
               type="input"
               fullWidth
               variant="outlined"
               size="small"
+              onChange={(e)=>{
+                  setEmail(e.target.value)
+              }}  
             />
           </div>
           <div style={{ marginTop: "30px", width: "100%" }}>
             <Typography>UserName:</Typography>
             <TextField
+              name="username"
               className="custom-textfield"
               type="input"
               fullWidth
               variant="outlined"
               size="small"
+              onChange={(e)=>{
+                setUserName(e.target.value)
+              }}
             />
           </div>
 
           <div style={{ marginTop: "30px", width: "100%" }}>
             <Typography>Password:</Typography>
             <TextField
+              name="password"
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -233,7 +261,12 @@ const Register = ({closeDialog,registerStatus}) => {
             />
           </div>
           <div style={{ marginTop: "45px", width: "100%" }}>
-            <Button sx={{ bgcolor: "#9EC9F7", width: "100%" }}>Register</Button>
+            <Button
+              sx={{ bgcolor: "#9EC9F7", width: "100%" }}
+              type="submit"
+            >
+              Register
+            </Button>
           </div>
           <div className="register">
             <Typography
