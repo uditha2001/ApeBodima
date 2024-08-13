@@ -4,6 +4,8 @@ import MainLayout from "./mainLayout/MainLayout";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import FilterBarComponent from "./component/FilterBarComponent";
+import HeaderComponent from "./component/HeaderComponent";
+import UnderConstruction from "./component/UnderConstruction";
 const App = () => {  
   return (
     <div>
@@ -11,6 +13,8 @@ const App = () => {
       
       <HeaderComponent/>
       {/*removed addbodime component */}
+      
+
     </div>
   );
 };

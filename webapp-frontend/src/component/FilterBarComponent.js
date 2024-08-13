@@ -97,8 +97,8 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 const BoardingPlacesFinder = () => {
   const [places, setPlaces] = useState([]);
-  const [filters, setFilters] = useState({ price: '', distance: '', capacity: '' });
-  const [searchQuery, setSearchQuery] = useState('');
+
+
 
   useEffect(() => {
     fetchPlaces();
@@ -112,11 +112,7 @@ const BoardingPlacesFinder = () => {
 
 
 
-  const handleFilterChange = (newFilters) => {
-    setFilters(newFilters);
-    fetchPlaces(searchQuery, newFilters);
-  };
-
+ 
 
 
   const[page,setpage] = useState(0);
