@@ -21,7 +21,7 @@ const HeaderComponent = () => {
   
 
   useEffect(() => {
-    let i = 0;
+    //let i = 0;
     const handleResize = () => {
       let fullWidth = window.screen.availWidth;
       setWidth(window.innerWidth);
@@ -58,19 +58,19 @@ const HeaderComponent = () => {
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
           Explore
         </Button>
-        <a ref={linkRef1} href="#explore" style={{ display: "none" }} />
+        {/* <a ref={linkRef1} href="#explore" style={{ display: "none" }} /> */}
         <Button variant="text" onClick={() => handCllick(linkRef2)}>
           Add Place
         </Button>
-        <a ref={linkRef2} href="#addPlace" style={{ display: "none" }} />
+        {/* <a ref={linkRef2} href="#addPlace" style={{ display: "none" }} /> */}
         <Button variant="text" onClick={() => handCllick(linkRef3)}>
           User Account
         </Button>
-        <a ref={linkRef3} href="#userAccount" style={{ display: "none" }} />
+        {/* <a ref={linkRef3} href="#userAccount" style={{ display: "none" }} /> */}
         <Button variant="text" onClick={() => handCllick(linkRef4)}>
           view favorite
         </Button>
-        <a ref={linkRef2} href="#viewfavorite" style={{ display: "none" }} />
+        {/* <a ref={linkRef2} href="#viewfavorite" style={{ display: "none" }} /> */}
 
         <Button
           variant="outlined"
