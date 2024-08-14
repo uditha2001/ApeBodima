@@ -7,6 +7,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
+import {Link}  from "react-router-dom";
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -58,19 +59,21 @@ const HeaderComponent = () => {
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
           Explore
         </Button>
-        {/* <a ref={linkRef1} href="#explore" style={{ display: "none" }} /> */}
+        { 
+          <Link ref={linkRef1} to="/explore"></Link>
+          }
         <Button variant="text" onClick={() => handCllick(linkRef2)}>
           Add Place
         </Button>
-        {/* <a ref={linkRef2} href="#addPlace" style={{ display: "none" }} /> */}
+        <Link ref={linkRef2} to="/addPlace"></Link>
         <Button variant="text" onClick={() => handCllick(linkRef3)}>
           User Account
         </Button>
-        {/* <a ref={linkRef3} href="#userAccount" style={{ display: "none" }} /> */}
+        <Link ref={linkRef3} to="/userAccount"></Link>
         <Button variant="text" onClick={() => handCllick(linkRef4)}>
           view favorite
         </Button>
-        {/* <a ref={linkRef2} href="#viewfavorite" style={{ display: "none" }} /> */}
+          <Link ref={linkRef4} to="/viewfaviourite"></Link>
 
         <Button
           variant="outlined"
@@ -129,18 +132,24 @@ const HeaderComponent = () => {
           <CloseRoundedIcon></CloseRoundedIcon>
         </IconButton>
         <Grid container className="navbar2" direction={"column"}>
-          <Button variant="text">
-            <a href="#explore">Explore</a>
-          </Button>
-          <Button variant="text">
-            <a href="#addPlace">Add Place</a>
-          </Button>
-          <Button variant="text">
-            <a href="#userAccount">User Account</a>
-          </Button>
-          <Button variant="text">
-            <a href="#viewFavourite">View favorite</a>
-          </Button>
+        <Button variant="text" onClick={() => handCllick(linkRef1)}>
+          Explore
+        </Button>
+        { 
+          <Link ref={linkRef1} to="/explore"></Link>
+          }
+        <Button variant="text" onClick={() => handCllick(linkRef2)}>
+          Add Place
+        </Button>
+        <Link ref={linkRef2} to="/addPlace"></Link>
+        <Button variant="text" onClick={() => handCllick(linkRef3)}>
+          User Account
+        </Button>
+        <Link ref={linkRef3} to="/userAccount"></Link>
+        <Button variant="text" onClick={() => handCllick(linkRef4)}>
+          view favorite
+        </Button>
+          <Link ref={linkRef4} to="/viewfaviourite"></Link>
           <Button
             variant="outlied"
             maxWidth="20px"

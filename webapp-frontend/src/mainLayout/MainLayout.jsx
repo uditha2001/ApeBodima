@@ -18,13 +18,14 @@ const MainLayout = () => {
         justifyContent: "center",
       }}
     >
-      <div style={{ position: "fixed", zIndex: "100" }}>
+      <div style={{ position:"fixed", zIndex: "100" }}>
         <HeaderComponent />
       </div>
       <div
         style={{
-          position: "absolute",
+          position: "relative",
           marginTop: "80px",
+          marginBottom:"30px",
           alignContent: "center",
           justifyContent: "center",
           width: "100%",

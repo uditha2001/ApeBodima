@@ -1,10 +1,9 @@
 import { Button, Grid, IconButton, Rating, Typography } from "@mui/material";
 import React, { useState } from "react";
-import boardimimg from "./images/BoardimCard.png";
 import FindInPageIcon from "@mui/icons-material/FindInPage";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import GradeIcon from "@mui/icons-material/Grade";
-const BoardimCard = () => {
+const BoardimCard = ({image,name,price,description,rating}) => {
   const [faviorite, setFaviorite] = useState(false);
     const checkfaviorite=()=>{
         if (faviorite === true) {
@@ -30,8 +29,8 @@ const BoardimCard = () => {
         }}
       >
         <img
-          src={boardimimg}
-          alt="boardim"
+          src={image}
+          alt="boardimImage"
           style={{
             width: "300px",
             height: "250px",
@@ -44,7 +43,9 @@ const BoardimCard = () => {
           marginLeft: "40px",
         }}
       >
-        <Rating readOnly></Rating>
+        <Rating readOnly>
+          
+        </Rating>
       </Grid>
       <Grid
         item
@@ -59,14 +60,14 @@ const BoardimCard = () => {
             marginLeft: "20px",
           }}
         >
-          Boardim name
+          {name}
         </Typography>
         <Typography
           sx={{
             marginRight: "10px",
           }}
         >
-          Price
+          {price}
         </Typography>
       </Grid>
       <Grid
@@ -80,7 +81,7 @@ const BoardimCard = () => {
             marginLeft: "20px",
           }}
         >
-          Description
+          {description}
         </Typography>
       </Grid>
       <Grid
