@@ -19,17 +19,6 @@ import {
 import { React, useState } from 'react';
 // import ReviewCardComponent from '../component/ReviewCardComponent';
 
-const sectionStyle={
-  backgroundColor:'#FFFFFF',
-  marginTop:'20px',
-  paddingTop:'5px', 
-}
-// const sectionTopicStyle={
-//   fontSize:'1.8em',
-//   color:'#4A90E2',
-//   margin:'1px',
-//   padding:'2px'
-// }
 
 //Appartment details component
 const AppartmentDetails=()=>{
@@ -54,36 +43,67 @@ const AppartmentDetails=()=>{
     contact:[],
     distanceToUni:""
   }
+  const initialErrorState={
+    bodimNameError:false,
+    bodimTypeError:false,
+    priceError:false,
+    contactError:false,
+    distanceToUniError:false
+  }
   const [BodimDetails,setBodimDetails]=useState(initialState)
+  let[BodimDetailsError,setBodimDetailsError]=useState(initialErrorState)
 
   const handleChange=(e)=>{
     const {name ,value}=e.target
-    console.log(BodimDetails)
-    setBodimDetails({...BodimDetails,[name]:value})
+    contactNumberValidation(name,value)
+    if(name!=="contact"){
+      setBodimDetails({...BodimDetails,[name]:value})
+    }
+    
   }
-  
+  const contactNumberValidation=(name,value)=>{
+    const phoneNumRegex=/^\d{10}$/;
+    const isCurrentPhoneNumber=BodimDetails.contact.indexOf(value)
+    setBodimDetailsError({...BodimDetailsError,contactError:true})
+    if(name!=="contact"){
+        return 0;
+    }
+    if(isCurrentPhoneNumber!==-1){
+        return 0;
+    }
+    if(value.length!==10){
+        setBodimDetails({...BodimDetails, contact: []});
+        return 0;
+    }
+    if(!phoneNumRegex.test(value)){
+        return 0;
+    }
+    setBodimDetails({...BodimDetails, contact: [...BodimDetails.contact, value]});
+    setBodimDetailsError({...BodimDetailsError,contactError:false})
+    return 1;
+  }
+
   let[contacNumShow,setcontacNumShow]=useState(false);
 
   const contactNumbersShow=(e)=>{
     let result=false;
-    if(BodimDetails.contact.values===""){
+    if(BodimDetails.contact.length===0){
       result=false;
     }
     else{
       result=contacNumShow===false? true : contacNumShow;
     }
     setcontacNumShow(result);
-    
   }
  
   return (
-      <Container sx={sectionStyle}>
+      <Container sx={{backgroundColor:'#FFFFFF',paddingTop:'5px', }}>
         
           <Grid container spacing={2} >
               <Grid item md={6}>
                 <Box sx={boxStyle}>
                   <FormLabel sx={labelWidthStyle} htmlFor="bodimName">Enter appartment name</FormLabel>
-                  <TextField onChange={handleChange} value={BodimDetails.bodimName} sx={feildWidthStyle} name="bodimName" id="bodimName" label="bodim Name" variant="outlined" size='small'/>
+                  <TextField maxLength={10} error={BodimDetailsError.bodimNameError} required onChange={handleChange} value={BodimDetails.bodimName} sx={feildWidthStyle} name="bodimName" id="bodimName" label="bodim Name" variant="outlined" size='small'/>
                 </Box>
 
               </Grid>
@@ -92,7 +112,7 @@ const AppartmentDetails=()=>{
                   <Box sx={boxStyle}>
                     <FormLabel sx={labelWidthStyle}>Select boidm type</FormLabel>
                     <FormControl sx={{minWidth: "50%" }} size="small" minwidth="48rem">
-                    <Select defaultValue={'none'}  name="bodimType" onChange={handleChange}>
+                    <Select error={BodimDetailsError.bodimTypeError} required defaultValue={'none'}  name="bodimType" onChange={handleChange}>
                       <MenuItem value={'none'}><em>None</em></MenuItem>
                       <MenuItem value={'type1'}>Type1</MenuItem>
                       <MenuItem value={'type2'}>Type2</MenuItem>
@@ -108,20 +128,22 @@ const AppartmentDetails=()=>{
               <Grid item md>
                 <Box sx={boxStyle}>
                   <FormLabel sx={labelWidthStyle} htmlFor="price">Price</FormLabel>
-                  <TextField onChange={handleChange} value={BodimDetails.price} sx={feildWidthStyle} name="price" id="price" label="Price" variant="outlined" size='small'/>
+                  <TextField error={BodimDetailsError.priceError} required onChange={handleChange} value={BodimDetails.price} sx={feildWidthStyle} name="price" id="price" label="Price" variant="outlined" size='small'/>
                 </Box>
               </Grid>
               <Grid item md>
                   <Box sx={boxStyle}>
                       <FormLabel sx={labelWidthStyle} htmlFor='contact'>Contact details</FormLabel>
-                      <TextField onChange={handleChange} sx={{width:'35%', marginRight:'2%'}} name="contact" id="contact" label="contact" variant="outlined" size='small'/>
+                      <TextField error={BodimDetailsError.contactError} onChange={handleChange} required  sx={{width:'35%', marginRight:'2%'}} name="contact" id="contact" label="contact" variant="outlined" size='small'/>
                       <Button onClick={contactNumbersShow} size="small" variant="text" startIcon={<AddIcCallIcon />}>
                         Add another 
                       </Button>
                   </Box>
-                  {
-                    contacNumShow && <Typography variant="caption">{BodimDetails.contact}</Typography>
-                  }
+                  <Box sx={{textAlign:'right',marginRight:'5%'}}>
+                    {
+                        contacNumShow && <Typography sx={{backgroundColor:"black",borderRadius:'10px',color:"white",padding:"0.4rem"}} variant="caption">{BodimDetails.contact}</Typography>
+                    }
+                    </Box>                
                  
               </Grid>
           </Grid>
@@ -129,7 +151,7 @@ const AppartmentDetails=()=>{
               <Grid item md>
                   <Box sx={boxStyle}>
                       <FormLabel sx={labelWidthStyle} htmlFor='distance'>Distance to Uni</FormLabel>
-                      <TextField onChange={handleChange} sx={feildWidthStyle} name="distanceToUni" id="distance" label="Distance" variant="outlined" size='small' />
+                      <TextField error={BodimDetailsError.distanceToUniError} onChange={handleChange} sx={feildWidthStyle} name="distanceToUni" id="distance" label="Distance" variant="outlined" size='small' />
                   </Box>
               </Grid>
               <Grid item md>
