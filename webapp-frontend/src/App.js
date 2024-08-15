@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import AddBodim from "./pages/AddBodim";
 import FilterBar from "./component/FilterBarComponent";
+
+
 const App = () => {
   return (
    
