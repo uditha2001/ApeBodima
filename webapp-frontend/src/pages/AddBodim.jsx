@@ -1,5 +1,6 @@
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-// import FeedbackIcon from '@mui/icons-material/Feedback';
+import DeleteIcon from '@mui/icons-material/Delete';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import {
   Box,
@@ -14,11 +15,23 @@ import {
   Select,
   TextField,
   Typography,
-  Paper
+  Paper,
+  IconButton
 } from '@mui/material';
 import { React, useState } from 'react';
-// import ReviewCardComponent from '../component/ReviewCardComponent';
+import ReviewCardComponent from '../component/ReviewCardComponent';
 
+const sectionContainerStyle={
+    borderRadius:'8px',
+    boxShadow: 4,
+    backgroundColor:'#FFFFFF',
+    paddingTop:'5px', 
+    my: 2, 
+    padding: '16px'
+}
+const sectionTtileStyle={
+    color:'#4A90E2'
+}
 
 //Appartment details component
 const AppartmentDetails=()=>{
@@ -55,37 +68,41 @@ const AppartmentDetails=()=>{
 
   const handleChange=(e)=>{
     const {name ,value}=e.target
-    contactNumberValidation(name,value)
-    if(name!=="contact"){
+    if(name==="contact"){
+        contactNumberValidation(value)
+    }
+    else{
       setBodimDetails({...BodimDetails,[name]:value})
     }
     
   }
-  const contactNumberValidation=(name,value)=>{
+  const contactNumberValidation=(value)=>{
     const phoneNumRegex=/^\d{10}$/;
     const isCurrentPhoneNumber=BodimDetails.contact.indexOf(value)
     setBodimDetailsError({...BodimDetailsError,contactError:true})
-    if(name!=="contact"){
-        return 0;
-    }
-    if(isCurrentPhoneNumber!==-1){
+    if(isCurrentPhoneNumber!==-1 || !phoneNumRegex.test(value)){
         return 0;
     }
     if(value.length!==10){
         setBodimDetails({...BodimDetails, contact: []});
         return 0;
     }
-    if(!phoneNumRegex.test(value)){
+    if(value.length===0){
+        setBodimDetails({...BodimDetails, contact: []});
         return 0;
     }
+    
     setBodimDetails({...BodimDetails, contact: [...BodimDetails.contact, value]});
     setBodimDetailsError({...BodimDetailsError,contactError:false})
+
     return 1;
   }
 
   let[contacNumShow,setcontacNumShow]=useState(false);
 
   const contactNumbersShow=(e)=>{
+    setBodimDetailsError({...BodimDetailsError,contactError:false})
+    document.getElementById("contact").value="";
     let result=false;
     if(BodimDetails.contact.length===0){
       result=false;
@@ -95,9 +112,16 @@ const AppartmentDetails=()=>{
     }
     setcontacNumShow(result);
   }
+  const deleteContactNumber = (e) => {
+    const index=BodimDetails.contact.indexOf(e.key)
+    console.log(e.target)
+    const updatedContact = [...BodimDetails.contact];
+    updatedContact.splice(index, 1);
+    setBodimDetails({ ...BodimDetails, contact: updatedContact });
+  };
  
   return (
-      <Container sx={{backgroundColor:'#FFFFFF',paddingTop:'5px', }}>
+      <Container sx={sectionContainerStyle}>
         
           <Grid container spacing={2} >
               <Grid item md={6}>
@@ -134,14 +158,31 @@ const AppartmentDetails=()=>{
               <Grid item md>
                   <Box sx={boxStyle}>
                       <FormLabel sx={labelWidthStyle} htmlFor='contact'>Contact details</FormLabel>
-                      <TextField error={BodimDetailsError.contactError} onChange={handleChange} required  sx={{width:'35%', marginRight:'2%'}} name="contact" id="contact" label="contact" variant="outlined" size='small'/>
+                      <TextField error={BodimDetailsError.contactError} onChange={handleChange} required 
+                       sx={{width:'35%', marginRight:'2%'}} name="contact" id="contact" label="contact" variant="outlined" size='small'/>
                       <Button onClick={contactNumbersShow} size="small" variant="text" startIcon={<AddIcCallIcon />}>
                         Add another 
                       </Button>
                   </Box>
                   <Box sx={{textAlign:'right',marginRight:'5%'}}>
                     {
-                        contacNumShow && <Typography sx={{backgroundColor:"black",borderRadius:'10px',color:"white",padding:"0.4rem"}} variant="caption">{BodimDetails.contact}</Typography>
+                        contacNumShow && BodimDetails.contact.map((item)=>
+                        <Paper elevation={3} key={item}
+                        sx={{
+                            display: 'inline',
+                            width:"25%",
+                            backgroundColor:"#9EC9F7",
+                            borderRadius:'18px',
+                            color:"blue",
+                            fontStyle:"bold",
+                            padding:"0.3rem",
+                            boxShadow:3,
+                            margin:"0.3rem"
+                        }}>
+                        <Typography sx={{px:1}} variant="caption">{item}</Typography>
+                        <IconButton onClick={deleteContactNumber} key={item} aria-label="delete" padding="0px"><DeleteIcon /></IconButton>
+                        </Paper>
+                        )
                     }
                     </Box>                
                  
@@ -161,6 +202,7 @@ const AppartmentDetails=()=>{
                     <RadioGroup defaultValue="city" name="location">
                       <Box sx={boxStyle}>
                         <FormControlLabel sx={labelWidthStyle}
+                        style={{marginRight:'0'}}
                         value="city" 
                         control={<Radio />} 
                         label="Nearest City" 
@@ -170,6 +212,7 @@ const AppartmentDetails=()=>{
                       </Box>
                       <Box sx={{margin:'10px'}} >
                         <FormControlLabel sx={labelWidthStyle}
+                        style={{marginRight:'0'}}
                         value="address" 
                         control={<Radio />} 
                         label="Address" 
@@ -219,11 +262,11 @@ const AvailabelFeatures=()=>{
     };
 
     return (
-        <Container sx={{ mt: 2 }}>
+        <Container sx={sectionContainerStyle}>
             <Grid container spacing={4} justifyContent="space-between">
                 <Grid item xs={12} md={6}>
                     <Box>
-                        <Typography variant="h5" gutterBottom>Available Features</Typography>
+                        <Typography className='roboto-medium' fontSize={'1.7rem'} gutterBottom sx={sectionTtileStyle}>Available Features</Typography>
                         {availableFeatures.map((feature, index) => (
                             <Box key={index} display="flex" alignItems="center" mb={2}>
                                 <Typography variant="body1">{feature.name}</Typography>
@@ -243,7 +286,7 @@ const AvailabelFeatures=()=>{
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Box>
-                        <Typography variant="h5" gutterBottom>All Features</Typography>
+                        <Typography className='roboto-medium' fontSize={'1.7rem'} gutterBottom sx={sectionTtileStyle}>All Features</Typography>
                         {allFeatures.map((feature, index) => (
                             <Box key={index} display="flex" alignItems="center" mb={2}>
                                 <Typography variant="body1">{feature.name}</Typography>
@@ -258,7 +301,6 @@ const AvailabelFeatures=()=>{
         </Container>
     );
 };
-
 //Add photos component
 const AddPhotos = () => {
     const [images, setImages] = useState([]);
@@ -285,8 +327,8 @@ const AddPhotos = () => {
     };
 
     return (
-        <Box sx={{ padding: '16px', mt: 2 }}>
-            <Typography variant="h6" gutterBottom>
+        <Container sx={sectionContainerStyle}>
+            <Typography className='roboto-medium' fontSize={'1.7rem'} gutterBottom sx={sectionTtileStyle}>
                 Upload photos
             </Typography>
             <Grid container spacing={2}>
@@ -354,16 +396,29 @@ const AddPhotos = () => {
                     </Grid>
                 </Grid>
             </Grid>
-        </Box>
+        </Container>
     );
 };
-
-
 //Add reviews component
 const AddReview = () => {
     return (
-        <Container sx={{ backgroundColor: '#FFFFFF', mt: 2 }}>
-            <p>I am rendered AddReview</p>
+        <Container sx={sectionContainerStyle}>
+            <Grid container>
+                <Grid item xs={11}>
+                    <Typography className='roboto-medium' fontSize={'1.7rem'} sx={sectionTtileStyle}>Add first feedback by you</Typography>
+                        
+                </Grid>
+                <Grid item xs={1}>
+                    <Button variant="contained" endIcon={<FeedbackIcon />}>
+                       Add
+                    </Button>
+                </Grid>
+                
+                <Grid item>
+                    <ReviewCardComponent/>
+                </Grid>
+
+            </Grid>
         </Container>
     )
 }
@@ -371,20 +426,14 @@ const AddReview = () => {
 //All the components combine here and export
 const AddBodim = () => {
     return (
-      <form autoComplete='off' onSubmit={()=>alert("submit")}>
-        
-          <Box sx={{backgroundColor:'#F0EFEB'}}>
+          <Box >
+            <form autoComplete='off' onSubmit={()=>alert("submit")}>
               <AppartmentDetails/>
               <AvailabelFeatures/>
               <AddPhotos/>
               <AddReview/>
+            </form>
           </Box>
-          <Box>
-         
-          </Box>
-          
-      </form>
-
     )
 }
 
