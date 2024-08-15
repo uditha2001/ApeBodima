@@ -61,7 +61,7 @@ const AboutUs = () => {
     <ThemeProvider theme={theme}>
       <Box sx={{ px: { xs: '60px' ,lg : '100px' }, maxWidth: '100%', overflow: 'hidden' }}>
         <Box my={4}>
-          <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
+          <Paper elevation={3} sx={{ p: 2, mb: 2 }} id="about-us-section">
             <Box display="flex" flexDirection="column" alignItems="center">
               <Typography variant="h4" component="h1" gutterBottom align="center">
                 About Us
@@ -91,7 +91,7 @@ const AboutUs = () => {
             </Box>
           </Paper>
 
-          <Paper elevation={3} sx={{ p: 2, mb: 2, bgcolor: '#e3f2fd' }}>
+          <Paper elevation={3} sx={{ p: 2, mb: 2, bgcolor: '#e3f2fd' }} id="learn-more-section">
             <Typography variant="h6" gutterBottom align="left">
               Learn More
             </Typography>
@@ -104,8 +104,8 @@ const AboutUs = () => {
               Join thousands of students who have found their ideal university home through our service.
             </Typography>
           </Paper>
-
-          <Paper elevation={3} sx={{ p: 2, mb: 2, bgcolor: '#e8eaf6' }}>
+          
+          <Paper elevation={3} sx={{ p: 2, mb: 2, bgcolor: '#e8eaf6' }} id="terms-policies-section">
             <Typography variant="h6" gutterBottom align="justify">
               Terms & Policies
             </Typography>
@@ -134,7 +134,7 @@ const AboutUs = () => {
             </List>
           </Paper>
 
-          <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
+          <Paper elevation={3} sx={{ p: 2, mb: 2 }} id="qa-section">
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} md={6}>
                 <Box display="flex" justifyContent="center" alignItems="center">
@@ -174,7 +174,7 @@ const AboutUs = () => {
             </Grid>
           </Paper>
 
-          <Paper elevation={3} sx={{ p: 3, mb: 2, bgcolor: '#333', color: '#fff' }}>
+          <Paper elevation={3} sx={{ p: 3, mb: 2, bgcolor: '#333', color: '#fff' }} id="contact-section">
             <Typography variant="h6" gutterBottom align="center" color="inherit">
               Contact Information
             </Typography>
