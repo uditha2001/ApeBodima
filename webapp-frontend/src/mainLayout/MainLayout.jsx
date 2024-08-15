@@ -2,6 +2,7 @@ import { React} from "react";
 import HeaderComponent from "../component/HeaderComponent";
 import { Outlet } from "react-router-dom";
 import FooterComponent from "../component/FooterComponent";
+
 import "./MainLayout.css";
 const MainLayout = () => {
   return (
