@@ -2,6 +2,7 @@ import { React} from "react";
 import HeaderComponent from "../component/HeaderComponent";
 import { Outlet } from "react-router-dom";
 import FooterComponent from "../component/FooterComponent";
+
 import "./MainLayout.css";
 const MainLayout = () => {
   return (
@@ -9,7 +10,7 @@ const MainLayout = () => {
       style={{
         minHeight: "100vh",
         width: "100%",
-        display: "grid",
+        display:"flex",
         gap: "10px",
         flexDirection: "column",
         position: "relative",
@@ -18,13 +19,14 @@ const MainLayout = () => {
         justifyContent: "center",
       }}
     >
-      <div style={{ position: "fixed", zIndex: "100" }}>
+      <div style={{ position:"fixed", zIndex: "100",top:"0px" }}>
         <HeaderComponent />
       </div>
       <div
         style={{
-          position: "absolute",
+          position: "relative",
           marginTop: "80px",
+          marginBottom:"30px",
           alignContent: "center",
           justifyContent: "center",
           width: "100%",
@@ -32,7 +34,9 @@ const MainLayout = () => {
         }}
       >
         <Outlet />
-        <div className="footer">
+        <div className="footer" style={{
+          position:"relative"
+        }}>
           <FooterComponent />
         </div>
       </div>

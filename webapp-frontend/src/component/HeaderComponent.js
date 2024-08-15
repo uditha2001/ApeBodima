@@ -7,6 +7,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
+import { Link } from "react-router-dom";
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -14,13 +15,14 @@ const HeaderComponent = () => {
   const linkRef2 = useRef(null);
   const linkRef3 = useRef(null);
   const linkRef4 = useRef(null);
+  const linkRef0 = useRef(null);
   const [regStatus, setRegStatus] = useState(false);
   const [closeDialog, setCloseDialog] = useState(true);
   const [logStatus, setLogStatus] = useState(false);
   const [closeLogDialog, setLogCloseDialog] = useState(true);
+  
 
   useEffect(() => {
-    //let i = 0;
     const handleResize = () => {
       let fullWidth = window.screen.availWidth;
       setWidth(window.innerWidth);
@@ -51,25 +53,28 @@ const HeaderComponent = () => {
             style={{
               width: "100px",
               height: "60px",
+              cursor: "pointer",
             }}
+            onClick={() => handCllick(linkRef0)}
           />
+          <Link ref={linkRef0} to="/"></Link>
         </div>
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
           Explore
         </Button>
-        {/* <a ref={linkRef1} href="#explore" style={{ display: "none" }} /> */}
+        {<Link ref={linkRef1} to="/explore"></Link>}
         <Button variant="text" onClick={() => handCllick(linkRef2)}>
           Add Place
         </Button>
-        {/* <a ref={linkRef2} href="#addPlace" style={{ display: "none" }} /> */}
+        <Link ref={linkRef2} to="/addBodim"></Link>
         <Button variant="text" onClick={() => handCllick(linkRef3)}>
           User Account
         </Button>
-        {/* <a ref={linkRef3} href="#userAccount" style={{ display: "none" }} /> */}
+        <Link ref={linkRef3} to="/userAccount"></Link>
         <Button variant="text" onClick={() => handCllick(linkRef4)}>
           view favorite
         </Button>
-        {/* <a ref={linkRef2} href="#viewfavorite" style={{ display: "none" }} /> */}
+        <Link ref={linkRef4} to="/viewfaviourite"></Link>
 
         <Button
           variant="outlined"
@@ -128,18 +133,22 @@ const HeaderComponent = () => {
           <CloseRoundedIcon></CloseRoundedIcon>
         </IconButton>
         <Grid container className="navbar2" direction={"column"}>
-          <Button variant="text">
-            <a href="#explore">Explore</a>
+          <Button variant="text" onClick={() => handCllick(linkRef1)}>
+            Explore
           </Button>
-          <Button variant="text">
-            <a href="#addPlace">Add Place</a>
+          {<Link ref={linkRef1} to="/explore"></Link>}
+          <Button variant="text" onClick={() => handCllick(linkRef2)}>
+            Add Place
           </Button>
-          <Button variant="text">
-            <a href="#userAccount">User Account</a>
+          <Link ref={linkRef2} to="/addBodim"></Link>
+          <Button variant="text" onClick={() => handCllick(linkRef3)}>
+            User Account
           </Button>
-          <Button variant="text">
-            <a href="#viewFavourite">View favorite</a>
+          <Link ref={linkRef3} to="/userAccount"></Link>
+          <Button variant="text" onClick={() => handCllick(linkRef4)}>
+            view favorite
           </Button>
+          <Link ref={linkRef4} to="/viewfaviourite"></Link>
           <Button
             variant="outlied"
             maxWidth="20px"
