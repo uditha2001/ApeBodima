@@ -19,6 +19,7 @@ const HeaderComponent = () => {
   const [closeDialog, setCloseDialog] = useState(true);
   const [logStatus, setLogStatus] = useState(false);
   const [closeLogDialog, setLogCloseDialog] = useState(true);
+  
 
   useEffect(() => {
     //let i = 0;

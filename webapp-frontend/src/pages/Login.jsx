@@ -1,213 +1,226 @@
+import {
+  //Box,
+  TextField,
+  Typography,
+  Button,
+  Grid,
+  Container,
+  Link
+} from "@mui/material";
 
+import {  useState } from "react";
+import ApeBODIMA from "../component/images/APEBODIMA.svg";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import CloseIcon from '@mui/icons-material/Close';
 
-// import { Box, TextField, Container, Typography, Button , Link} from "@mui/material";
-// // import { useEffect, useState } from "react";
-// import sideImg from "../component/images/login_image.png";
-// // import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-// import InputAdornment from "@mui/material/InputAdornment";
-// import IconButton from "@mui/material/IconButton";
-// import CloseIcon from '@mui/icons-material/Close';
-// // import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-// // const Login = ({closeLogDialog,logStatus}) => {
-// //   const [showPass, setShowPass] = useState(false);
-// //   const [firstPassShow, setfirstPassShow] = useState(false);
-// //   const [password1,setPassword1]=useState(null);
-// //   const [password2,setPassword2]=useState(null);
-// //   const [comaprision,setComparition]=useState(true);
-// //   const [errors,setError]=useState(false);
-//   const closeRegisterPage=()=>{
-//     closeLogDialog=false;
-//     logStatus(false);
-// }
-//   // useEffect(
-//   //   ()=>{
+const Login = ({closeLogDialog ,logStatus}) => {
+  
+  const [firstPassShow, setFirstPassShow] = useState(false);
+
+  
+ 
+    const closeLoginPage=()=>{
+      closeLogDialog=false;
+
+      logStatus(false);
       
-//   // //     if(password1===password2 || password2==null){
-//   // //       setComparition(true); 
-//   // //       setError(false);    
-//   // //     }
-//   // //     else{
-//   // //       setComparition(false);
-//   // //       setError(true);
-//   // //     }
-//   // //   }
-//   // // )
-//   return (
-//     <Container
-//       className="container"
-//       maxWidth="md"
-      
-//       sx={{
-//         bgcolor: "#FFFFFF", 
-//         display: "flex",
-//         flexDirection: "row",
-//         justifyContent: "space-between",
-//         width: "920px",
-//         height: "672px",
-//         marginTop: "20px",
-//         borderRadius: "8px",
-//         overflow: "hidden", 
-//       }}
-//     >
-//         <IconButton
-//         sx={
-//           {
-//             position:"fixed",
-//             right:{
-//               xs:"20px",
-//               md:"100px",
-//               sm:"0px",
-//               lg:"330px"
-//             },
-//             top:{
-//               xs:"10px",
-//               md:"10px",
-//               sm:"10px",
-//               lg:"10px"
-//             },
-//             '&:hover': {
-//           color: 'red',
-//         }
+  }
+  
 
-//           }
-//         }
-//         onClick={()=>{
-//           closeRegisterPage();
-//         }}
-//       >
-//         <CloseIcon/>
-//       </IconButton>
-//        <Box
-//         className="imageSide"
-//         sx={{ bgcolor: "#EBEFFF" }} 
-//         width={366}
-//         height={"auto"}
-//         marginBottom={3}
-//         display="flex"
-//         justifyContent="center"
-//         alignItems="center"
-//       >
-//         <img
-//           src={sideImg}
-//           alt="sideimages"
-//           style={{ marginTop: "50px", marginLeft: "-10px", marginRight: "-10px" }}
-//         />
-//       </Box>
-//       <Box
-//         className="signupSide"
-//         width={800}
-//         height={800}
-//         sx={{
-//           bgcolor: "white",
-//           marginTop: "0px",
-//           marginBottom: "0px",
-//           marginRight: "0px",
-//           display: "flex",
-//           flexDirection: "column",
-//           alignItems: "center",
-//         }}
-//         component="form"
-//       >
-//         <Typography
-//   sx={{ color: "#1A1A1A", fontSize: "24px", fontWeight: "600", marginTop: "50px" }}
-// >
-//   Login to your account
-// </Typography>
-//         <div style={{ marginTop: "80px", position: "relative" }}>
+  return (
+    <Container
+    maxWidth={"md"}
+
+    sx={{
+      bgcolor: "#EBEFFF",
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop:"10px",
+      marginBottom:"10px",
+      flexDirection:"column",
+      position:"relative"    
+    }}
+    >
+       <IconButton
+        sx={
+          {
+            position:"absolute",
+            right:{
+              xs:"10px",
+              md:"10px",
+              sm:"10px",
+              lg:"10px"
+            },
+            top:{
+              xs:"10px",
+              md:"10px",
+              sm:"10px",
+              lg:"10px"
+            },
+            '&:hover': {
+          color: 'red',
+        }
+
+          }
+        }
+        onClick={()=>{
+          closeLoginPage();
+        }}
+      >
+        <CloseIcon/>
+      </IconButton>
+      
+      <Grid
+        container
+        className="container"
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          height: "auto",
+          padding: "10px"
           
-//           <Typography>Email-Address:</Typography>
-//           <TextField
-//             className="custom-textfield"
-//             type="input"
-//             fullWidth
-//             variant="outlined"
-//             sx={{ position: "relative", height: "8px", width: "346px" }}
-//             size="small"
-//           />
-//         </div>
-        
+        }}
+      >
+       
+      
+        <Grid
+          item
+          xs={12}
+          md={5}
+          sm={6}
+          className="imageSide"
+          sx={{
+            bgcolor: "#EBEFFF",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height:"100%"
+          }}
+        >
+          <img
+            src={ApeBODIMA}
+            alt="sideimages"
+            style={{ marginTop: "100px", maxWidth: "100%", height: "auto" }}
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={5}
+          className="signupSide"
+          sx={{
+            bgcolor: "white",
+            marginTop: "77px",
+            marginBottom: "78px",
+            padding: "20px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            height:"100%",
+            position:"relative"
+          }}
+          component="form"
+        >
+          <Typography
+            sx={{ color: "#1A1A1A", fontSize: "16px", fontWeight: "600" }}
+          >
+            Login to your account
+          </Typography>
+          
+          <div style={{ marginTop: "30px", width: "100%" }}>
+            <Typography>Email-Address:</Typography>
+            <TextField
+              className="custom-textfield"
+              type="input"
+              fullWidth
+              variant="outlined"
+              size="small"
+            />
+          </div>
+          
 
-//         <div style={{ marginTop: "30px", position: "relative" }}>
-//           <Typography>Password:</Typography>
+           <div style={{ marginTop: "30px", width: "100%" }}>
+            <Typography>Password:</Typography>
+            <TextField
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      sx={{ cursor: "pointer" }}
+                      onClick={() => {
+                        setFirstPassShow(!firstPassShow);
+                      }}
+                    >
+                      {firstPassShow ? (
+                        <VisibilityOutlinedIcon />
+                      ) : (
+                        <VisibilityOffOutlinedIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              className="custom-textfield"
+              type={firstPassShow ? "text" : "password"}
+              fullWidth
+              variant="outlined"
+              size="small"
+             
+            />
+            <Link
+              href="#forgot"
+              sx={{
+                position: "absolute",
+                right: "30px",
+                top: "179px",
+                transform: "translateY(-50%)",
+                fontSize: "12px",
+                color: "#007BFF",
+              }}
+            >
+              Forgot?
+            </Link>
+             
+          </div>
+          
+          <div style={{ marginTop: "45px", width: "100%" }}>
+            <Button sx={{ bgcolor: "#9EC9F7", width: "100%" }}>Login Now</Button>
+          </div>
+          <div className="register">
+            <Typography
+              sx={{ justifyContent: "space-between", marginTop: "10px" }}
+              className="loggintext"
+            >
+              <span>Don't have an account?</span>
+              <a
+                style={{
+                  cursor: "pointer",
+                  marginLeft: "4px",
+                  color: "blue",
+                  textDecoration: "none",
+                }}
+                href="#login"
+              >
+                Register
+              </a>
+            </Typography>
+          </div>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+};
 
-//           <TextField
-//             InputProps={{
-//               endAdornment: (
-//                 <InputAdornment position="end">
-//                   <IconButton
-//                     sx={{ cursor: "pointer" }}
-//                     onClick={() => {
-//                       // if (firstPassShow === true) {
-//                       //   // setfirstPassShow(false);
-//                       // } else {
-//                       //   setfirstPassShow(true);
-//                       // }
-//                     }}
-//                   >
-//                     {/* {firstPassShow ? 
-//                       <VisibilityOutlinedIcon />
-//                      : 
-//                       <VisibilityOffOutlinedIcon />
-//                     } */}
-//                   </IconButton>
-//                 </InputAdornment>
-//               ),
-//             }}
-//             className="custom-textfield"
-//             // type={firstPassShow ? "text" : "password"}
-//             fullWidth
-//             variant="outlined"
-//             sx={{ position: "relative", height: "8px", width: "346px" }}
-//             size="small"
-//             // onChange={(e)=>{
-//             //         setPassword1(e.target.value);
-//             // }}  
-//           />
+export default Login;
 
-//             <Link
-//               href="#forgot"
-//               sx={{ position: "absolute", right: "10px", top: "13px", transform: "translateY(-50%)", fontSize: "12px", color: "#007BFF" }}
-//             >
-//               Forgot?
-//             </Link>
-//         </div>
-        
-//         <div style={{ marginTop: "45px", position: "relative" }} >
-//         <Button
-//   variant="contained"
-//   sx={{
-//     bgcolor: "#1A73E8",
-//     color: "white",
-//     width: "346px",
-//     height: "40px",
-//     textTransform: "none",
-//     fontWeight: "bold",
-//     ":hover": { bgcolor: "#1558b3" },
-//   }}
-// >
-//   Login now
-// </Button>
 
-//         </div>
-//         <div className="register">
-//           <Typography sx={{ justifyContent: "space-between",marginTop:"10px" }} className="loggintext">
-//             <spam>Don't Have An Account?</spam>
-//             <a
-//               style={{
-//                 cursor: "pointer",
-//                 marginLeft: "4px",
-//                 color: "blue",
-//                 textDecoration: "none",
-//               }}
-//               href="#login"
-//             >
-//               Sign Up
-//             </a>{" "}
-//           </Typography>
-//         </div>
-//       </Box>
-//     </Container>
-//   );
-// // };
 
-// export default Login;
+
+
+
