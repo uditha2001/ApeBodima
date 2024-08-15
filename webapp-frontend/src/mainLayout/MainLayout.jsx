@@ -10,7 +10,7 @@ const MainLayout = () => {
       style={{
         minHeight: "100vh",
         width: "100%",
-        display: "grid",
+        display:"flex",
         gap: "10px",
         flexDirection: "column",
         position: "relative",
@@ -19,7 +19,7 @@ const MainLayout = () => {
         justifyContent: "center",
       }}
     >
-      <div style={{ position:"fixed", zIndex: "100" }}>
+      <div style={{ position:"fixed", zIndex: "100",top:"0px" }}>
         <HeaderComponent />
       </div>
       <div
@@ -34,7 +34,9 @@ const MainLayout = () => {
         }}
       >
         <Outlet />
-        <div className="footer">
+        <div className="footer" style={{
+          position:"relative"
+        }}>
           <FooterComponent />
         </div>
       </div>
