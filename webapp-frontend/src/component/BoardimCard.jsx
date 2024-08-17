@@ -93,9 +93,9 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         }}
       >
         <IconButton
-          onClick={() => {
-            {checkfaviorite()}
-          }}
+          onClick={() => 
+          checkfaviorite()
+          }
           sx={{
             
           }}
