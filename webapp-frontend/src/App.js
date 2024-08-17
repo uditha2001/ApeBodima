@@ -5,11 +5,10 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import AddBodim from "./pages/AddBodim";
 import FilterBar from "./component/FilterBarComponent";
-
-
+import Explore from "./pages/Explore";
+import UserManagement from "./pages/UserManagement";
 const App = () => {
   return (
-   
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
@@ -17,10 +16,12 @@ const App = () => {
           <Route path="/addBodim" element={<AddBodim />} />
           <Route path="/a" element={<AboutUs />} />
           <Route path="/filter" element={<FilterBar />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/userAccount" element={<UserManagement/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default App;
