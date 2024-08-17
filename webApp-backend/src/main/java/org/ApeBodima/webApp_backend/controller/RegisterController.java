@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/registration")
+@CrossOrigin(origins = "http://localhost:8080")
 public class RegisterController {
 
     //setter injection for registerService
@@ -20,6 +21,9 @@ public class RegisterController {
     //Define the Endpoint for registration
     @PostMapping("/user")
     public ResponseEntity<String> createUser(@RequestBody RegistrationDTO registrationDTO){
+        if(registrationDTO ==null){
+            return ResponseEntity.ok("incomplete data");
+        }
         return ResponseEntity.ok(registerService.addPublicUser(registrationDTO));
     }
 

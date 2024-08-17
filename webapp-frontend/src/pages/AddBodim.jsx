@@ -1,6 +1,7 @@
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FeedbackIcon from '@mui/icons-material/Feedback';
+import axios from "axios";
 import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import {
   Box,
@@ -18,7 +19,7 @@ import {
   Paper,
   IconButton
 } from '@mui/material';
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import ReviewCardComponent from '../component/ReviewCardComponent';
 
 const sectionContainerStyle={
@@ -63,8 +64,21 @@ const AppartmentDetails=()=>{
     contactError:false,
     distanceToUniError:false
   }
+
+  const [bodimTypes,setBodimTypes]=useState([])
   const [BodimDetails,setBodimDetails]=useState(initialState)
   let[BodimDetailsError,setBodimDetailsError]=useState(initialErrorState)
+
+  useEffect(()=>
+  {
+    //loadbodimTypes();
+  },[]);
+
+  const loadbodimTypes=async()=>{
+    const result=await axios.get("http://localhost:8080");
+    setBodimTypes(...bodimTypes,result);
+    console.log(result);
+  }
 
   const handleChange=(e)=>{
     const {name ,value}=e.target
@@ -432,6 +446,7 @@ const AddBodim = () => {
               <AvailabelFeatures/>
               <AddPhotos/>
               <AddReview/>
+              <input type='submit'/>
             </form>
           </Box>
     )

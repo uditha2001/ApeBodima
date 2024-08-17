@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/favourite_bodim")
-
+@CrossOrigin(origins = "http://localhost:8080")
 public class FavoriteBodimRemovalController {
     @Autowired
     private FavoriteBodimRemovalService favoriteBodimRemovalService;

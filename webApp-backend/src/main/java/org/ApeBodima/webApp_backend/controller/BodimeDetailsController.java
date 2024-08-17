@@ -1,7 +1,5 @@
 package org.ApeBodima.webApp_backend.controller;
 
-
-import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
 import org.ApeBodima.webApp_backend.DTO.request.BodimeDetailsSaveDTO;
 import org.ApeBodima.webApp_backend.service.serviceInterFaces.BodimeDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/bodime-details")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:8080")
 public class BodimeDetailsController {
    @Autowired
     private BodimeDetailsService bodimeDetailsService;
