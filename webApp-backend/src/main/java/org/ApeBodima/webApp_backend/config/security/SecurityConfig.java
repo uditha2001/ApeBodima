@@ -33,14 +33,14 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/api/v1/registration/user").permitAll()
+                        .requestMatchers("http://localhost:8080/api/v1/registration/user").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
                 .httpBasic(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable);//TODO enable csrf tokens in request header
+
         return http.build();
     }
     
