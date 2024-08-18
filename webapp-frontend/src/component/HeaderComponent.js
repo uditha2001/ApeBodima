@@ -47,6 +47,7 @@ const HeaderComponent = () => {
     <div>
       <header className="header">
         <div className="logodiv">
+          <IconButton>
           <img
             src={ApeBODIMA}
             alt="logo"
@@ -57,6 +58,7 @@ const HeaderComponent = () => {
             }}
             onClick={() => handCllick(linkRef0)}
           />
+          </IconButton>
           <Link ref={linkRef0} to="/"></Link>
         </div>
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
