@@ -104,7 +104,7 @@ const AboutUs = () => {
               Join thousands of students who have found their ideal university home through our service.
             </Typography>
           </Paper>
-
+          
           <Paper elevation={3} sx={{ p: 2, mb: 2, bgcolor: '#e8eaf6' }} id="terms-policies-section">
             <Typography variant="h6" gutterBottom align="justify">
               Terms & Policies
