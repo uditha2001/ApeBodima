@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
 import org.ApeBodima.webApp_backend.DTO.request.BodimeReviewSaveDTO;
+import org.ApeBodima.webApp_backend.DTO.request.FavouriteBodimResponseDTO;
 
 import java.util.List;
 import java.util.Set;
@@ -71,8 +72,28 @@ public class Bodime_Detail {
     private List<Bodime_Photos> bodime_photos;
 
 
-    @OneToOne(mappedBy = "bodime_detail")
+    @OneToOne(mappedBy = "bodime_details")
     private WebApp_User webApp_user1;
+
+    public String getBodimId() {
+        return bodimId;
+    }
+
+    public String getBodimPlaceName() {
+        return bodimPlaceName;
+    }
+
+    public String getLocationAddress() {
+        return locationAddress;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public List<Bodime_Photos> getBodime_photos() {
+        return bodime_photos;
+    }
 
     public Bodime_Detail(String bodimId, double price, int capacity, double distanceToUni, String type, int numChairs, int numFans, int numTables, int numNets, int kitchen, String locationAddress, String bodimPlaceName) {
         this.bodimId = bodimId;
@@ -110,4 +131,5 @@ public class Bodime_Detail {
         this.nearestCity = nearestCity;
         this.bodimPlaceName = bodimPlaceName;
     }
+
 }
