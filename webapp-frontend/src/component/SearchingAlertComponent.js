@@ -26,7 +26,7 @@ const SearchingAlertComponent=()=>{
                                     </Link>
                                 </Grid>
                                 <Grid xs>
-                                    <Link to="/a">
+                                    <Link to="/a/terms-policies-section">
                                     <Button variant="outlined">
                                         Learn more
                                     </Button>
