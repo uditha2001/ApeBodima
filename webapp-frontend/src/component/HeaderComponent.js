@@ -7,22 +7,22 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
-import {Link}  from "react-router-dom";
+import { Link } from "react-router-dom";
+import FavoriteListView from '../pages/FavoriteListView'; 
+
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const linkRef1 = useRef(null);
   const linkRef2 = useRef(null);
   const linkRef3 = useRef(null);
-  const linkRef4 = useRef(null);
   const [regStatus, setRegStatus] = useState(false);
   const [closeDialog, setCloseDialog] = useState(true);
   const [logStatus, setLogStatus] = useState(false);
   const [closeLogDialog, setLogCloseDialog] = useState(true);
-  
+  const [favoriteOpen, setFavoriteOpen] = useState(false); 
 
   useEffect(() => {
-    //let i = 0;
     const handleResize = () => {
       let fullWidth = window.screen.availWidth;
       setWidth(window.innerWidth);
@@ -32,12 +32,12 @@ const HeaderComponent = () => {
       }
     };
 
-    // Add event listener on mount
+    
     window.addEventListener("resize", handleResize);
-    // Cleanup the event listener on unmount
     return () => window.removeEventListener("resize", handleResize);
   });
-  const handCllick = (linkRef) => {
+
+  const handleClick = (linkRef) => {
     if (linkRef.current) {
       linkRef.current.click();
     }
@@ -56,35 +56,38 @@ const HeaderComponent = () => {
             }}
           />
         </div>
-        <Button variant="text" onClick={() => handCllick(linkRef1)}>
+        <Button variant="text" onClick={() => handleClick(linkRef1)}>
           Explore
         </Button>
-        { 
-          <Link ref={linkRef1} to="/explore"></Link>
-          }
-        <Button variant="text" onClick={() => handCllick(linkRef2)}>
+        <Link ref={linkRef1} to="/explore"></Link>
+
+        <Button variant="text" onClick={() => handleClick(linkRef2)}>
           Add Place
         </Button>
         <Link ref={linkRef2} to="/addPlace"></Link>
-        <Button variant="text" onClick={() => handCllick(linkRef3)}>
+
+        <Button variant="text" onClick={() => handleClick(linkRef3)}>
           User Account
         </Button>
         <Link ref={linkRef3} to="/userAccount"></Link>
-        <Button variant="text" onClick={() => handCllick(linkRef4)}>
-          view favorite
+
+        
+        <Button variant="text" onClick={() => setFavoriteOpen(true)}>
+          View Favorite
         </Button>
-          <Link ref={linkRef4} to="/viewfaviourite"></Link>
+
+        
+        <FavoriteListView open={favoriteOpen} handleClose={() => setFavoriteOpen(false)} />
 
         <Button
           variant="outlined"
-          maxWidth="20px"
           className="logout"
           onClick={() => {
             setLogCloseDialog(false);
             setLogStatus(true);
           }}
         >
-          <span>Login in</span>
+          <span>Log in</span>
         </Button>
         <Modal
           open={logStatus}
@@ -94,6 +97,7 @@ const HeaderComponent = () => {
         >
           <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
         </Modal>
+
         <Button
           variant="outlined"
           className="signin"
@@ -118,8 +122,9 @@ const HeaderComponent = () => {
           onClick={() => {
             setSideBar(true);
           }}
-        ></MenuIcon>
+        />
       </header>
+
       <div
         className="container2"
         style={{ right: `${sideBar ? "0px" : "-2000px"}` }}
@@ -129,37 +134,38 @@ const HeaderComponent = () => {
             setSideBar(false);
           }}
         >
-          <CloseRoundedIcon></CloseRoundedIcon>
+          <CloseRoundedIcon />
         </IconButton>
         <Grid container className="navbar2" direction={"column"}>
-        <Button variant="text" onClick={() => handCllick(linkRef1)}>
-          Explore
-        </Button>
-        { 
+          <Button variant="text" onClick={() => handleClick(linkRef1)}>
+            Explore
+          </Button>
           <Link ref={linkRef1} to="/explore"></Link>
-          }
-        <Button variant="text" onClick={() => handCllick(linkRef2)}>
-          Add Place
-        </Button>
-        <Link ref={linkRef2} to="/addPlace"></Link>
-        <Button variant="text" onClick={() => handCllick(linkRef3)}>
-          User Account
-        </Button>
-        <Link ref={linkRef3} to="/userAccount"></Link>
-        <Button variant="text" onClick={() => handCllick(linkRef4)}>
-          view favorite
-        </Button>
-          <Link ref={linkRef4} to="/viewfaviourite"></Link>
+
+          <Button variant="text" onClick={() => handleClick(linkRef2)}>
+            Add Place
+          </Button>
+          <Link ref={linkRef2} to="/addPlace"></Link>
+
+          <Button variant="text" onClick={() => handleClick(linkRef3)}>
+            User Account
+          </Button>
+          <Link ref={linkRef3} to="/userAccount"></Link>
+
+          {/* View Favorite Button in Sidebar */}
+          <Button variant="text" onClick={() => setFavoriteOpen(true)}>
+            View Favorite
+          </Button>
+
           <Button
-            variant="outlied"
-            maxWidth="20px"
+            variant="outlined"
             className="logout"
             onClick={() => {
               setLogCloseDialog(false);
               setLogStatus(true);
             }}
           >
-            <span>Login in</span>
+            <span>Log in</span>
           </Button>
           <Modal
             open={logStatus}
@@ -169,6 +175,7 @@ const HeaderComponent = () => {
           >
             <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
           </Modal>
+
           <Button
             variant="outlined"
             className="signin"
