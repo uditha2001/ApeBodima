@@ -18,6 +18,7 @@ const MainLayout = () => {
         alignContent: "center",
         justifyContent: "center",
       }}
+      id="headerSection"
     >
       <div style={{ position: "fixed", zIndex: "100", top: "0px" }}>
         <HeaderComponent />

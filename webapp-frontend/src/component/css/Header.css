@@ -101,7 +101,7 @@
       transition: all 400ms ease-in;
     }
   
-    .header button{
+    .header button:not(:first-child){
       display: none;
       transition: all 400ms ease-in;
     }

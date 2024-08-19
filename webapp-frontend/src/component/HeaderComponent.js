@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -20,7 +21,6 @@ const HeaderComponent = () => {
   const [closeDialog, setCloseDialog] = useState(true);
   const [logStatus, setLogStatus] = useState(false);
   const [closeLogDialog, setLogCloseDialog] = useState(true);
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,35 +48,44 @@ const HeaderComponent = () => {
       <header className="header">
         <div className="logodiv">
           <IconButton>
-          <img
-            src={ApeBODIMA}
-            alt="logo"
-            style={{
-              width: "100px",
-              height: "60px",
-              cursor: "pointer",
-            }}
-            onClick={() => handCllick(linkRef0)}
-          />
+            <img
+              src={ApeBODIMA}
+              alt="logo"
+              style={{
+                width: "100px",
+                height: "60px",
+                cursor: "pointer",
+              }}
+              onClick={() => handCllick(linkRef0)}
+            />
           </IconButton>
-          <Link ref={linkRef0} to="/"></Link>
+
+          <HashLink ref={linkRef0} smooth to="/#headerSection"></HashLink>
         </div>
         <Button variant="text" onClick={() => handCllick(linkRef1)}>
           Explore
         </Button>
-        {<Link ref={linkRef1} to="/explore"></Link>}
+        <HashLink ref={linkRef1} smooth to="/explore#headerSection"></HashLink>
         <Button variant="text" onClick={() => handCllick(linkRef2)}>
           Add Place
         </Button>
-        <Link ref={linkRef2} to="/addBodim"></Link>
+        <HashLink ref={linkRef2} smooth to="/addBodim#headerSection"></HashLink>
         <Button variant="text" onClick={() => handCllick(linkRef3)}>
           User Account
         </Button>
-        <Link ref={linkRef3} to="/userAccount"></Link>
+        <HashLink
+          ref={linkRef3}
+          smooth
+          to="/userAccount#headerSection"
+        ></HashLink>
         <Button variant="text" onClick={() => handCllick(linkRef4)}>
           view favorite
         </Button>
-        <Link ref={linkRef4} to="/viewfaviourite"></Link>
+        <HashLink
+          ref={linkRef4}
+          smooth
+          to="/viewfaviourite#headerSection"
+        ></HashLink>
 
         <Button
           variant="outlined"
@@ -138,19 +147,15 @@ const HeaderComponent = () => {
           <Button variant="text" onClick={() => handCllick(linkRef1)}>
             Explore
           </Button>
-          {<Link ref={linkRef1} to="/explore"></Link>}
           <Button variant="text" onClick={() => handCllick(linkRef2)}>
             Add Place
           </Button>
-          <Link ref={linkRef2} to="/addBodim"></Link>
           <Button variant="text" onClick={() => handCllick(linkRef3)}>
             User Account
           </Button>
-          <Link ref={linkRef3} to="/userAccount"></Link>
           <Button variant="text" onClick={() => handCllick(linkRef4)}>
             view favorite
           </Button>
-          <Link ref={linkRef4} to="/viewfaviourite"></Link>
           <Button
             variant="outlied"
             maxWidth="20px"
