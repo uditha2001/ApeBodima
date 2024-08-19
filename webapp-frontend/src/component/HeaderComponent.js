@@ -7,7 +7,6 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
-import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -47,7 +46,7 @@ const HeaderComponent = () => {
     <div>
       <header className="header">
         <div className="logodiv">
-          <IconButton>
+          <IconButton onClick={() => handCllick(linkRef0)}>
             <img
               src={ApeBODIMA}
               alt="logo"
@@ -56,7 +55,6 @@ const HeaderComponent = () => {
                 height: "60px",
                 cursor: "pointer",
               }}
-              onClick={() => handCllick(linkRef0)}
             />
           </IconButton>
 
@@ -89,7 +87,7 @@ const HeaderComponent = () => {
 
         <Button
           variant="outlined"
-          maxWidth="20px"
+          maxwidth="20px"
           className="logout"
           onClick={() => {
             setLogCloseDialog(false);
@@ -100,11 +98,13 @@ const HeaderComponent = () => {
         </Button>
         <Modal
           open={logStatus}
-          onClose={closeLogDialog}
+          onClose={() => setLogCloseDialog(false)}
           disableScrollLock
           sx={{ overflowY: "auto", height: "100%" }}
         >
-          <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+          <div>
+            <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+          </div>
         </Modal>
         <Button
           variant="outlined"
@@ -118,11 +118,13 @@ const HeaderComponent = () => {
         </Button>
         <Modal
           open={regStatus}
-          onClose={closeDialog}
+          onClose={() => setCloseDialog(false)}
           disableScrollLock
           sx={{ overflowY: "auto", height: "100%" }}
         >
-          <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+          <div>
+            <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+          </div>
         </Modal>
 
         <MenuIcon
@@ -158,7 +160,7 @@ const HeaderComponent = () => {
           </Button>
           <Button
             variant="outlied"
-            maxWidth="20px"
+            maxwidth="20px"
             className="logout"
             onClick={() => {
               setLogCloseDialog(false);
@@ -169,11 +171,13 @@ const HeaderComponent = () => {
           </Button>
           <Modal
             open={logStatus}
-            onClose={closeLogDialog}
+            onClose={() => setLogCloseDialog(false)}
             disableScrollLock
             sx={{ overflowY: "auto", height: "100%" }}
           >
-            <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+            <div>
+              <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+            </div>
           </Modal>
           <Button
             variant="outlined"
@@ -187,11 +191,16 @@ const HeaderComponent = () => {
           </Button>
           <Modal
             open={regStatus}
-            onClose={closeDialog}
+            onClose={() => setCloseDialog(false)}
             disableScrollLock
             sx={{ overflowY: "auto", height: "100%" }}
           >
-            <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+            <div>
+              <Register
+                closeDialog={closeDialog}
+                registerStatus={setRegStatus}
+              />
+            </div>
           </Modal>
         </Grid>
       </div>
