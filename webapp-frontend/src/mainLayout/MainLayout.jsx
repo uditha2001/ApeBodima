@@ -25,7 +25,7 @@ const MainLayout = () => {
       <div
         style={{
           position: "relative",
-          marginTop: "80px",
+          marginTop: "50px",
           alignContent: "center",
           justifyContent: "center",
           width: "100%",
