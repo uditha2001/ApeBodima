@@ -9,6 +9,7 @@
 // import Login from "../pages/Login";
 // import { Link } from "react-router-dom";
 // import FavoriteListView "../pages/FavoriteListView";
+
 // const HeaderComponent = () => {
 //   const [sideBar, setSideBar] = useState(false);
 //   const [width, setWidth] = useState(window.innerWidth);
@@ -138,7 +139,7 @@
 
 //       <div
 //         className="container2"
-//         style={{ right: `${sideBar ? "0px" : "-2000px"}` }}
+//         style={{ right: ```${sideBar ? "0px" : "-2000px"}`` }}
 //       >
 //         <IconButton
 //           onClick={() => {
@@ -181,9 +182,9 @@
 //           </Button>
 //           <Link ref={linkRef3} to="/userAccount"></Link>
 //           <Button variant="text" onClick={() => setFavoriteOpen(true)}>
-              //   View Favorite
-              // </Button>
-              // <FavoriteListView open={favoriteOpen} handleClose={() => setFavoriteOpen(false)} />
+//                 View Favorite
+//               </Button>
+//               <FavoriteListView open={favoriteOpen} handleClose={() => setFavoriteOpen(false)} />
 //           <Button
 //             variant="outlined"
 //             className="logout"
