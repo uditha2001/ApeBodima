@@ -1,4 +1,4 @@
-package org.ApeBodima.webApp_backend.DTO.request;
+package org.ApeBodima.webApp_backend.DTO.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
