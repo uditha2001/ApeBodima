@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/registration")
-@CrossOrigin(origins = "http://localhost:8080")
 public class RegisterController {
 
     //setter injection for registerService

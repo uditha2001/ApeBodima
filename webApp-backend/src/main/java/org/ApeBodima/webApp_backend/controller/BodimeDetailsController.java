@@ -8,19 +8,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/bodime-details")
-@CrossOrigin(origins = "http://localhost:8080")
 public class BodimeDetailsController {
    @Autowired
     private BodimeDetailsService bodimeDetailsService;
-
 
     @PostMapping("/save/{userId}")
     public String saveCustomer(@RequestBody BodimeDetailsSaveDTO bodimeDetailsSaveDTO,@PathVariable(value="userId") String userId){
         if (bodimeDetailsSaveDTO == null) {
             throw new IllegalArgumentException("BodimeDetailsSaveDTO cannot be null");
         }
-
-
         String message = bodimeDetailsService.save(bodimeDetailsSaveDTO,userId);
         return message;
     }
