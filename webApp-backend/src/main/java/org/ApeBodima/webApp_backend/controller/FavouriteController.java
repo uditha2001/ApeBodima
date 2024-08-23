@@ -1,5 +1,6 @@
 package org.ApeBodima.webApp_backend.controller;
 
+import jakarta.transaction.Transactional;
 import org.ApeBodima.webApp_backend.DTO.request.FavouriteSaveDTO;
 import org.ApeBodima.webApp_backend.DTO.request.FavouriteBodimResponseDTO;
 import org.ApeBodima.webApp_backend.service.serviceInterFaces.FavouriteService;
@@ -26,5 +27,12 @@ public class FavouriteController {
     public ResponseEntity<List<FavouriteBodimResponseDTO>> getFavouritesByUserNIC(@PathVariable String userNIC) {
         List<FavouriteBodimResponseDTO> favourites = favouriteService.getFavouritesByUserNIC(userNIC);
         return ResponseEntity.ok(favourites);
+    }
+
+    @Transactional
+    @DeleteMapping("/delete/{bodimeid}")
+    public ResponseEntity<String> deleteFavouriteBodime(@PathVariable String bodimeid){
+        String message = favouriteService.deleteFavouriteBodime(bodimeid);
+        return ResponseEntity.ok(message);
     }
 }

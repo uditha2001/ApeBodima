@@ -17,9 +17,10 @@ const FavoriteListView = ({ open, handleClose }) => {
 
   const fetchFavorites = async () => {
     try {
-      const userNIC = 'user-nic'; // Replace with actual user NIC
-      const response = await axios.get(`/api/v1/favourite/user/${userNIC}`);
+      const userNIC = '200124601441'; // Replace with actual user NIC
+      const response = await axios.get(`http://localhost:8090/api/v1/favourite/user/${userNIC}`);
       setFavorites(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching favorites:', error);
     }
@@ -27,7 +28,8 @@ const FavoriteListView = ({ open, handleClose }) => {
 
   const handleRemove = async (bodimId) => {
     try {
-      await axios.delete(`/api/v1/favourite/remove/${bodimId}`);
+      await axios.delete(`http://localhost:8090/api/v1/favourite/delete/${bodimId}`);
+      console.log(bodimId);
       setFavorites(favorites.filter(fav => fav.bodimId !== bodimId));
     } catch (error) {
       console.error('Error removing favorite:', error);

@@ -67,7 +67,7 @@ public class Bodime_Detail {
     @OneToMany(mappedBy = "bodime_details" )
     private List<Bodime_Review> bodime_reviews;
 
-    @OneToMany(mappedBy = "bodime_details" )
+    @OneToMany(mappedBy = "bodime_details",fetch = FetchType.EAGER )
     private List<Bodime_Photos> bodime_photos;
 
     @OneToOne(mappedBy = "bodime_detail")
