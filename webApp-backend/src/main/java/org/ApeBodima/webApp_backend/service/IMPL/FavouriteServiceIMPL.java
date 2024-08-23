@@ -64,6 +64,20 @@ public class FavouriteServiceIMPL implements FavouriteService {
         return responseDTOs;
     }
 
+    @Override
+    public String deleteFavouriteBodime(String bodimeid) {
+        if(favouriteBodimListRepo.existsByBodimId(bodimeid)){
+            favouriteBodimListRepo.deleteByBodimId(bodimeid);
+            return "deleted sucessfully";
+
+        }
+        else{
+            return "failed to delete";
+        }
+
+
+    }
+
     private String getMainPhotoUrl(Bodime_Detail bodimeDetail) {
         List<Bodime_Photos> photos = bodimeDetail.getBodime_photos();
         if (photos != null && !photos.isEmpty()) {

@@ -7,6 +7,7 @@ const FavoriteItem = ({ bodim, onRemove }) => {
   const theme = useTheme();
   const isXsScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+
   return (
     <Box sx={{
       display: 'flex',

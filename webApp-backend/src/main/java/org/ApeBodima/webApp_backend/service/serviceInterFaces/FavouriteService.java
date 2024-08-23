@@ -8,4 +8,6 @@ import java.util.List;
 public interface FavouriteService {
     String addFavourite(FavouriteSaveDTO favouriteSaveDTO);
     List<FavouriteBodimResponseDTO> getFavouritesByUserNIC(String userNIC);
+
+    String deleteFavouriteBodime(String bodimeid);
 }
