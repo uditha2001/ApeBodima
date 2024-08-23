@@ -13,7 +13,7 @@ public class FavoriteBodimRemovalController {
     @Autowired
     private FavoriteBodimRemovalService favoriteBodimRemovalService;
 
-    @DeleteMapping("/remove")
+    @DeleteMapping("/remove/")
     public ResponseEntity<String> removeFavouriteBodim(@RequestBody FavouriteBodimRemovalDTO removalDTO) {
         if (!favoriteBodimRemovalService.existsInFavouriteList(removalDTO.getWebAppUserNIC(), removalDTO.getBodimId())) {
             return ResponseEntity.badRequest().body("The boarding place is not in the favourite list.");
@@ -30,4 +30,5 @@ public class FavoriteBodimRemovalController {
             return ResponseEntity.badRequest().body("Failed to remove the boarding place from the favourite list.");
         }
     }
+
 }
