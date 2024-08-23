@@ -5,12 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
-import org.ApeBodima.webApp_backend.DTO.request.BodimeReviewSaveDTO;
-import org.ApeBodima.webApp_backend.DTO.request.FavouriteBodimResponseDTO;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "bodime_details")
