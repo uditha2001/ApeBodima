@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/favourite_bodim")
-
 public class FavoriteBodimRemovalController {
     @Autowired
     private FavoriteBodimRemovalService favoriteBodimRemovalService;

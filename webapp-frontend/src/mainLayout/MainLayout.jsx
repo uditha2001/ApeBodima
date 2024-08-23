@@ -23,8 +23,9 @@ const MainLayout = () => {
       <div style={{ position:"fixed", zIndex: "100",top:"0px" }}>
         <HeaderComponent />
       </div>
-      <div
+      <div sx={{px: { xs: '60px' ,lg : '100px' }}}
         style={{
+          backgroundColor:'#F0EFEB',
           position: "relative",
           marginTop: "80px",
           marginBottom:"30px",

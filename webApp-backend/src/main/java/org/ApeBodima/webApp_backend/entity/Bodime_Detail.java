@@ -31,7 +31,6 @@ public class Bodime_Detail {
     @Column(name = "distance_to_UNI")
     private double distanceToUni;
 
-
     @Column(name = "type")
     private String type;
 
@@ -71,7 +70,6 @@ public class Bodime_Detail {
     @OneToMany(mappedBy = "bodime_details",fetch = FetchType.EAGER )
     private List<Bodime_Photos> bodime_photos;
 
-
     @OneToOne(mappedBy = "bodime_detail")
     private WebApp_User webApp_user1;
 
@@ -108,10 +106,6 @@ public class Bodime_Detail {
         this.kitchen = kitchen;
         this.locationAddress = locationAddress;
         this.bodimPlaceName = bodimPlaceName;
-
-
-
-
     }
 
 
