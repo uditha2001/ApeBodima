@@ -5,12 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
-import org.ApeBodima.webApp_backend.DTO.request.BodimeReviewSaveDTO;
-import org.ApeBodima.webApp_backend.DTO.request.FavouriteBodimResponseDTO;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "bodime_details")
@@ -30,7 +26,6 @@ public class Bodime_Detail {
 
     @Column(name = "distance_to_UNI")
     private double distanceToUni;
-
 
     @Column(name = "type")
     private String type;
@@ -68,11 +63,10 @@ public class Bodime_Detail {
     @OneToMany(mappedBy = "bodime_details" )
     private List<Bodime_Review> bodime_reviews;
 
-    @OneToMany(mappedBy = "bodime_details" )
+    @OneToMany(mappedBy = "bodime_details",fetch = FetchType.EAGER )
     private List<Bodime_Photos> bodime_photos;
 
-
-    @OneToOne(mappedBy = "bodime_details")
+    @OneToOne(mappedBy = "bodime_detail")
     private WebApp_User webApp_user1;
 
     public String getBodimId() {
@@ -108,10 +102,6 @@ public class Bodime_Detail {
         this.kitchen = kitchen;
         this.locationAddress = locationAddress;
         this.bodimPlaceName = bodimPlaceName;
-
-
-
-
     }
 
 

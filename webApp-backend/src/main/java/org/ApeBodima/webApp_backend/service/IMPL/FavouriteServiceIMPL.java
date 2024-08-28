@@ -1,7 +1,7 @@
 package org.ApeBodima.webApp_backend.service.IMPL;
 
 import org.ApeBodima.webApp_backend.DTO.request.FavouriteSaveDTO;
-import org.ApeBodima.webApp_backend.DTO.request.FavouriteBodimResponseDTO;
+import org.ApeBodima.webApp_backend.DTO.Response.FavouriteBodimResponseDTO;
 import org.ApeBodima.webApp_backend.entity.Bodime_Detail;
 import org.ApeBodima.webApp_backend.entity.Bodime_Photos;
 import org.ApeBodima.webApp_backend.entity.FavouriteBodimList;
@@ -62,6 +62,20 @@ public class FavouriteServiceIMPL implements FavouriteService {
         }
 
         return responseDTOs;
+    }
+
+    @Override
+    public String deleteFavouriteBodime(String bodimeid) {
+        if(favouriteBodimListRepo.existsByBodimId(bodimeid)){
+            favouriteBodimListRepo.deleteByBodimId(bodimeid);
+            return "deleted sucessfully";
+
+        }
+        else{
+            return "failed to delete";
+        }
+
+
     }
 
     private String getMainPhotoUrl(Bodime_Detail bodimeDetail) {
