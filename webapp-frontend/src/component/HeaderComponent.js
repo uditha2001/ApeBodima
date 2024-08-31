@@ -46,7 +46,7 @@ const HeaderComponent = () => {
     <div>
       <header className="header">
         <div className="logodiv">
-          <IconButton onClick={() => handCllick(linkRef0)}>
+          <IconButton onClick={() => handleClick(linkRef0)}>
             <img
               src={ApeBODIMA}
               alt="logo"
@@ -64,11 +64,11 @@ const HeaderComponent = () => {
           Explore
         </Button>
         <HashLink ref={linkRef1} smooth to="/explore#headerSection"></HashLink>
-        <Button variant="text" onClick={() => handCllick(linkRef2)}>
+        <Button variant="text" onClick={() => handleClick(linkRef2)}>
           Add Place
         </Button>
         <HashLink ref={linkRef2} smooth to="/addBodim#headerSection"></HashLink>
-        <Button variant="text" onClick={() => handCllick(linkRef3)}>
+        <Button variant="text" onClick={() => handleClick(linkRef3)}>
           User Account
         </Button>
         <HashLink
@@ -76,7 +76,7 @@ const HeaderComponent = () => {
           smooth
           to="/userAccount#headerSection"
         ></HashLink>
-        <Button variant="text" onClick={() => handCllick(linkRef4)}>
+        <Button variant="text" onClick={() => handleClick(linkRef4)}>
           view favorite
         </Button>
         <HashLink
@@ -151,13 +151,13 @@ const HeaderComponent = () => {
           <Button variant="text" onClick={() => handleClick(linkRef1)}>
             Explore
           </Button>
-          <Button variant="text" onClick={() => handCllick(linkRef2)}>
+          <Button variant="text" onClick={() => handleClick(linkRef2)}>
             Add Place
           </Button>
-          <Button variant="text" onClick={() => handCllick(linkRef3)}>
+          <Button variant="text" onClick={() => handleClick(linkRef3)}>
             User Account
           </Button>
-          <Button variant="text" onClick={() => handCllick(linkRef4)}>
+          <Button variant="text" onClick={() => handleClick(linkRef4)}>
             view favorite
           </Button>
           <Button
