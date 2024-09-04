@@ -7,8 +7,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
-import { Link } from "react-router-dom";
-import FavoriteListView from "../pages/FavoriteListView";
+import { HashLink } from "react-router-hash-link";
 
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -22,7 +21,6 @@ const HeaderComponent = () => {
   const [closeDialog, setCloseDialog] = useState(true);
   const [logStatus, setLogStatus] = useState(false);
   const [closeLogDialog, setLogCloseDialog] = useState(true);
-  const [favoriteOpen, setFavoriteOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,42 +46,48 @@ const HeaderComponent = () => {
     <div>
       <header className="header">
         <div className="logodiv">
-          <img
-            src={ApeBODIMA}
-            alt="logo"
-            style={{
-              width: "100px",
-              height: "60px",
-              cursor: "pointer",
-            }}
-            onClick={() => handleClick(linkRef0)}
-          />
-          <Link ref={linkRef0} to="/"></Link>
+          <IconButton onClick={() => handleClick(linkRef0)}>
+            <img
+              src={ApeBODIMA}
+              alt="logo"
+              style={{
+                width: "100px",
+                height: "60px",
+                cursor: "pointer",
+              }}
+            />
+          </IconButton>
+
+          <HashLink ref={linkRef0} smooth to="/#headerSection"></HashLink>
         </div>
         <Button variant="text" onClick={() => handleClick(linkRef1)}>
           Explore
         </Button>
-        <Link ref={linkRef1} to="/explore"></Link>
-
+        <HashLink ref={linkRef1} smooth to="/explore#headerSection"></HashLink>
         <Button variant="text" onClick={() => handleClick(linkRef2)}>
           Add Place
         </Button>
-        <Link ref={linkRef2} to="/addPlace"></Link>
-
+        <HashLink ref={linkRef2} smooth to="/addBodim#headerSection"></HashLink>
         <Button variant="text" onClick={() => handleClick(linkRef3)}>
           User Account
         </Button>
-        <Link ref={linkRef3} to="/userAccount"></Link>
-
-        <Button variant="text" onClick={() => setFavoriteOpen(true)}>
-          View Favorite
+        <HashLink
+          ref={linkRef3}
+          smooth
+          to="/userAccount#headerSection"
+        ></HashLink>
+        <Button variant="text" onClick={() => handleClick(linkRef4)}>
+          view favorite
         </Button>
-
-        <FavoriteListView open={favoriteOpen} handleClose={() => setFavoriteOpen(false)} />
-        <Link ref={linkRef4} to="/viewfaviourite"></Link>
+        <HashLink
+          ref={linkRef4}
+          smooth
+          to="/viewfaviourite#headerSection"
+        ></HashLink>
 
         <Button
           variant="outlined"
+          maxwidth="20px"
           className="logout"
           onClick={() => {
             setLogCloseDialog(false);
@@ -94,11 +98,13 @@ const HeaderComponent = () => {
         </Button>
         <Modal
           open={logStatus}
-          onClose={closeLogDialog}
+          onClose={() => setLogCloseDialog(false)}
           disableScrollLock
           sx={{ overflowY: "auto", height: "100%" }}
         >
-          <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+          <div>
+            <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+          </div>
         </Modal>
 
         <Button
@@ -113,11 +119,13 @@ const HeaderComponent = () => {
         </Button>
         <Modal
           open={regStatus}
-          onClose={closeDialog}
+          onClose={() => setCloseDialog(false)}
           disableScrollLock
           sx={{ overflowY: "auto", height: "100%" }}
         >
-          <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+          <div>
+            <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+          </div>
         </Modal>
 
         <MenuIcon
@@ -143,26 +151,18 @@ const HeaderComponent = () => {
           <Button variant="text" onClick={() => handleClick(linkRef1)}>
             Explore
           </Button>
-          <Link ref={linkRef1} to="/explore"></Link>
-
           <Button variant="text" onClick={() => handleClick(linkRef2)}>
             Add Place
           </Button>
-          <Link ref={linkRef2} to="/addPlace"></Link>
-
           <Button variant="text" onClick={() => handleClick(linkRef3)}>
             User Account
           </Button>
-          <Link ref={linkRef3} to="/userAccount"></Link>
-
-          <Button variant="text" onClick={() => setFavoriteOpen(true)}>
-            View Favorite
+          <Button variant="text" onClick={() => handleClick(linkRef4)}>
+            view favorite
           </Button>
-
-          <FavoriteListView open={favoriteOpen} handleClose={() => setFavoriteOpen(false)} />
-
           <Button
-            variant="outlined"
+            variant="outlied"
+            maxwidth="20px"
             className="logout"
             onClick={() => {
               setLogCloseDialog(false);
@@ -173,11 +173,13 @@ const HeaderComponent = () => {
           </Button>
           <Modal
             open={logStatus}
-            onClose={closeLogDialog}
+            onClose={() => setLogCloseDialog(false)}
             disableScrollLock
             sx={{ overflowY: "auto", height: "100%" }}
           >
-            <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+            <div>
+              <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
+            </div>
           </Modal>
 
           <Button
@@ -192,11 +194,16 @@ const HeaderComponent = () => {
           </Button>
           <Modal
             open={regStatus}
-            onClose={closeDialog}
+            onClose={() => setCloseDialog(false)}
             disableScrollLock
             sx={{ overflowY: "auto", height: "100%" }}
           >
-            <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
+            <div>
+              <Register
+                closeDialog={closeDialog}
+                registerStatus={setRegStatus}
+              />
+            </div>
           </Modal>
         </Grid>
       </div>
