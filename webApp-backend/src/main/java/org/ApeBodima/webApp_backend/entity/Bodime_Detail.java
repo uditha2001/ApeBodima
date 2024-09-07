@@ -72,7 +72,7 @@ public class Bodime_Detail {
     private List<Bodime_Photos> bodime_photos;
 
 
-    @OneToOne(mappedBy = "bodime_details")
+    @OneToOne(mappedBy = "bodime_detail")
     private WebApp_User webApp_user1;
 
     public String getBodimId() {
