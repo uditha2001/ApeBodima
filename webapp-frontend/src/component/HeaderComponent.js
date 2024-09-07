@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import Modal from "@mui/material/Modal";
 import Login from "../pages/Login";
 import { HashLink } from "react-router-hash-link";
+
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -31,12 +32,11 @@ const HeaderComponent = () => {
       }
     };
 
-    // Add event listener on mount
     window.addEventListener("resize", handleResize);
-    // Cleanup the event listener on unmount
     return () => window.removeEventListener("resize", handleResize);
   });
-  const handCllick = (linkRef) => {
+
+  const handleClick = (linkRef) => {
     if (linkRef.current) {
       linkRef.current.click();
     }
@@ -46,7 +46,7 @@ const HeaderComponent = () => {
     <div>
       <header className="header">
         <div className="logodiv">
-          <IconButton onClick={() => handCllick(linkRef0)}>
+          <IconButton onClick={() => handleClick(linkRef0)}>
             <img
               src={ApeBODIMA}
               alt="logo"
@@ -60,15 +60,15 @@ const HeaderComponent = () => {
 
           <HashLink ref={linkRef0} smooth to="/#headerSection"></HashLink>
         </div>
-        <Button variant="text" onClick={() => handCllick(linkRef1)}>
+        <Button variant="text" onClick={() => handleClick(linkRef1)}>
           Explore
         </Button>
         <HashLink ref={linkRef1} smooth to="/explore#headerSection"></HashLink>
-        <Button variant="text" onClick={() => handCllick(linkRef2)}>
+        <Button variant="text" onClick={() => handleClick(linkRef2)}>
           Add Place
         </Button>
         <HashLink ref={linkRef2} smooth to="/addBodim#headerSection"></HashLink>
-        <Button variant="text" onClick={() => handCllick(linkRef3)}>
+        <Button variant="text" onClick={() => handleClick(linkRef3)}>
           User Account
         </Button>
         <HashLink
@@ -76,7 +76,7 @@ const HeaderComponent = () => {
           smooth
           to="/userAccount#headerSection"
         ></HashLink>
-        <Button variant="text" onClick={() => handCllick(linkRef4)}>
+        <Button variant="text" onClick={() => handleClick(linkRef4)}>
           view favorite
         </Button>
         <HashLink
@@ -94,7 +94,7 @@ const HeaderComponent = () => {
             setLogStatus(true);
           }}
         >
-          <span>Login in</span>
+          <span>Log in</span>
         </Button>
         <Modal
           open={logStatus}
@@ -106,6 +106,7 @@ const HeaderComponent = () => {
             <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
           </div>
         </Modal>
+
         <Button
           variant="outlined"
           className="signin"
@@ -132,8 +133,9 @@ const HeaderComponent = () => {
           onClick={() => {
             setSideBar(true);
           }}
-        ></MenuIcon>
+        />
       </header>
+
       <div
         className="container2"
         style={{ right: `${sideBar ? "0px" : "-2000px"}` }}
@@ -143,19 +145,19 @@ const HeaderComponent = () => {
             setSideBar(false);
           }}
         >
-          <CloseRoundedIcon></CloseRoundedIcon>
+          <CloseRoundedIcon />
         </IconButton>
         <Grid container className="navbar2" direction={"column"}>
-          <Button variant="text" onClick={() => handCllick(linkRef1)}>
+          <Button variant="text" onClick={() => handleClick(linkRef1)}>
             Explore
           </Button>
-          <Button variant="text" onClick={() => handCllick(linkRef2)}>
+          <Button variant="text" onClick={() => handleClick(linkRef2)}>
             Add Place
           </Button>
-          <Button variant="text" onClick={() => handCllick(linkRef3)}>
+          <Button variant="text" onClick={() => handleClick(linkRef3)}>
             User Account
           </Button>
-          <Button variant="text" onClick={() => handCllick(linkRef4)}>
+          <Button variant="text" onClick={() => handleClick(linkRef4)}>
             view favorite
           </Button>
           <Button
@@ -167,7 +169,7 @@ const HeaderComponent = () => {
               setLogStatus(true);
             }}
           >
-            <span>Login in</span>
+            <span>Log in</span>
           </Button>
           <Modal
             open={logStatus}
@@ -179,6 +181,7 @@ const HeaderComponent = () => {
               <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
             </div>
           </Modal>
+
           <Button
             variant="outlined"
             className="signin"

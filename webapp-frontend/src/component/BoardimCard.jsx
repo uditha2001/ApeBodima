@@ -20,6 +20,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        padding:"16px"
       }}
     >
       <Grid
@@ -41,6 +42,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         item
         sx={{
           marginLeft: "40px",
+          textAlign: "center"
         }}
       >
         <Rating readOnly>
@@ -57,7 +59,8 @@ const BoardimCard = ({image,name,price,description,rating}) => {
       >
         <Typography
           sx={{
-            marginLeft: "20px",
+            marginLeft: "10px",
+            fontSize: "14px"
           }}
         >
           {name}
@@ -65,6 +68,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         <Typography
           sx={{
             marginRight: "10px",
+            fontSize: "14px"
           }}
         >
           {price}
@@ -74,6 +78,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         item
         sx={{
           position: "left",
+          
         }}
       >
         <Typography
@@ -90,6 +95,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          
         }}
       >
         <IconButton
