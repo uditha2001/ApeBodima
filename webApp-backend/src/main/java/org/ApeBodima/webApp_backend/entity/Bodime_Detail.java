@@ -1,4 +1,3 @@
-package org.ApeBodima.webApp_backend.entity;
 
 
 import jakarta.persistence.*;
