@@ -212,7 +212,7 @@ const BoardingPlacesFinder = () => {
                         </InputAdornment>
                       }
                     >
-                      <MenuItem value="">All</MenuItem>
+                      <MenuItem value="" selected>All</MenuItem>
                       <MenuItem value="5000-">Below Rs.5000</MenuItem>
                       <MenuItem value="5000-10000">Rs.5000 - Rs.10000</MenuItem>
                       <MenuItem value="10000-20000">Rs.10000 - Rs.20000</MenuItem>
@@ -251,7 +251,7 @@ const BoardingPlacesFinder = () => {
                         </InputAdornment>
                       }
                     >
-                      <MenuItem value="">All</MenuItem>
+                      <MenuItem value="" selected>All</MenuItem>
                       <MenuItem value="0-1">Below 1km</MenuItem>
                       <MenuItem value="1-3">1 km - 3 km</MenuItem>
                       <MenuItem value="3-5">3 km - 5 km</MenuItem>
@@ -286,7 +286,7 @@ const BoardingPlacesFinder = () => {
                         </InputAdornment>
                       }
                     >
-                      <MenuItem value="">All</MenuItem>
+                      <MenuItem value="" selected>All</MenuItem>
                       <MenuItem value="1">Single</MenuItem>
                       <MenuItem value="2">Double</MenuItem>
                       <MenuItem value="3+">3+ People</MenuItem>
