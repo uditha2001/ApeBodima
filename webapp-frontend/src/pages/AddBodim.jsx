@@ -94,34 +94,29 @@ const AddBodim = () => {
     }
     //Form Submission
     const handleOnSubmit=()=>{
+        console.log(allFeatures)
         alert("submit")
     }
     
-
-    //sending objects
-    const contactTableInitialState={
-        bodimId:"",
-        contact:[]
-    }
     const bodimInitialState={
         bodimId:"",
+        price:0.00,
         capacity:0,
+        distanceToUni:0,
+        type:"",
         numChairs:0,
         numFans:0,
         numTables:0,
         numNets:0,
         kitchen:0,
-        bodimPlaceName:"",
-        type:"",
-        price:0.00,
-        distanceToUni:0,
+        rating:0.00,
         locationAddress:"",
-        nearestCity:""
+        nearestCity:"",
+        bodimPlaceName:"",
+        contact:[],
+        review:[]
     }
-    // const reviewInitialState={
-    //     bodimId:"",
-    //     comment:""
-    // }
+
     const initialErrorState={
         bodimPlaceNameError:false,
         bodimTypeError:false,
@@ -138,7 +133,6 @@ const AddBodim = () => {
         kitchenError:false,
     }
 
-    const[contactTable,setContactTable]=useState(contactTableInitialState)//set contact info
     const [bodimTypes,setBodimTypes]=useState([])//fetch bodim types
     const [BodimDetails,setBodimDetails]=useState(bodimInitialState)//set bodim details
     let[BodimDetailsError,setBodimDetailsError]=useState(initialErrorState)//error handling
@@ -161,20 +155,20 @@ const AddBodim = () => {
     //Contact number validaion
     const contactNumberValidation=(value)=>{
         const phoneNumRegex=/^\d{10}$/;
-        const isCurrentPhoneNumber=contactTable.contact.indexOf(value)
+        const isCurrentPhoneNumber=BodimDetails.contact.indexOf(value)
         setBodimDetailsError({...BodimDetailsError,contactError:true})
         if(isCurrentPhoneNumber!==-1 || !phoneNumRegex.test(value)){
             return 0;
         }
         if(value.length!==10){
-            setContactTable({...contactTable, contact: []});
+            setBodimDetails({...BodimDetails, contact: []});
             return 0;
         }
         if(value.length===0){
-            setContactTable({...contactTable, contact: []});
+            setBodimDetails({...BodimDetails, contact: []});
             return 0;
         }
-        setContactTable({...contactTable, contact: [...contactTable.contact, value]});
+        setBodimDetails({...BodimDetails, contact: [...BodimDetails.contact, value]});
         setBodimDetailsError({...BodimDetailsError,contactError:false})
     }
     //contact number show
@@ -183,7 +177,7 @@ const AddBodim = () => {
         setBodimDetailsError({...BodimDetailsError,contactError:false})
         document.getElementById("contact").value="";
         let result=false;
-        if(contactTable.contact.length===0){
+        if(BodimDetails.contact.length===0){
             result=false;
         }
         else{
@@ -192,12 +186,11 @@ const AddBodim = () => {
         setcontacNumShow(result);
     }
     const deleteContactNumber = (e) => {
-        const index=contactTable.contact.indexOf(e.key)
+        const index=BodimDetails.contact.indexOf(e)
         document.getElementById("contact").value="";
-        console.log(e.target)
-        const updatedContact = [...contactTable.contact];
+        const updatedContact = [...BodimDetails.contact];
         updatedContact.splice(index, 1);
-        setContactTable({ ...contactTable, contact: updatedContact });
+        setBodimDetails({ ...BodimDetails, contact: updatedContact });
     };
 
     //Available Fatures hooks
@@ -209,7 +202,7 @@ const AddBodim = () => {
       ]);
     
       const [availableFeatures, setAvailableFeatures] = useState([]);
-    
+
       const addFeature = (feature) => {
         setAvailableFeatures([...availableFeatures, feature]);
       };
@@ -224,6 +217,7 @@ const AddBodim = () => {
           const newFeatures = [...availableFeatures];
           newFeatures[index].count = count;
           setAvailableFeatures(newFeatures);
+          setBodimDetails({...BodimDetails,["num"+newFeatures[index].name]:count});
       };
   
 
@@ -319,7 +313,7 @@ const AddBodim = () => {
                             </Box>
                             <Box sx={{textAlign:'right',marginRight:'5%'}}>
                             {
-                                contacNumShow && contactTable.contact.map((item)=>
+                                contacNumShow && BodimDetails.contact.map((item)=>
                                 <Paper elevation={3} key={item}
                                 sx={{
                                     display: 'inline',
@@ -333,7 +327,7 @@ const AddBodim = () => {
                                     margin:"0.3rem"
                                 }}>
                                 <Typography sx={{px:1}} variant="caption">{item}</Typography>
-                                <IconButton onClick={deleteContactNumber} aria-label="delete" padding="0px"><DeleteIcon /></IconButton>
+                                <IconButton onClick={()=>{deleteContactNumber(item)}} aria-label="delete" padding="0px"><DeleteIcon /></IconButton>
                                 </Paper>
                                 )
                             }
@@ -402,7 +396,6 @@ const AddBodim = () => {
                 </motion.div>
               
                 {/* Availabale features*/}
-
                 <motion.div
                 ref={addFeatureSectionRef}
                 initial="hidden"
@@ -420,7 +413,10 @@ const AddBodim = () => {
                                         <TextField
                                             type="number"
                                             value={feature.count}
-                                            onChange={(e) => updateFeatureCount(index, parseInt(e.target.value))}
+                                            onChange={(e) => {
+                                                let count=0;
+                                                count=isNaN(e.target.value) ? 0:parseInt(e.target.value);
+                                                updateFeatureCount(index, count)}}
                                             sx={{ ml: 1, mr: 1 }}
                                             size="small"
                                         />
@@ -439,7 +435,7 @@ const AddBodim = () => {
                                 {allFeatures.map((feature, index) => (
                                     <Box key={index} display="flex" alignItems="center" mb={2}>
                                         <Typography sx={{ml: 1,width:'20%'}}variant="body1">{feature.name}</Typography>
-                                        <Button variant="contained" color="primary" onClick={() => addFeature(feature)} sx={{ ml: 1 ,width:'30%'}}>
+                                        <Button variant="contained" color="primary" onClick={() => {addFeature(feature)}} sx={{ ml: 1 ,width:'30%'}}>
                                             Add
                                         </Button>
                                     </Box>
@@ -567,12 +563,11 @@ const AddBodim = () => {
                     <Button variant='contained' type="reset">Rest</Button>
                 </Container>
             <Container>
-                {JSON.stringify(BodimDetails)}
-                <br/>
-                {JSON.stringify(contactTable)}
-                <br/>
-                {JSON.stringify(allFeatures)}
-                
+            {Object.keys(BodimDetails).map((keyName, i) => (
+                <li key={i}>
+                    <span>key: {i} {keyName}: {BodimDetails[keyName]}</span>
+                </li>
+            ))}
             </Container>
           </Box>
          
