@@ -11,30 +11,23 @@ import { HashLink } from "react-router-hash-link";
 
 const HeaderComponent = () => {
   const [sideBar, setSideBar] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
   const linkRef1 = useRef(null);
   const linkRef2 = useRef(null);
   const linkRef3 = useRef(null);
   const linkRef4 = useRef(null);
   const linkRef0 = useRef(null);
   const [regStatus, setRegStatus] = useState(false);
-  const [closeDialog, setCloseDialog] = useState(true);
   const [logStatus, setLogStatus] = useState(false);
-  const [closeLogDialog, setLogCloseDialog] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
-      let fullWidth = window.screen.availWidth;
-      setWidth(window.innerWidth);
-      if (width >= 730 || fullWidth) {
-        setSideBar(false);
-        console.log(width);
+      if (window.innerWidth >= 730) {
+        setSideBar(false); // Close sidebar on large screens
       }
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  });
+  }, []);
 
   const handleClick = (linkRef) => {
     if (linkRef.current) {
@@ -71,62 +64,43 @@ const HeaderComponent = () => {
         <Button variant="text" onClick={() => handleClick(linkRef3)}>
           User Account
         </Button>
-        <HashLink
-          ref={linkRef3}
-          smooth
-          to="/userAccount#headerSection"
-        ></HashLink>
+        <HashLink ref={linkRef3} smooth to="/userAccount#headerSection"></HashLink>
         <Button variant="text" onClick={() => handleClick(linkRef4)}>
-          view favorite
+          View Favorite
         </Button>
-        <HashLink
-          ref={linkRef4}
-          smooth
-          to="/viewfaviourite#headerSection"
-        ></HashLink>
+        <HashLink ref={linkRef4} smooth to="/viewfavorite#headerSection"></HashLink>
 
         <Button
           variant="outlined"
-          maxwidth="20px"
           className="logout"
-          onClick={() => {
-            setLogCloseDialog(false);
-            setLogStatus(true);
-          }}
+          onClick={() => setLogStatus(true)}
         >
-          <span>Log in</span>
+          Log in
         </Button>
-        
 
         <Button
           variant="outlined"
           className="signin"
-          onClick={() => {
-            setRegStatus(true);
-            setCloseDialog(false);
-          }}
+          onClick={() => setRegStatus(true)}
         >
           Sign in
         </Button>
-        
 
         <MenuIcon
           className="menubar"
-          onClick={() => {
-            setSideBar(true);
-          }}
+          onClick={() => setSideBar(true)}
         />
       </header>
 
+      {/* Responsive Sidebar */}
       <div
         className="container2"
-        style={{ right: `${sideBar ? "0px" : "-2000px"}` }}
+        style={{
+          right: `${sideBar ? "0px" : "-2000px"}`,
+          transition: "right 0.3s ease-in-out",
+        }}
       >
-        <IconButton
-          onClick={() => {
-            setSideBar(false);
-          }}
-        >
+        <IconButton onClick={() => setSideBar(false)}>
           <CloseRoundedIcon />
         </IconButton>
         <Grid container className="navbar2" direction={"column"}>
@@ -140,55 +114,48 @@ const HeaderComponent = () => {
             User Account
           </Button>
           <Button variant="text" onClick={() => handleClick(linkRef4)}>
-            view favorite
+            View Favorite
           </Button>
           <Button
-            variant="outlied"
-            maxwidth="20px"
+            variant="outlined"
             className="logout"
-            onClick={() => {
-              setLogCloseDialog(false);
-              setLogStatus(true);
-            }}
+            onClick={() => setLogStatus(true)}
           >
-            <span>Log in</span>
+            Log in
           </Button>
-          <Modal
-            open={logStatus}
-            onClose={() => setLogCloseDialog(false)}
-            disableScrollLock
-            sx={{ overflowY: "auto", height: "100%" }}
-          >
-            <div>
-              <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
-            </div>
-          </Modal>
-
           <Button
             variant="outlined"
             className="signin"
-            onClick={() => {
-              setRegStatus(true);
-              setCloseDialog(false);
-            }}
+            onClick={() => setRegStatus(true)}
           >
             Sign in
           </Button>
-          <Modal
-            open={regStatus}
-            onClose={() => setCloseDialog(false)}
-            disableScrollLock
-            sx={{ overflowY: "auto", height: "100%" }}
-          >
-            <div>
-              <Register
-                closeDialog={closeDialog}
-                registerStatus={setRegStatus}
-              />
-            </div>
-          </Modal>
         </Grid>
       </div>
+
+      {/* Login Modal */}
+      <Modal
+        open={logStatus}
+        onClose={() => setLogStatus(false)}
+        disableScrollLock
+        sx={{ overflowY: "auto", height: "100%" }}
+      >
+        <div>
+          <Login logStatus={setLogStatus} registerStatus={setRegStatus}/>
+        </div>
+      </Modal>
+
+      {/* Register Modal */}
+      <Modal
+        open={regStatus}
+        onClose={() => setRegStatus(false)}
+        disableScrollLock
+        sx={{ overflowY: "auto", height: "100%" }}
+      >
+        <div>
+          <Register registerStatus={setRegStatus} logStatus={setLogStatus}/>
+        </div>
+      </Modal>
     </div>
   );
 };
