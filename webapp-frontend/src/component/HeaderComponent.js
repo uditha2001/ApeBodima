@@ -96,16 +96,7 @@ const HeaderComponent = () => {
         >
           <span>Log in</span>
         </Button>
-        <Modal
-          open={logStatus}
-          onClose={() => setLogCloseDialog(false)}
-          disableScrollLock
-          sx={{ overflowY: "auto", height: "100%" }}
-        >
-          <div>
-            <Login closeLogDialog={closeLogDialog} logStatus={setLogStatus} />
-          </div>
-        </Modal>
+        
 
         <Button
           variant="outlined"
@@ -117,16 +108,7 @@ const HeaderComponent = () => {
         >
           Sign in
         </Button>
-        <Modal
-          open={regStatus}
-          onClose={() => setCloseDialog(false)}
-          disableScrollLock
-          sx={{ overflowY: "auto", height: "100%" }}
-        >
-          <div>
-            <Register closeDialog={closeDialog} registerStatus={setRegStatus} />
-          </div>
-        </Modal>
+        
 
         <MenuIcon
           className="menubar"
