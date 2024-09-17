@@ -20,7 +20,7 @@ import {
 } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import { React, useEffect, useState } from 'react';
-import { fetchBodimTypes } from '../apiConfig/apiService';
+import { fetchBodimTypes ,postBodimDetails} from '../apiConfig/apiService';
 import ReviewCardComponent from '../component/ReviewCardComponent';
 import Popups from './Popup';
 import ReviewAddingForm from './ReviewAddingForm';
@@ -79,7 +79,7 @@ const AddBodim = () => {
     useEffect(()=>
     {
         loadbodimTypes();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //fetch types name from bodimtype table 
@@ -93,13 +93,17 @@ const AddBodim = () => {
         })    
     }
     //Form Submission
-    const handleOnSubmit=()=>{
-        console.log(allFeatures)
-        alert("submit")
+    const handleOnSubmit=(event)=>{
+        event.preventDefault()
+        console.log(BodimDetails)
+        postBodimDetails(BodimDetails).then((response)=>{
+            alert(response)
+        }).catch((error)=>{
+            alert(error)
+        })
     }
     
     const bodimInitialState={
-        bodimId:"",
         price:0.00,
         capacity:0,
         distanceToUni:0,
@@ -562,13 +566,13 @@ const AddBodim = () => {
                     <Button sx={{m:2}} variant='contained' type="submit">Submit</Button>
                     <Button variant='contained' type="reset">Rest</Button>
                 </Container>
-            <Container>
+            {/* <Container>
             {Object.keys(BodimDetails).map((keyName, i) => (
                 <li key={i}>
-                    <span>key: {i} {keyName}: {BodimDetails[keyName]}</span>
+                    <span>{keyName}: {BodimDetails[keyName]}</span>
                 </li>
             ))}
-            </Container>
+            </Container> */}
           </Box>
          
     )

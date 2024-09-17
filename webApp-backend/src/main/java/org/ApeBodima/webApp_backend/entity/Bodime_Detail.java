@@ -14,7 +14,8 @@ import java.util.List;
 @Data
 public class Bodime_Detail {
     @Id
-    @Column(name = "bodim_ID", length = 4)
+    @Column(name = "bodim_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String bodimId;
 
     @Column(name = "price")
