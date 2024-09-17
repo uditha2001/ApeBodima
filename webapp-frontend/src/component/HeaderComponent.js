@@ -44,8 +44,8 @@ const HeaderComponent = () => {
               src={ApeBODIMA}
               alt="logo"
               style={{
-                width: "100px",
-                height: "60px",
+                width: "40px",
+                height: "40px",
                 cursor: "pointer",
               }}
             />
