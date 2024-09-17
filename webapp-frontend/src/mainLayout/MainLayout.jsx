@@ -35,11 +35,14 @@ const MainLayout = () => {
           gap: "10px",
         }}
       >
-        <Outlet />
+        <Outlet 
+        />
         <div
           className="footer"
           style={{
             position: "relative",
+            marginLeft:"5px",
+            marginRight:"8px"
           }}
         >
           <FooterComponent />
