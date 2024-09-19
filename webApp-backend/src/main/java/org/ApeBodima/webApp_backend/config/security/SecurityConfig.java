@@ -42,6 +42,7 @@ public class SecurityConfig{
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/api/v1/registration/user").permitAll()
                         .requestMatchers("/api/v1/bodimTypes/*").permitAll()
+                        .requestMatchers("api/v1/bodime-details/save/*").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
