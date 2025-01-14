@@ -13,7 +13,7 @@ public interface WebAppUserRepo extends JpaRepository<WebApp_User,String> {
 
     //Return the WebApp_Users according to the username
     Optional<WebApp_User> findByUsername(String username);
-
+    WebApp_User getByUsername(String username);
     Optional<WebApp_User> findByWebAppUserNIC(String webAppUserNIC);
 
     //Return the WebApp_Users according to the email
