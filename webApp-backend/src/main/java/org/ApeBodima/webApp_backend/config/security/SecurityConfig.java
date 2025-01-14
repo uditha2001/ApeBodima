@@ -45,7 +45,8 @@ public class SecurityConfig{
                 )
                 .authenticationProvider(authenticationProvider())
                 .httpBasic(withDefaults())
-                .csrf(AbstractHttpConfigurer::disable);//TODO enable csrf tokens in request header
+                .csrf(AbstractHttpConfigurer::disable);
+
         return http.build();
     }
     
